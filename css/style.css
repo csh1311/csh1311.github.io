@@ -54,6 +54,7 @@ a:hover {
 }
 .logopng {
   width: 200px;
+  border-radius: 50%;
 }
 .breadcrumb {
   padding: 8px 15px;
