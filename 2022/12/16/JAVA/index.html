@@ -545,690 +545,654 @@
 </ul>
 </li>
 <li><p>如歌出现了重名的成员变量怎么办吗？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(name);</span><br><span class="line">System.out.println(<span class="built_in">this</span>.name); </span><br><span class="line">System.out.println(<span class="built_in">super</span>.name); <span class="comment">//去找父类的name</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>继承中：成员方法的访问特点</p>
+</li>
+<li><p>继承中：构造方法的访问特点</p>
 <ul>
-<li><p>&#96;&#96;&#96;<br>System.out.println(name);<br>System.out.println(this.name);<br>System.out.println(super.name); &#x2F;&#x2F;去找父类的name</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 继承中：成员方法的访问特点</span><br><span class="line"></span><br><span class="line">- 继承中：构造方法的访问特点</span><br><span class="line"></span><br><span class="line">  - 父类中的构造方法不会被子类继承，但是可以通过super来调用</span><br><span class="line">  - 子类构造方法的第一行，有一个默认的super();</span><br><span class="line">  - 默认先访问父类中无参的构造方法，在执行自己</span><br><span class="line">  - 如果想要方法文父类有参构造方法，必须手动书写。</span><br><span class="line">  - 子类中所有的构造方法默认先访问父类中的无参构造，在执行自己</span><br><span class="line"></span><br><span class="line">#### 重写</span><br><span class="line"></span><br><span class="line">- 方法的重写</span><br><span class="line">  - 当父类的方法不能满足子类现在的需求时，需要进行方法的重写</span><br><span class="line">  - 重写方法的名称、形参列表必须与父类一致</span><br><span class="line">  - 子类重写父类方法时，访问权限子类必须大于等于父类（暂时了解：空着不写&lt;protected&lt;public)</span><br><span class="line">  - 子类重写父类的方法时，返回值类型子类必须小于父类</span><br><span class="line">  - 只有被添加到虚方法表中的方法才能被重写</span><br><span class="line">- 书写格式</span><br><span class="line">  - 在继承体系中，子类出现了和父类中一模一样的方法声明，我们称子类这个方法是重写的方法</span><br><span class="line">- @Override重写的注解</span><br><span class="line">  - @Override是放在重写后的方法上，校验子类重写是语法是否正确</span><br><span class="line">  - 加上注解后如果有红色波浪线，表示语法错误</span><br><span class="line">  - 建议重写方法都加上@Override注解，代码安全，优雅</span><br><span class="line"></span><br><span class="line">#### this，super()</span><br><span class="line"></span><br><span class="line">- this:理解为一个变量，表示当前方法调用者的地址值；</span><br><span class="line">- super:代表父类存储空间。</span><br><span class="line"></span><br><span class="line">#### ![image-20220912094526173](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220912094526173.png)多态</span><br><span class="line"></span><br><span class="line">- ​	什么是多态？</span><br><span class="line">  - 同类型的对象，表现出的不同的形态</span><br><span class="line"></span><br><span class="line">- ​	多态的表现形式</span><br><span class="line">  - 父类类型 对象名称 = 子类对象；</span><br><span class="line"></span><br><span class="line">- 多态的前提</span><br><span class="line">  - 有继承关系</span><br><span class="line">  - 有父类引用指向子类对象</span><br><span class="line">  - 有方法重写</span><br><span class="line">- 多态的好处？</span><br><span class="line">  - 使用父类型作为参数，可以接收所有子类对象，体现多态的扩展性与便利</span><br><span class="line">- 多态调用成员的特点</span><br><span class="line">  - 变量调用:编译看左边，运行看右边。</span><br><span class="line">  - 方法调用：编译看左边，运行看右边。</span><br><span class="line">- 多态的优势</span><br><span class="line">  - 方法中，使用父类型作为参数，可以接受所有子类对象</span><br><span class="line">- 多态的弊端是什么？</span><br><span class="line">  - 不能使用子类的特有功能</span><br><span class="line">- 引用数据类型的类型转换，有几种方式？</span><br><span class="line">  - 自动类型转换，强制类型转换</span><br><span class="line">- 强制类型转换能解决什么问题？</span><br><span class="line">  - 可以转换成真正的子类型类型，从而调用子类独有功能</span><br><span class="line">  - 转换类型与真实对象类型不一致会报错</span><br><span class="line">  - 转换的时候用instanceof关键字进行判断</span><br><span class="line"></span><br><span class="line">#### final </span><br><span class="line"></span><br><span class="line">​	使用final修饰之后是不能改变的</span><br><span class="line"></span><br><span class="line">- 方法 表面该方法最终方法，不能被重写</span><br><span class="line">- 类instanceof表面该类是最终类，不能被继承</span><br><span class="line">- 变量 叫做常量，只能被赋值一次</span><br><span class="line">- final修饰变量：是常量，不能修改</span><br><span class="line">  - 基本数据类型：变量的值不能修改</span><br><span class="line">  - 引用数据类型：地址值不能修改但是内部的属性值可以修改</span><br><span class="line"></span><br><span class="line">使用场景</span><br><span class="line"></span><br><span class="line">- ​	一些系统不可被修改的常量</span><br><span class="line"></span><br><span class="line">#### 权限修饰符</span><br><span class="line"></span><br><span class="line">- private ： 私有的，只能 自己用</span><br><span class="line"></span><br><span class="line">- 默认 ： 只能在本包里面用</span><br><span class="line"></span><br><span class="line">- protected ： 受保护的</span><br><span class="line"></span><br><span class="line">- public ： 公共的</span><br><span class="line"></span><br><span class="line">  ![image-20220912153212668](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220912153212668.png)</span><br><span class="line"></span><br><span class="line">1. 构造代码块</span><br><span class="line">   1. 写在成员位置的代码块</span><br><span class="line">   2. 作用：可以把多个构造方法中重复的代码抽取出来</span><br><span class="line">   3. 执行时机：我们在创建本类对象的时候会执行构造代码块再执行构造方法</span><br><span class="line">2. 静态代码块</span><br><span class="line">   1. 格式：static&#123;&#125;</span><br><span class="line">   2. 数据的初始化（重点）</span><br><span class="line">   3. 执行时机：随着类的加载而加载的，并且只执行一次</span><br><span class="line"></span><br><span class="line">#### 抽象类</span><br><span class="line"></span><br><span class="line">- 抽象类</span><br><span class="line">  - public abstract class 类名&#123;&#125;</span><br><span class="line">  - 如果一个&lt;u&gt;类中存在抽象方法&lt;/u&gt;，那么这个类就&lt;u&gt;必须声明为抽象类&lt;/u&gt;</span><br><span class="line">- 抽象方法</span><br><span class="line">  - 格式:public abstract 返回值类型 方法名（参数列表）；</span><br><span class="line">  - 抽象方法：将共性的行为（方法）抽取到父类之后。由于每一个子类执行的内容不一样，所以，再父类中不能确定具体的方法体。该方法就可以定义为抽象方法。</span><br><span class="line">- 子类继承抽象类之后，如何重写抽象方法</span><br><span class="line">- 抽象类和抽象方法注意事项</span><br><span class="line">  - 抽象类不能实例化（抽象类不能创建对象）</span><br><span class="line">  - 抽象类中不一定有抽象方法，有抽象方法的类一定是抽象类</span><br><span class="line">  - 可以有构造方法</span><br><span class="line">  - 抽象的子类</span><br><span class="line">    - 要么重写抽象类中的所有抽象方法</span><br><span class="line">    - 要么是抽象类</span><br><span class="line">- 抽象类的作用是声明样的？</span><br><span class="line">  - 抽取共性时，无法确定方法体，就把方法定义为抽象的，强制让子类按照某种格式重写。</span><br><span class="line"></span><br><span class="line">#### 接口</span><br><span class="line"></span><br><span class="line">- 接口：就是一种规则</span><br><span class="line">- 接口的定义和使用</span><br><span class="line">  - 接口用关键字interface来定义</span><br><span class="line">    - public interface 接口名&#123;&#125;</span><br><span class="line">  - 接口不能实例化</span><br><span class="line">  - 接口和类之间是实现关系，通过implements关键字表示</span><br><span class="line">    - public class 类名implement 接口名 &#123;&#125;</span><br><span class="line">  - 接口的子类（实现类）</span><br><span class="line">    - 要么重写接口中的所有抽象方法</span><br><span class="line">    - 要么是抽象类</span><br><span class="line">- 接口成员的特点</span><br><span class="line">  - 成员变量</span><br><span class="line">    - 只能是常量</span><br><span class="line">    - 默认修饰符：public static final</span><br><span class="line">  - 没有构造方法</span><br><span class="line">  - 成员方法</span><br><span class="line">    - 只能是抽象方法</span><br><span class="line">    - 默认修饰符：public abstract</span><br><span class="line">  - jdk7以前：接口只能定义抽象方法</span><br><span class="line">- 接口和类之间的关系</span><br><span class="line">  - 类和类之间的关系</span><br><span class="line">    - 继承关系，只能单继承，不能多继承，但是可以多层继承</span><br><span class="line">  - 类和接口的关系</span><br><span class="line">    - 实现关系，可以单实现，也可以多实现，还可以在继承一个类的同时实现多个接口</span><br><span class="line">  - 接口和接口的关系</span><br><span class="line">    - 继承关系，可以单继承，也可以多继承</span><br><span class="line"></span><br><span class="line">#### 内部类</span><br><span class="line"></span><br><span class="line">- 类的五大成员：</span><br><span class="line"></span><br><span class="line">  - 属性，方法，构造方法、代码块、内部类</span><br><span class="line"></span><br><span class="line">- 内部类的分类</span><br><span class="line"></span><br><span class="line">  - 成员内部类</span><br><span class="line"></span><br><span class="line">    - 写在成员位置，属于外部类的一员</span><br><span class="line"></span><br><span class="line">    - 成员内部类可以被修饰符所修饰</span><br><span class="line"></span><br><span class="line">    - 在成员内部类里面，JDK16之前不能定义静态变量，JDK16才开始可以定义静态变量</span><br><span class="line"></span><br><span class="line">    - 调用格式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>package Day;</p>
-<p>public class Day06Test {</p>
-<pre><code>public static void main(String[] args) &#123;
-    
-</code></pre>
-<p>&#x2F;&#x2F;        创建内部类对象<br>    Day06.Engine  e&#x3D; new Day06().new Engine();<br>    e.show();<br>    &#x2F;&#x2F;创建内部类对象,在外部类创建一个成员方法来调用内部类的对象<br>    Day06 d &#x3D; new Day06();<br>    Day06.Engine engine &#x3D; d.getEngine();<br>    engine.show();<br>}<br>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">- 静态内部类</span><br><span class="line"></span><br><span class="line">  ![image-20220914224011897](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220914224011897.png)</span><br><span class="line"></span><br><span class="line">- 局部内部类</span><br><span class="line"></span><br><span class="line">  - 将内部类定义在方法里面就叫做局部内部类，类似于方法的局部变量</span><br><span class="line">  - 外界是无法直接使用，需要在方法内部创建对象并使用</span><br><span class="line">  - 该类可以直接访问外部类的成员，也可以访问方法内的局部变量</span><br><span class="line"></span><br><span class="line">- 匿名内部类</span><br><span class="line"></span><br><span class="line">  - 内部类本质上就是隐藏了名字的内部类</span><br><span class="line">  - 定义格式</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>new 类名或者接口名(){      &#x2F;&#x2F;如歌类名是类那么就是继承关系，如果是接口名那么就是实现接口<br>    重写方法;<br>};</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">- 什么是内部类</span><br><span class="line"></span><br><span class="line">  - 在一个类中，再定义一个类</span><br><span class="line"></span><br><span class="line">- 内部类的访问特点</span><br><span class="line"></span><br><span class="line">  - 内部类可以直接访问外部类的成员，包括私有</span><br><span class="line"></span><br><span class="line">  - 外部类要访问内部类的成员，必须创建对象</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>package Day;</p>
-<p>public class Day06 {<br>    String carName;<br>    int carAGe;<br>    String carColor;<br>     int a &#x3D; 30;</p>
-<pre><code>//定义一个外部类的方法
-public  void  shows()&#123;
-    //外部类访问成员变量
-    System.out.println(carAGe);
-    //外部类访问不了内部类的成员变量
-</code></pre>
-<p>&#x2F;&#x2F;        System.out.println(engineAgge);<br>        &#x2F;&#x2F;外部类访问不了内部类的成员方法<br>&#x2F;&#x2F;        show();</p>
-<pre><code>&#125;
-
-//定义一个内部类
-class Engine&#123;
-    String engineName;
-    int engineAgge;
-    int a = 10;
-
-    //定义一个内部类的方法
-    public void show()&#123;
-         int a = 20;
-        //内部类访问内部类的成员变量
-        System.out.println(engineName);
-        //内部类访问外部类的成员变量
-        System.out.println(carName);
-        //内部类访问外部类的成员方法
-        shows();
-        //如果内部类和外部类的成员变量同名需要以下方法调用
-         System.out.println(a);//20
-         System.out.println(this.a);  //10
-         System.out.println(Day06.this.a);//30
-    &#125;
-&#125;
-</code></pre>
-<p>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### Math</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>父类中的构造方法不会被子类继承，但是可以通过super来调用</li>
+<li>子类构造方法的第一行，有一个默认的super();</li>
+<li>默认先访问父类中无参的构造方法，在执行自己</li>
+<li>如果想要方法文父类有参构造方法，必须手动书写。</li>
+<li>子类中所有的构造方法默认先访问父类中的无参构造，在执行自己</li>
 </ul>
 </li>
 </ul>
-<p>package math;</p>
-<p>public class MathTest {<br>    public static void main(String[] args) {<br>        float a &#x3D; 314554.88f;<br>        int round &#x3D; Math.round(a);<br>        System.out.println(round);</p>
-<pre><code>    //返回绝对值
-    int b = -100;
-    int abs = Math.abs(b);
-    System.out.println(abs);
-
-    //返回两个数的总数 如果数据超出int范围会抛出异常
-    int x = 2, y = 10;
-    int i = Math.addExact(x, y);
-    System.out.println(i);
-    //返回乘数的乘积
-
-    //比较两个数的最大值
-    int maxA= 10,maxB=20;
-    int max = Math.max(maxA, maxB);
-    System.out.println(max);
-
-
-    //比较两个数的最小值
-    int minA=50,minB=60;
-    int min = Math.min(minA, minB);
-    System.out.println(min);
-
-    //返回两个数的相乘
-    int i1 = Math.multiplyExact(x, y);
-    System.out.println(i1);
-
-    //向上取整
-    System.out.println(Math.ceil(20.85));//21.0
-
-    //向下取整
-    System.out.println(Math.floor(20.85));//20.0
-
-    //代表2的三次方，如果第二个参数是0~1之间的小数
-    System.out.println(Math.pow(2, 3)); //8.0
-    System.out.println(Math.pow(2, 0.5)); //1.4142135623730951
-
-    //代表开根号
-    System.out.println(Math.sqrt(98)); //2.0
-
-    //开立方根
-    System.out.println(Math.cbrt(8));//2.0
-
-
-&#125;
-</code></pre>
-<p>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### System</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220918172005955.png&quot; alt=&quot;image-20220918172005955&quot; style=&quot;zoom:67%;&quot; /&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>package math;</p>
-<p>public class SystemTest {<br>    public static void main(String[] args) {<br>        &#x2F;&#x2F;0:表示当前虚拟机是正常停止<br>        &#x2F;&#x2F;非0，表示当前虚拟机异常停止<br>&#x2F;&#x2F;        System.exit(0);</p>
-<pre><code>    long l = System.currentTimeMillis();
-    System.out.println(l);
-
-    //拷贝数组
-    int[] arr1 = &#123;1,2,3,4,5,6,7,8,9,10&#125;;
-    int[] arr2 = new int[10];
-    //第一个参数：数据源，要拷贝的数据
-    //第二个参数：从数据源哪个索引开始拷贝
-    //第三个参数：新数组
-    //第四个参数：拷贝到新数组的哪个位置
-    //第五个参数：拷贝多少个数据
-</code></pre>
-<p>&#x2F;&#x2F;        System.arraycopy(arr1,3,arr2,0,7);</p>
-<pre><code>    //课堂练习 arr2 : 0 0 0 0 1 2 3 0 0 0
-    System.arraycopy(arr1,0,arr2,4,3);
-
-
-
-
-    for (int i = 0; i &lt; arr2.length; i++) &#123;
-        System.out.print(arr2[i]+&quot; &quot;);
-    &#125;
-&#125;
-</code></pre>
-<p>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### Runtime</span><br><span class="line"></span><br><span class="line">- Runtime表示当前虚拟机的运行环境</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>  package math;</p>
-<p>  import java.io.IOException;</p>
-<p>  public class RuntimeTest {<br>      public static void main(String[] args) {<br>          Runtime runtime &#x3D; Runtime.getRuntime();<br>          System.out.println(runtime);<br>          int i &#x3D; runtime.availableProcessors();    &#x2F;&#x2F;获取CPU的线程数<br>          System.out.println(i);&#x2F;&#x2F;12<br>          long l &#x3D; runtime.maxMemory();   &#x2F;&#x2F;JVM能从系统中获取总内存大小(单位byte)<br>          System.out.println(l);<br>          long l1 &#x3D; runtime.totalMemory();   &#x2F;&#x2F;JVM已经从系统中获取总内存大小(单位byte)<br>          System.out.println(l1);</p>
-<pre><code>      long l2 = runtime.freeMemory();   //获取jvm剩余多少内存可以使用
-      System.out.println(l2);
-
-      try &#123;
-         runtime.exec(&quot;notepad&quot;); //运行cmd命令 notepad打开记事本
-      &#125; catch (IOException e) &#123;
-          throw new RuntimeException(e);
-      &#125;
-
-  &#125;
-</code></pre>
-<p>  }</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### Object</span><br><span class="line"></span><br><span class="line">- Object是java中定级父类。所有类都直接或间接的继承于Object类</span><br><span class="line"></span><br><span class="line">- Object类中的方法可以被所有子类访问。</span><br><span class="line"></span><br><span class="line">- Object方法</span><br><span class="line"></span><br><span class="line">  - toString</span><br><span class="line">  - equals</span><br><span class="line">  - clone()` 对象克隆</span><br><span class="line">    - 方法在底层会帮我们创建一个对象，并把原对象中的数据拷贝过去</span><br><span class="line">    - 重写Object中的clone方法</span><br><span class="line">    - 让JavaBean类实现Cloneable接口</span><br><span class="line">    - 创建元对象并调用clone就可以了</span><br><span class="line">    - 浅克隆</span><br><span class="line">    - 深克隆</span><br><span class="line">      - 以下的代码深克隆还是有弊端，因为以后是个二维数组又要修改，所以会使用第三方写的代码Gson</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>  package math;</p>
-<p>  import java.util.Arrays;<br>  import java.util.Objects;</p>
-<p>  public class Student implements Cloneable {<br>      private String name;<br>      private int  age;</p>
-<pre><code>  private int[] arr;
-
-
-  public String getName() &#123;
-      return name;
-  &#125;
-
-  public void setName(String name) &#123;
-      this.name = name;
-  &#125;
-
-  public int getAge() &#123;
-      return age;
-  &#125;
-
-  public void setAge(int age) &#123;
-      this.age = age;
-  &#125;
-
-  public int[] getArr() &#123;
-      return arr;
-  &#125;
-
-  public void setArr(int[] arr) &#123;
-      this.arr = arr;
-  &#125;
-
-  public Student(String name, int age, int[] arr) &#123;
-      this.name = name;
-      this.age = age;
-      this.arr = arr;
-  &#125;
-
-  public Student() &#123;
-  &#125;
-
-  //重写object中的toString
-  @Override
-  public String toString() &#123;
-      return &quot;Student&#123;&quot; +
-              &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
-              &quot;, age=&quot; + age +
-              &quot;, arr=&quot; + Arrays.toString(arr) +
-              &#39;&#125;&#39;;
-  &#125;
-  //重写object中的equals
-  @Override
-  public boolean equals(Object o) &#123;
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-      Student student = (Student) o;
-      return age == student.age &amp;&amp; Objects.equals(name, student.name) &amp;&amp; Arrays.equals(arr, student.arr);
-  &#125;
-
-  //重写object中的clone
-  @Override
-  protected Object clone() throws CloneNotSupportedException &#123;
-
-      //如果想深克隆,不加这个就是浅克隆。浅克隆如果是引用类型那么复制的是地址值，如果成员属性中有数组，那么复制的是地址值，
-      // 如果其中一个修改数组中的元素就会跟着修改，所以定义深克隆
-
-      int[] data = this.arr;
-      //创建新数组，将旧数组里面的数据直接拷贝的新数组里面
-      int[]  newData = new int[data.length];
-      for (int i = 0; i &lt; data.length; i++) &#123;
-          newData[i] = data[i];
-      &#125;
-     //直接调用父类中的方法克隆对象
-      Student s = (Student) super.clone();
-      s.arr = newData;
-      return s;
-  &#125;
-
-
-  /**
-   * 浅克隆
-   */
-</code></pre>
-<p>  &#x2F;&#x2F;    @Override<br>  &#x2F;&#x2F;    protected Object clone() throws CloneNotSupportedException {<br>  &#x2F;&#x2F;        return super.clone();<br>  &#x2F;&#x2F;    }<br>  }</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p>  package math;</p>
-<p>  public class ObjectTest {<br>      public static void main(String[] args) throws CloneNotSupportedException {</p>
-<pre><code>      int[] data= &#123;1,2,3,4,5,6,7,8,9,10&#125;;
-      Student s = new Student(&quot;蔡&quot;,20,data);
-      System.out.println(s);   //Student&#123;name=&#39;蔡&#39;, age=20, arr=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&#125;  在javaBean中重写toString就可以这样显示
-      System.out.println(s);    //math.Student@1b6d3586    如果没有重写toString方法就会打印出地址值，会使用Object的toString
-
-
-      Student s1 = new Student();
-      Student s2 = new Student();
-      boolean result = s1.equals(s2);
-      System.out.println(result);   //false  如果在javaBean中不重写equals方法就会比较两个对象的地址值两个地址值是new出来的所以在内存堆中,会使用Object的equals
-
-      System.out.println(result);   //true  如果在javaBean中重写equals方法就会使用javaBean中重写的equals方法。
-
-
-
-      //直接调用javabean类中重写的克隆方法
-      Student s4 = (Student) s.clone();
-      //修改拷贝后数组的第一个元素的数据
-      int[] arr = s4.getArr();
-      arr[0] = 55;
-      System.out.println(s4);  //Student&#123;name=&#39;蔡&#39;, age=20, arr=[55, 2, 3, 4, 5, 6, 7, 8, 9, 10]&#125;
-      System.out.println(s);  //原数组的数组第一个数据也被修改了Student&#123;name=&#39;蔡&#39;, age=20, arr=[55, 2, 3, 4, 5, 6, 7, 8, 9, 10]&#125;
-
-
-      //在javabean中重写了浅克隆，变成了深克隆
-      System.out.println(s4);  //Student&#123;name=&#39;蔡&#39;, age=20, arr=[55, 2, 3, 4, 5, 6, 7, 8, 9, 10]&#125;
-      System.out.println(s);   //Student&#123;name=&#39;蔡&#39;, age=20, arr=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&#125;
-
-
-  &#125;
-</code></pre>
-<p>  }</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line"></span><br><span class="line">#### BigInteger</span><br><span class="line"></span><br><span class="line">- BigInteger构造方法</span><br><span class="line"></span><br><span class="line">  ![image-20220919214226833](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220919214226833.png)</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">#### BigDecima</span><br><span class="line"></span><br><span class="line">- 用于小数的精确计算</span><br><span class="line"></span><br><span class="line">- 用来表示很大的小数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>  package math;</p>
-<p>  import java.math.BigDecimal;</p>
-<p>  public class BigDecimalTest {<br>      public static void main(String[] args) {</p>
-<pre><code>      //使用double形参构造函数会数据不精确
-      BigDecimal b = new BigDecimal(0.01);
-      BigDecimal bg = new BigDecimal(0.09);
-      BigDecimal bg1 = b.add(bg);
-      System.out.println(b);  //0.01000000000000000020816681711721685132943093776702880859375
-      System.out.println(bg);//0.0899999999999999966693309261245303787291049957275390625
-      System.out.println(bg1);//0.09999999999999999687749774324174723005853593349456787109375
-
-
-      //使用String形参构造函数数据精确
-      BigDecimal b1 = new BigDecimal(&quot;0.01&quot;);
-      BigDecimal b2 = new BigDecimal(&quot;0.09&quot;);
-      //add b1加上b2
-      BigDecimal b3 = b1.add(b2);
-      System.out.println(b1);  //0.01
-      System.out.println(b2);//0.09
-      System.out.println(b3);//0.10
-
-  &#125;
-</code></pre>
-<p>  }</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 正则表达式</span><br><span class="line"></span><br><span class="line">- 作用</span><br><span class="line"></span><br><span class="line">  - 检验字符串是否满足规则</span><br><span class="line">  </span><br><span class="line">  - 在一段文本中查找满足要求的内容</span><br><span class="line"></span><br><span class="line">  - 正则表达式字符的基本操作</span><br><span class="line">  </span><br><span class="line">    ![image-20220923130744244](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220923130744244.png)</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
-<p>  package Day.Api.zhengze;</p>
-<p>  public class Test {<br>      public static void main(String[] args) {<br>          &#x2F;&#x2F;判断一个是不是qq号<br>          String qq &#x3D; “1311871826”;<br>          &#x2F;&#x2F;[1-9]这个代表上面第一个数字不能以0开头  \d代表数字 {4,9}这个代表除了第一个数字后面的数必须是4~9位数字要不然就是返回false<br>          System.out.println(qq.matches(“[1-9]\d{4,9}”));</p>
-<pre><code>      System.out.println(&quot;-------------------------&quot;);
-
-      System.out.println(&quot;a&quot;.matches(&quot;[abc]&quot;));  //true
-      System.out.println(&quot;z&quot;.matches(&quot;[abc]&quot;));  //false
-      System.out.println(&quot;ab&quot;.matches(&quot;[abc]&quot;)); //false  因为这样[abc]只能匹配字符串一个字符所以false所以要改成[abc][abc]这个就是true
-
-      System.out.println(&quot;-------------------------&quot;);
-
-
-      //[^abc]  ^取反的意思
-      System.out.println(&quot;a&quot;.matches(&quot;[^abc]&quot;));  //false
-      System.out.println(&quot;z&quot;.matches(&quot;[^abc]&quot;));  //true
-      System.out.println(&quot;zz&quot;.matches(&quot;[^abc]&quot;));  //false
-      System.out.println(&quot;zz&quot;.matches(&quot;[^abc][^abc]&quot;));//true
-
-
-      System.out.println(&quot;---------------------------&quot;);
-      //[a-zA-Z]可以是a-z的大写和小写
-      System.out.println(&quot;a&quot;.matches(&quot;[a-zA-Z]&quot;)); //true
-      System.out.println(&quot;Z&quot;.matches(&quot;[a-zA-Z]&quot;)); //true
-      System.out.println(&quot;aa&quot;.matches(&quot;[a-zA-Z]&quot;));//false    //[a-zA-Z][a-zA-Z] true
-      System.out.println(&quot;zz&quot;.matches(&quot;[a-zA-Z]&quot;));//false
-      System.out.println(&quot;0&quot;.matches(&quot;[a-zA-Z]&quot;));//false    //[a-zA-Z0-9] false  //[0-9] true
-
-
-      System.out.println(&quot;----------------------&quot;);
-      //[a-d[m-p]] a到d，或m到p
-      System.out.println(&quot;a&quot;.matches(&quot;[a-d[m-p]]&quot;)); //true
-      System.out.println(&quot;d&quot;.matches(&quot;[a-d[m-p]]&quot;)); //true
-      System.out.println(&quot;m&quot;.matches(&quot;[a-d[m-p]]&quot;)); //true
-      System.out.println(&quot;p&quot;.matches(&quot;[a-d[m-p]]&quot;)); //true
-      System.out.println(&quot;e&quot;.matches(&quot;[a-d[m-p]]&quot;)); //false   //e不在范围内所以是false
-      System.out.println(&quot;0&quot;.matches(&quot;[a-d[m-p]]&quot;)); //false  //0是数字正则匹配里面没有数字
-
-      System.out.println(&quot;--------------------------&quot;);
-
-
-
-      //[a-z&amp;&amp;[def]]
-      //其实就是它们的交集  def
-      System.out.println(&quot;d&quot;.matches(&quot;[a-z&amp;&amp;[def]]&quot;)); //true
-      System.out.println(&quot;a&quot;.matches(&quot;[a-z&amp;&amp;[def]]&quot;)); //false
-      System.out.println(&quot;0&quot;.matches(&quot;[a-z&amp;&amp;[def]]&quot;)); //false
-
-
-      //[a-z&amp;&amp;[^bc]]  除了bc字母都可以
-      System.out.println(&quot;-------------------&quot;);
-      System.out.println(&quot;a&quot;.matches(&quot;[a-z&amp;&amp;[^bc]]&quot;));  //true
-      System.out.println(&quot;b&quot;.matches(&quot;[a-z&amp;&amp;[^bc]]&quot;));  //false
-      System.out.println(&quot;z&quot;.matches(&quot;[a-z&amp;&amp;[^bc]]&quot;));  //true
-      System.out.println(&quot;z&quot;.matches(&quot;[a-z&amp;[^bc]]&quot;));  //true 因为&amp;只能当当是符号不是&amp;&amp;这个才是且
-
-      System.out.println(&quot;-------------------------&quot;);
-
-      //[a-z&amp;&amp;[^m-p]]  除了m-p中的字母，其它字母都可以
-      System.out.println(&quot;a&quot;.matches(&quot;[a-z&amp;&amp;[^m-p]]&quot;)); //true
-      System.out.println(&quot;m&quot;.matches(&quot;[a-z&amp;&amp;[^m-p]]&quot;)); //false
-      System.out.println(&quot;0&quot;.matches(&quot;[a-z&amp;&amp;[^m-p]]&quot;)); //false
-
-&#125;
-</code></pre>
-<p>  }</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line"></span><br><span class="line">#### jDK7前时间类</span><br><span class="line"></span><br><span class="line">![image-20220924144225531](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220924144225531.png)</span><br><span class="line"></span><br><span class="line">- Date  时间</span><br><span class="line"></span><br><span class="line">  ![image-20220924150106666](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220924150106666.png)</span><br><span class="line"></span><br><span class="line">- SimpleDateFormat 格式化时间</span><br><span class="line"></span><br><span class="line">  - 作用</span><br><span class="line">    - 格式化：把时间变成自己的格式</span><br><span class="line">    - 解析：把字符串表示的时间变成Date</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>  package Day.Api.date;</p>
-<p>  import java.text.ParseException;<br>  import java.text.SimpleDateFormat;<br>  import java.util.Date;</p>
-<p>  public class DateTest {<br>      public static void main(String[] args) throws ParseException {</p>
-<pre><code>      //时间原点
-      Date date1 = new Date(0L);
-      System.out.println(date1); //Thu Jan 01 08:00:00 CST 1970
-  
-      Date date = new Date();
-      System.out.println(date);
-      //格式化时间YYYY年MM月dd日 HH:mm:ss E
-      SimpleDateFormat s = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss E&quot;);
-      String format = s.format(date);
-      System.out.println(format);  //2022年09月24日 15:23:32 星期六
-
-
-      //解析时间
-      String d = &quot;2022-09-24 15-26-20&quot;;
-      SimpleDateFormat sp = new SimpleDateFormat(&quot;yyyy-MM-dd HH-mm-ss&quot;);
-      Date parse = sp.parse(d);
-      System.out.println(parse); //Sat Sep 24 15:26:20 CST 2022
-
-
-  &#125;
-</code></pre>
-<p>  }</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- Calendar 日历</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>  package Day.Api.date;</p>
-<p>  import java.text.ParseException;<br>  import java.text.SimpleDateFormat;<br>  import java.util.Calendar;<br>  import java.util.Date;</p>
-<p>  public class DateTest {<br>      public static void main(String[] args) throws ParseException {</p>
-<pre><code>     //Calendar 是一个抽象类，不能直接new
-
-      Calendar c = Calendar.getInstance();
-
-      int year = c.get(Calendar.YEAR);
-      int moth = c.get(Calendar.MONTH) + 1;
-      int dt = c.get(Calendar.DATE);
-      int week = c.get(Calendar.DAY_OF_WEEK);  // 1(星期日) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
-      System.out.println(year+&quot;年&quot;+moth+&quot;月&quot;+dt+&quot;日&quot;+&quot; &quot;+week(week)); //2022年9月24日
-
-      //修改年为2023年
-      c.set(Calendar.YEAR,2023);
-      System.out.println(c.get(Calendar.YEAR));
-      //如果想修改月份为12月，那么修改值要填11，因为Calendar的月份是少1的
-      c.set(Calendar.MONTH,11);
-      System.out.println(c.get(Calendar.MONTH));
-  &#125;
-
-  //定义一个方法传入外国人对星期几的数字转换成中文
-  public static String week(int week)&#123;
-      String[] wek = &#123;&quot;&quot;,&quot;星期日&quot;,&quot;星期一&quot;,&quot;星期二&quot;,&quot;星期三&quot;,&quot;星期四&quot;,&quot;星期五&quot;,&quot;星期六&quot;&#125;;
-      return wek[week];
-  &#125;
-</code></pre>
-<p>  }</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">#### jdk8时间类</span><br><span class="line"></span><br><span class="line">- 为什么要学jdk8新增时间相关类</span><br><span class="line">  - 代码层面</span><br><span class="line">    - jdk：代码麻烦 </span><br><span class="line">    - jdk8：简单</span><br><span class="line">      - 判断的方法</span><br><span class="line">      - 计算时间间隔的方法</span><br><span class="line">  - 安全层面</span><br><span class="line">    - jdk：多线程环境下会导致数据安全的问题</span><br><span class="line">    - jdk8：时间日期对象都是不可变的，解决了这个问题</span><br><span class="line"></span><br><span class="line">![image-20220924165212609](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220924165212609.png)</span><br><span class="line"></span><br><span class="line">- 时区，时间戳，带时区的时间，格式化和解析时间</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>  package Day.Api.date;</p>
-<p>  import java.time.Instant;<br>  import java.time.ZoneId;<br>  import java.time.ZonedDateTime;<br>  import java.time.format.DateTimeFormatter;<br>  import java.util.Set;</p>
-<p>  &#x2F;**</p>
+<h4 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h4><ul>
+<li>方法的重写<ul>
+<li>当父类的方法不能满足子类现在的需求时，需要进行方法的重写</li>
+<li>重写方法的名称、形参列表必须与父类一致</li>
+<li>子类重写父类方法时，访问权限子类必须大于等于父类（暂时了解：空着不写&lt;protected&lt;public)</li>
+<li>子类重写父类的方法时，返回值类型子类必须小于父类</li>
+<li>只有被添加到虚方法表中的方法才能被重写</li>
+</ul>
+</li>
+<li>书写格式<ul>
+<li>在继承体系中，子类出现了和父类中一模一样的方法声明，我们称子类这个方法是重写的方法</li>
+</ul>
+</li>
+<li>@Override重写的注解<ul>
+<li>@Override是放在重写后的方法上，校验子类重写是语法是否正确</li>
+<li>加上注解后如果有红色波浪线，表示语法错误</li>
+<li>建议重写方法都加上@Override注解，代码安全，优雅</li>
+</ul>
+</li>
+</ul>
+<h4 id="this，super"><a href="#this，super" class="headerlink" title="this，super()"></a>this，super()</h4><ul>
+<li>this:理解为一个变量，表示当前方法调用者的地址值；</li>
+<li>super:代表父类存储空间。</li>
+</ul>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220912094526173.png" alt="image-20220912094526173">多态</h4><ul>
+<li><p>​	什么是多态？</p>
 <ul>
-<li><p>Created with IntelliJ IDEA.</p>
+<li>同类型的对象，表现出的不同的形态</li>
+</ul>
 </li>
-<li><p>creator: 蔡芳灿</p>
+<li><p>​	多态的表现形式</p>
+<ul>
+<li>父类类型 对象名称 &#x3D; 子类对象；</li>
+</ul>
 </li>
-<li><p>Date: 2022&#x2F;9&#x2F;24</p>
+<li><p>多态的前提</p>
+<ul>
+<li>有继承关系</li>
+<li>有父类引用指向子类对象</li>
+<li>有方法重写</li>
+</ul>
 </li>
-<li><p>Time: 16:37</p>
+<li><p>多态的好处？</p>
+<ul>
+<li>使用父类型作为参数，可以接收所有子类对象，体现多态的扩展性与便利</li>
+</ul>
 </li>
-<li><p>需求：<br>   *&#x2F;<br>  public class DateTest01 {<br> public static void main(String[] args) {</p>
-<pre><code> //ZoneId
- //获取java中所有支持时区
- Set&lt;String&gt; availableZoneIds = ZoneId.getAvailableZoneIds();
- System.out.println(availableZoneIds);
-
- //获取电脑时区
- ZoneId zoneId = ZoneId.systemDefault();
- System.out.println(zoneId); //Asia/Shanghai
- //设置指定的时区
- ZoneId of = ZoneId.of(&quot;Asia/Aden&quot;);
- System.out.println(of);
-
- System.out.println(&quot;---------Instant--------------&quot;);
-
- //获取的世界标准时间对象，如果想获取当前时间小时需要加8个小时
- Instant now = Instant.now();
- System.out.println(now);
-
- /**
-  * 根据（秒/毫秒/纳秒）获取Instant对象
-  */
- //根据纳秒获取
- Instant instant1 = Instant.ofEpochMilli(0L);
- System.out.println(instant1);//1970-01-01T00:00:00Z
-
- //根据秒
- Instant instant2 = Instant.ofEpochSecond(1);
- System.out.println(instant2);//1970-01-01T00:00:01Z 根据时间原点加一秒
-
- //第一个参数根据秒 ，第二个参数根据纳秒
- Instant instant3 = Instant.ofEpochSecond(1L, 1000000000L);
- System.out.println(instant3);//1970-01-01T00:00:02Z
-
-
- //指定地区的时间点
- ZonedDateTime zonedDateTime = now.atZone(ZoneId.of(&quot;Asia/Shanghai&quot;));
- System.out.println(zonedDateTime);//2022-09-25T18:40:57.110030600+08:00[Asia/Shanghai]
-
- System.out.println(&quot;----------ZonedDateTime-----------&quot;);
-
- //获取当前时区时间的对象
- ZonedDateTime now1 = ZonedDateTime.now();
- System.out.println(now1);//2022-09-25T18:46:16.151643500+08:00[Asia/Shanghai]
-
-
- System.out.println(&quot;-----------------DateTimeFormatter---------------&quot;);
- DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(&quot;yyyy年MM月dd日 HH:mm:ss&quot;);
- String format = dateTimeFormatter.format(now1);
- System.out.println(format);
-</code></pre>
-<p> }</p>
+<li><p>多态调用成员的特点</p>
+<ul>
+<li>变量调用:编译看左边，运行看右边。</li>
+<li>方法调用：编译看左边，运行看右边。</li>
+</ul>
+</li>
+<li><p>多态的优势</p>
+<ul>
+<li>方法中，使用父类型作为参数，可以接受所有子类对象</li>
+</ul>
+</li>
+<li><p>多态的弊端是什么？</p>
+<ul>
+<li>不能使用子类的特有功能</li>
+</ul>
+</li>
+<li><p>引用数据类型的类型转换，有几种方式？</p>
+<ul>
+<li>自动类型转换，强制类型转换</li>
+</ul>
+</li>
+<li><p>强制类型转换能解决什么问题？</p>
+<ul>
+<li>可以转换成真正的子类型类型，从而调用子类独有功能</li>
+<li>转换类型与真实对象类型不一致会报错</li>
+<li>转换的时候用instanceof关键字进行判断</li>
+</ul>
 </li>
 </ul>
-<p>  }</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 包装类</span><br><span class="line"></span><br><span class="line">- 什么是包装类</span><br><span class="line">  - 基本数据类型对应的对象</span><br><span class="line">- JDK5新增的特性</span><br><span class="line">  - 自动装箱</span><br><span class="line">  - 自动拆箱</span><br><span class="line">- 各个基本类型的包装类</span><br><span class="line"></span><br><span class="line">![image-20220929215914294](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220929215914294.png)</span><br><span class="line"></span><br><span class="line">​						</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>package Day.packaging;</p>
+<h4 id="final"><a href="#final" class="headerlink" title="final"></a>final</h4><p>​	使用final修饰之后是不能改变的</p>
+<ul>
+<li>方法 表面该方法最终方法，不能被重写</li>
+<li>类instanceof表面该类是最终类，不能被继承</li>
+<li>变量 叫做常量，只能被赋值一次</li>
+<li>final修饰变量：是常量，不能修改<ul>
+<li>基本数据类型：变量的值不能修改</li>
+<li>引用数据类型：地址值不能修改但是内部的属性值可以修改</li>
+</ul>
+</li>
+</ul>
+<p>使用场景</p>
+<ul>
+<li>​	一些系统不可被修改的常量</li>
+</ul>
+<h4 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h4><ul>
+<li><p>private ： 私有的，只能 自己用</p>
+</li>
+<li><p>默认 ： 只能在本包里面用</p>
+</li>
+<li><p>protected ： 受保护的</p>
+</li>
+<li><p>public ： 公共的</p>
+<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220912153212668.png" alt="image-20220912153212668"></p>
+</li>
+</ul>
+<ol>
+<li>构造代码块<ol>
+<li>写在成员位置的代码块</li>
+<li>作用：可以把多个构造方法中重复的代码抽取出来</li>
+<li>执行时机：我们在创建本类对象的时候会执行构造代码块再执行构造方法</li>
+</ol>
+</li>
+<li>静态代码块<ol>
+<li>格式：static{}</li>
+<li>数据的初始化（重点）</li>
+<li>执行时机：随着类的加载而加载的，并且只执行一次</li>
+</ol>
+</li>
+</ol>
+<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><ul>
+<li>抽象类<ul>
+<li>public abstract class 类名{}</li>
+<li>如果一个<u>类中存在抽象方法</u>，那么这个类就<u>必须声明为抽象类</u></li>
+</ul>
+</li>
+<li>抽象方法<ul>
+<li>格式:public abstract 返回值类型 方法名（参数列表）；</li>
+<li>抽象方法：将共性的行为（方法）抽取到父类之后。由于每一个子类执行的内容不一样，所以，再父类中不能确定具体的方法体。该方法就可以定义为抽象方法。</li>
+</ul>
+</li>
+<li>子类继承抽象类之后，如何重写抽象方法</li>
+<li>抽象类和抽象方法注意事项<ul>
+<li>抽象类不能实例化（抽象类不能创建对象）</li>
+<li>抽象类中不一定有抽象方法，有抽象方法的类一定是抽象类</li>
+<li>可以有构造方法</li>
+<li>抽象的子类<ul>
+<li>要么重写抽象类中的所有抽象方法</li>
+<li>要么是抽象类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>抽象类的作用是声明样的？<ul>
+<li>抽取共性时，无法确定方法体，就把方法定义为抽象的，强制让子类按照某种格式重写。</li>
+</ul>
+</li>
+</ul>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><ul>
+<li>接口：就是一种规则</li>
+<li>接口的定义和使用<ul>
+<li>接口用关键字interface来定义<ul>
+<li>public interface 接口名{}</li>
+</ul>
+</li>
+<li>接口不能实例化</li>
+<li>接口和类之间是实现关系，通过implements关键字表示<ul>
+<li>public class 类名implement 接口名 {}</li>
+</ul>
+</li>
+<li>接口的子类（实现类）<ul>
+<li>要么重写接口中的所有抽象方法</li>
+<li>要么是抽象类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>接口成员的特点<ul>
+<li>成员变量<ul>
+<li>只能是常量</li>
+<li>默认修饰符：public static final</li>
+</ul>
+</li>
+<li>没有构造方法</li>
+<li>成员方法<ul>
+<li>只能是抽象方法</li>
+<li>默认修饰符：public abstract</li>
+</ul>
+</li>
+<li>jdk7以前：接口只能定义抽象方法</li>
+</ul>
+</li>
+<li>接口和类之间的关系<ul>
+<li>类和类之间的关系<ul>
+<li>继承关系，只能单继承，不能多继承，但是可以多层继承</li>
+</ul>
+</li>
+<li>类和接口的关系<ul>
+<li>实现关系，可以单实现，也可以多实现，还可以在继承一个类的同时实现多个接口</li>
+</ul>
+</li>
+<li>接口和接口的关系<ul>
+<li>继承关系，可以单继承，也可以多继承</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><ul>
+<li><p>类的五大成员：</p>
+<ul>
+<li>属性，方法，构造方法、代码块、内部类</li>
+</ul>
+</li>
+<li><p>内部类的分类</p>
+<ul>
+<li><p>成员内部类</p>
+<ul>
+<li><p>写在成员位置，属于外部类的一员</p>
+</li>
+<li><p>成员内部类可以被修饰符所修饰</p>
+</li>
+<li><p>在成员内部类里面，JDK16之前不能定义静态变量，JDK16才开始可以定义静态变量</p>
+</li>
+<li><p>调用格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package Day;</span><br><span class="line"></span><br><span class="line">public class Day06Test &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        </span><br><span class="line">//        创建内部类对象</span><br><span class="line">        Day06.Engine  e= new Day06().new Engine();</span><br><span class="line">        e.show();</span><br><span class="line">        //创建内部类对象,在外部类创建一个成员方法来调用内部类的对象</span><br><span class="line">        Day06 d = new Day06();</span><br><span class="line">        Day06.Engine engine = d.getEngine();</span><br><span class="line">        engine.show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>静态内部类</p>
+<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220914224011897.png" alt="image-20220914224011897"></p>
+</li>
+<li><p>局部内部类</p>
+<ul>
+<li>将内部类定义在方法里面就叫做局部内部类，类似于方法的局部变量</li>
+<li>外界是无法直接使用，需要在方法内部创建对象并使用</li>
+<li>该类可以直接访问外部类的成员，也可以访问方法内的局部变量</li>
+</ul>
+</li>
+<li><p>匿名内部类</p>
+<ul>
+<li>内部类本质上就是隐藏了名字的内部类</li>
+<li>定义格式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new 类名或者接口名()&#123;      //如歌类名是类那么就是继承关系，如果是接口名那么就是实现接口</span><br><span class="line">	重写方法;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>什么是内部类</p>
+<ul>
+<li>在一个类中，再定义一个类</li>
+</ul>
+</li>
+<li><p>内部类的访问特点</p>
+<ul>
+<li><p>内部类可以直接访问外部类的成员，包括私有</p>
+</li>
+<li><p>外部类要访问内部类的成员，必须创建对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package Day;</span><br><span class="line"></span><br><span class="line">public class Day06 &#123;</span><br><span class="line">    String carName;</span><br><span class="line">    int carAGe;</span><br><span class="line">    String carColor;</span><br><span class="line"> 	int a = 30;</span><br><span class="line"></span><br><span class="line">    //定义一个外部类的方法</span><br><span class="line">    public  void  shows()&#123;</span><br><span class="line">        //外部类访问成员变量</span><br><span class="line">        System.out.println(carAGe);</span><br><span class="line">        //外部类访问不了内部类的成员变量</span><br><span class="line">//        System.out.println(engineAgge);</span><br><span class="line">        //外部类访问不了内部类的成员方法</span><br><span class="line">//        show();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //定义一个内部类</span><br><span class="line">    class Engine&#123;</span><br><span class="line">        String engineName;</span><br><span class="line">        int engineAgge;</span><br><span class="line">        int a = 10;</span><br><span class="line"></span><br><span class="line">        //定义一个内部类的方法</span><br><span class="line">        public void show()&#123;</span><br><span class="line">         	int a = 20;</span><br><span class="line">            //内部类访问内部类的成员变量</span><br><span class="line">            System.out.println(engineName);</span><br><span class="line">            //内部类访问外部类的成员变量</span><br><span class="line">            System.out.println(carName);</span><br><span class="line">            //内部类访问外部类的成员方法</span><br><span class="line">            shows();</span><br><span class="line">            //如果内部类和外部类的成员变量同名需要以下方法调用</span><br><span class="line">             System.out.println(a);//20</span><br><span class="line">             System.out.println(this.a);  //10</span><br><span class="line">             System.out.println(Day06.this.a);//30</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">package math;</span><br><span class="line"></span><br><span class="line">public class MathTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        float a = 314554.88f;</span><br><span class="line">        int round = Math.round(a);</span><br><span class="line">        System.out.println(round);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //返回绝对值</span><br><span class="line">        int b = -100;</span><br><span class="line">        int abs = Math.abs(b);</span><br><span class="line">        System.out.println(abs);</span><br><span class="line"></span><br><span class="line">        //返回两个数的总数 如果数据超出int范围会抛出异常</span><br><span class="line">        int x = 2, y = 10;</span><br><span class="line">        int i = Math.addExact(x, y);</span><br><span class="line">        System.out.println(i);</span><br><span class="line">        //返回乘数的乘积</span><br><span class="line"></span><br><span class="line">        //比较两个数的最大值</span><br><span class="line">        int maxA= 10,maxB=20;</span><br><span class="line">        int max = Math.max(maxA, maxB);</span><br><span class="line">        System.out.println(max);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //比较两个数的最小值</span><br><span class="line">        int minA=50,minB=60;</span><br><span class="line">        int min = Math.min(minA, minB);</span><br><span class="line">        System.out.println(min);</span><br><span class="line"></span><br><span class="line">        //返回两个数的相乘</span><br><span class="line">        int i1 = Math.multiplyExact(x, y);</span><br><span class="line">        System.out.println(i1);</span><br><span class="line"></span><br><span class="line">        //向上取整</span><br><span class="line">        System.out.println(Math.ceil(20.85));//21.0</span><br><span class="line"></span><br><span class="line">        //向下取整</span><br><span class="line">        System.out.println(Math.floor(20.85));//20.0</span><br><span class="line"></span><br><span class="line">        //代表2的三次方，如果第二个参数是0~1之间的小数</span><br><span class="line">        System.out.println(Math.pow(2, 3)); //8.0</span><br><span class="line">        System.out.println(Math.pow(2, 0.5)); //1.4142135623730951</span><br><span class="line"></span><br><span class="line">        //代表开根号</span><br><span class="line">        System.out.println(Math.sqrt(98)); //2.0</span><br><span class="line"></span><br><span class="line">        //开立方根</span><br><span class="line">        System.out.println(Math.cbrt(8));//2.0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="System"><a href="#System" class="headerlink" title="System"></a>System</h4><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220918172005955.png" alt="image-20220918172005955" style="zoom:67%;" />
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package math;</span><br><span class="line"></span><br><span class="line">public class SystemTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //0:表示当前虚拟机是正常停止</span><br><span class="line">        //非0，表示当前虚拟机异常停止</span><br><span class="line">//        System.exit(0);</span><br><span class="line"></span><br><span class="line">        long l = System.currentTimeMillis();</span><br><span class="line">        System.out.println(l);</span><br><span class="line"></span><br><span class="line">        //拷贝数组</span><br><span class="line">        int[] arr1 = &#123;1,2,3,4,5,6,7,8,9,10&#125;;</span><br><span class="line">        int[] arr2 = new int[10];</span><br><span class="line">        //第一个参数：数据源，要拷贝的数据</span><br><span class="line">        //第二个参数：从数据源哪个索引开始拷贝</span><br><span class="line">        //第三个参数：新数组</span><br><span class="line">        //第四个参数：拷贝到新数组的哪个位置</span><br><span class="line">        //第五个参数：拷贝多少个数据</span><br><span class="line">//        System.arraycopy(arr1,3,arr2,0,7);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //课堂练习 arr2 : 0 0 0 0 1 2 3 0 0 0</span><br><span class="line">        System.arraycopy(arr1,0,arr2,4,3);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; arr2.length; i++) &#123;</span><br><span class="line">            System.out.print(arr2[i]+&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h4><ul>
+<li><p>Runtime表示当前虚拟机的运行环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package math;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">public class RuntimeTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Runtime runtime = Runtime.getRuntime();</span><br><span class="line">        System.out.println(runtime);</span><br><span class="line">        int i = runtime.availableProcessors();    //获取CPU的线程数</span><br><span class="line">        System.out.println(i);//12</span><br><span class="line">        long l = runtime.maxMemory();   //JVM能从系统中获取总内存大小(单位byte)</span><br><span class="line">        System.out.println(l);</span><br><span class="line">        long l1 = runtime.totalMemory();   //JVM已经从系统中获取总内存大小(单位byte)</span><br><span class="line">        System.out.println(l1);</span><br><span class="line"></span><br><span class="line">        long l2 = runtime.freeMemory();   //获取jvm剩余多少内存可以使用</span><br><span class="line">        System.out.println(l2);</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">           runtime.exec(&quot;notepad&quot;); //运行cmd命令 notepad打开记事本</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            throw new RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><ul>
+<li><p>Object是java中定级父类。所有类都直接或间接的继承于Object类</p>
+</li>
+<li><p>Object类中的方法可以被所有子类访问。</p>
+</li>
+<li><p>Object方法</p>
+<ul>
+<li>toString</li>
+<li>equals</li>
+<li>clone()&#96; 对象克隆<ul>
+<li>方法在底层会帮我们创建一个对象，并把原对象中的数据拷贝过去</li>
+<li>重写Object中的clone方法</li>
+<li>让JavaBean类实现Cloneable接口</li>
+<li>创建元对象并调用clone就可以了</li>
+<li>浅克隆</li>
+<li>深克隆<ul>
+<li>以下的代码深克隆还是有弊端，因为以后是个二维数组又要修改，所以会使用第三方写的代码Gson</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">package math;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Objects;</span><br><span class="line"></span><br><span class="line">public class Student implements Cloneable &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int  age;</span><br><span class="line"></span><br><span class="line">    private int[] arr;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int[] getArr() &#123;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setArr(int[] arr) &#123;</span><br><span class="line">        this.arr = arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Student(String name, int age, int[] arr) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.arr = arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Student() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //重写object中的toString</span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Student&#123;&quot; +</span><br><span class="line">                &quot;name=&#x27;&quot; + name + &#x27;\&#x27;&#x27; +</span><br><span class="line">                &quot;, age=&quot; + age +</span><br><span class="line">                &quot;, arr=&quot; + Arrays.toString(arr) +</span><br><span class="line">                &#x27;&#125;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    //重写object中的equals</span><br><span class="line">    @Override</span><br><span class="line">    public boolean equals(Object o) &#123;</span><br><span class="line">        if (this == o) return true;</span><br><span class="line">        if (o == null || getClass() != o.getClass()) return false;</span><br><span class="line">        Student student = (Student) o;</span><br><span class="line">        return age == student.age &amp;&amp; Objects.equals(name, student.name) &amp;&amp; Arrays.equals(arr, student.arr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //重写object中的clone</span><br><span class="line">    @Override</span><br><span class="line">    protected Object clone() throws CloneNotSupportedException &#123;</span><br><span class="line"></span><br><span class="line">        //如果想深克隆,不加这个就是浅克隆。浅克隆如果是引用类型那么复制的是地址值，如果成员属性中有数组，那么复制的是地址值，</span><br><span class="line">        // 如果其中一个修改数组中的元素就会跟着修改，所以定义深克隆</span><br><span class="line"></span><br><span class="line">        int[] data = this.arr;</span><br><span class="line">        //创建新数组，将旧数组里面的数据直接拷贝的新数组里面</span><br><span class="line">        int[]  newData = new int[data.length];</span><br><span class="line">        for (int i = 0; i &lt; data.length; i++) &#123;</span><br><span class="line">            newData[i] = data[i];</span><br><span class="line">        &#125;</span><br><span class="line">       //直接调用父类中的方法克隆对象</span><br><span class="line">        Student s = (Student) super.clone();</span><br><span class="line">        s.arr = newData;</span><br><span class="line">        return s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 浅克隆</span><br><span class="line">     */</span><br><span class="line">//    @Override</span><br><span class="line">//    protected Object clone() throws CloneNotSupportedException &#123;</span><br><span class="line">//        return super.clone();</span><br><span class="line">//    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package math;</span><br><span class="line"></span><br><span class="line">public class ObjectTest &#123;</span><br><span class="line">    public static void main(String[] args) throws CloneNotSupportedException &#123;</span><br><span class="line"></span><br><span class="line">        int[] data= &#123;1,2,3,4,5,6,7,8,9,10&#125;;</span><br><span class="line">        Student s = new Student(&quot;蔡&quot;,20,data);</span><br><span class="line">        System.out.println(s);   //Student&#123;name=&#x27;蔡&#x27;, age=20, arr=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&#125;  在javaBean中重写toString就可以这样显示</span><br><span class="line">        System.out.println(s);    //math.Student@1b6d3586    如果没有重写toString方法就会打印出地址值，会使用Object的toString</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Student s1 = new Student();</span><br><span class="line">        Student s2 = new Student();</span><br><span class="line">        boolean result = s1.equals(s2);</span><br><span class="line">        System.out.println(result);   //false  如果在javaBean中不重写equals方法就会比较两个对象的地址值两个地址值是new出来的所以在内存堆中,会使用Object的equals</span><br><span class="line"></span><br><span class="line">        System.out.println(result);   //true  如果在javaBean中重写equals方法就会使用javaBean中重写的equals方法。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //直接调用javabean类中重写的克隆方法</span><br><span class="line">        Student s4 = (Student) s.clone();</span><br><span class="line">        //修改拷贝后数组的第一个元素的数据</span><br><span class="line">        int[] arr = s4.getArr();</span><br><span class="line">        arr[0] = 55;</span><br><span class="line">        System.out.println(s4);  //Student&#123;name=&#x27;蔡&#x27;, age=20, arr=[55, 2, 3, 4, 5, 6, 7, 8, 9, 10]&#125;</span><br><span class="line">        System.out.println(s);  //原数组的数组第一个数据也被修改了Student&#123;name=&#x27;蔡&#x27;, age=20, arr=[55, 2, 3, 4, 5, 6, 7, 8, 9, 10]&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //在javabean中重写了浅克隆，变成了深克隆</span><br><span class="line">        System.out.println(s4);  //Student&#123;name=&#x27;蔡&#x27;, age=20, arr=[55, 2, 3, 4, 5, 6, 7, 8, 9, 10]&#125;</span><br><span class="line">        System.out.println(s);   //Student&#123;name=&#x27;蔡&#x27;, age=20, arr=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="BigInteger"><a href="#BigInteger" class="headerlink" title="BigInteger"></a>BigInteger</h4><ul>
+<li><p>BigInteger构造方法</p>
+<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220919214226833.png" alt="image-20220919214226833"></p>
+</li>
+</ul>
+<h4 id="BigDecima"><a href="#BigDecima" class="headerlink" title="BigDecima"></a>BigDecima</h4><ul>
+<li><p>用于小数的精确计算</p>
+</li>
+<li><p>用来表示很大的小数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">package math;</span><br><span class="line"></span><br><span class="line">import java.math.BigDecimal;</span><br><span class="line"></span><br><span class="line">public class BigDecimalTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        //使用double形参构造函数会数据不精确</span><br><span class="line">        BigDecimal b = new BigDecimal(0.01);</span><br><span class="line">        BigDecimal bg = new BigDecimal(0.09);</span><br><span class="line">        BigDecimal bg1 = b.add(bg);</span><br><span class="line">        System.out.println(b);  //0.01000000000000000020816681711721685132943093776702880859375</span><br><span class="line">        System.out.println(bg);//0.0899999999999999966693309261245303787291049957275390625</span><br><span class="line">        System.out.println(bg1);//0.09999999999999999687749774324174723005853593349456787109375</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //使用String形参构造函数数据精确</span><br><span class="line">        BigDecimal b1 = new BigDecimal(&quot;0.01&quot;);</span><br><span class="line">        BigDecimal b2 = new BigDecimal(&quot;0.09&quot;);</span><br><span class="line">        //add b1加上b2</span><br><span class="line">        BigDecimal b3 = b1.add(b2);</span><br><span class="line">        System.out.println(b1);  //0.01</span><br><span class="line">        System.out.println(b2);//0.09</span><br><span class="line">        System.out.println(b3);//0.10</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><ul>
+<li><p>作用</p>
+<ul>
+<li><p>检验字符串是否满足规则</p>
+</li>
+<li><p>在一段文本中查找满足要求的内容</p>
+</li>
+<li><p>正则表达式字符的基本操作</p>
+<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220923130744244.png" alt="image-20220923130744244"></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">package Day.Api.zhengze;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //判断一个是不是qq号</span><br><span class="line">        String qq = &quot;1311871826&quot;;</span><br><span class="line">        //[1-9]这个代表上面第一个数字不能以0开头  \\d代表数字 &#123;4,9&#125;这个代表除了第一个数字后面的数必须是4~9位数字要不然就是返回false</span><br><span class="line">        System.out.println(qq.matches(&quot;[1-9]\\d&#123;4,9&#125;&quot;));</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;-------------------------&quot;);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;a&quot;.matches(&quot;[abc]&quot;));  //true</span><br><span class="line">        System.out.println(&quot;z&quot;.matches(&quot;[abc]&quot;));  //false</span><br><span class="line">        System.out.println(&quot;ab&quot;.matches(&quot;[abc]&quot;)); //false  因为这样[abc]只能匹配字符串一个字符所以false所以要改成[abc][abc]这个就是true</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;-------------------------&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //[^abc]  ^取反的意思</span><br><span class="line">        System.out.println(&quot;a&quot;.matches(&quot;[^abc]&quot;));  //false</span><br><span class="line">        System.out.println(&quot;z&quot;.matches(&quot;[^abc]&quot;));  //true</span><br><span class="line">        System.out.println(&quot;zz&quot;.matches(&quot;[^abc]&quot;));  //false</span><br><span class="line">        System.out.println(&quot;zz&quot;.matches(&quot;[^abc][^abc]&quot;));//true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;---------------------------&quot;);</span><br><span class="line">        //[a-zA-Z]可以是a-z的大写和小写</span><br><span class="line">        System.out.println(&quot;a&quot;.matches(&quot;[a-zA-Z]&quot;)); //true</span><br><span class="line">        System.out.println(&quot;Z&quot;.matches(&quot;[a-zA-Z]&quot;)); //true</span><br><span class="line">        System.out.println(&quot;aa&quot;.matches(&quot;[a-zA-Z]&quot;));//false    //[a-zA-Z][a-zA-Z] true</span><br><span class="line">        System.out.println(&quot;zz&quot;.matches(&quot;[a-zA-Z]&quot;));//false</span><br><span class="line">        System.out.println(&quot;0&quot;.matches(&quot;[a-zA-Z]&quot;));//false    //[a-zA-Z0-9] false  //[0-9] true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;----------------------&quot;);</span><br><span class="line">        //[a-d[m-p]] a到d，或m到p</span><br><span class="line">        System.out.println(&quot;a&quot;.matches(&quot;[a-d[m-p]]&quot;)); //true</span><br><span class="line">        System.out.println(&quot;d&quot;.matches(&quot;[a-d[m-p]]&quot;)); //true</span><br><span class="line">        System.out.println(&quot;m&quot;.matches(&quot;[a-d[m-p]]&quot;)); //true</span><br><span class="line">        System.out.println(&quot;p&quot;.matches(&quot;[a-d[m-p]]&quot;)); //true</span><br><span class="line">        System.out.println(&quot;e&quot;.matches(&quot;[a-d[m-p]]&quot;)); //false   //e不在范围内所以是false</span><br><span class="line">        System.out.println(&quot;0&quot;.matches(&quot;[a-d[m-p]]&quot;)); //false  //0是数字正则匹配里面没有数字</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;--------------------------&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //[a-z&amp;&amp;[def]]</span><br><span class="line">        //其实就是它们的交集  def</span><br><span class="line">        System.out.println(&quot;d&quot;.matches(&quot;[a-z&amp;&amp;[def]]&quot;)); //true</span><br><span class="line">        System.out.println(&quot;a&quot;.matches(&quot;[a-z&amp;&amp;[def]]&quot;)); //false</span><br><span class="line">        System.out.println(&quot;0&quot;.matches(&quot;[a-z&amp;&amp;[def]]&quot;)); //false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //[a-z&amp;&amp;[^bc]]  除了bc字母都可以</span><br><span class="line">        System.out.println(&quot;-------------------&quot;);</span><br><span class="line">        System.out.println(&quot;a&quot;.matches(&quot;[a-z&amp;&amp;[^bc]]&quot;));  //true</span><br><span class="line">        System.out.println(&quot;b&quot;.matches(&quot;[a-z&amp;&amp;[^bc]]&quot;));  //false</span><br><span class="line">        System.out.println(&quot;z&quot;.matches(&quot;[a-z&amp;&amp;[^bc]]&quot;));  //true</span><br><span class="line">        System.out.println(&quot;z&quot;.matches(&quot;[a-z&amp;[^bc]]&quot;));  //true 因为&amp;只能当当是符号不是&amp;&amp;这个才是且</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;-------------------------&quot;);</span><br><span class="line"></span><br><span class="line">        //[a-z&amp;&amp;[^m-p]]  除了m-p中的字母，其它字母都可以</span><br><span class="line">        System.out.println(&quot;a&quot;.matches(&quot;[a-z&amp;&amp;[^m-p]]&quot;)); //true</span><br><span class="line">        System.out.println(&quot;m&quot;.matches(&quot;[a-z&amp;&amp;[^m-p]]&quot;)); //false</span><br><span class="line">        System.out.println(&quot;0&quot;.matches(&quot;[a-z&amp;&amp;[^m-p]]&quot;)); //false</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="jDK7前时间类"><a href="#jDK7前时间类" class="headerlink" title="jDK7前时间类"></a>jDK7前时间类</h4><p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220924144225531.png" alt="image-20220924144225531"></p>
+<ul>
+<li><p>Date  时间</p>
+<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220924150106666.png" alt="image-20220924150106666"></p>
+</li>
+<li><p>SimpleDateFormat 格式化时间</p>
+<ul>
+<li>作用<ul>
+<li>格式化：把时间变成自己的格式</li>
+<li>解析：把字符串表示的时间变成Date</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package Day.Api.date;</span><br><span class="line"></span><br><span class="line">import java.text.ParseException;</span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.Date;</span><br><span class="line"></span><br><span class="line">public class DateTest &#123;</span><br><span class="line">    public static void main(String[] args) throws ParseException &#123;</span><br><span class="line">    </span><br><span class="line">        //时间原点</span><br><span class="line">        Date date1 = new Date(0L);</span><br><span class="line">        System.out.println(date1); //Thu Jan 01 08:00:00 CST 1970</span><br><span class="line">    </span><br><span class="line">        Date date = new Date();</span><br><span class="line">        System.out.println(date);</span><br><span class="line">        //格式化时间YYYY年MM月dd日 HH:mm:ss E</span><br><span class="line">        SimpleDateFormat s = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss E&quot;);</span><br><span class="line">        String format = s.format(date);</span><br><span class="line">        System.out.println(format);  //2022年09月24日 15:23:32 星期六</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //解析时间</span><br><span class="line">        String d = &quot;2022-09-24 15-26-20&quot;;</span><br><span class="line">        SimpleDateFormat sp = new SimpleDateFormat(&quot;yyyy-MM-dd HH-mm-ss&quot;);</span><br><span class="line">        Date parse = sp.parse(d);</span><br><span class="line">        System.out.println(parse); //Sat Sep 24 15:26:20 CST 2022</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Calendar 日历</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package Day.Api.date;</span><br><span class="line"></span><br><span class="line">import java.text.ParseException;</span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.Calendar;</span><br><span class="line">import java.util.Date;</span><br><span class="line"></span><br><span class="line">public class DateTest &#123;</span><br><span class="line">    public static void main(String[] args) throws ParseException &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       //Calendar 是一个抽象类，不能直接new</span><br><span class="line"></span><br><span class="line">        Calendar c = Calendar.getInstance();</span><br><span class="line"></span><br><span class="line">        int year = c.get(Calendar.YEAR);</span><br><span class="line">        int moth = c.get(Calendar.MONTH) + 1;</span><br><span class="line">        int dt = c.get(Calendar.DATE);</span><br><span class="line">        int week = c.get(Calendar.DAY_OF_WEEK);  // 1(星期日) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)</span><br><span class="line">        System.out.println(year+&quot;年&quot;+moth+&quot;月&quot;+dt+&quot;日&quot;+&quot; &quot;+week(week)); //2022年9月24日</span><br><span class="line"></span><br><span class="line">        //修改年为2023年</span><br><span class="line">        c.set(Calendar.YEAR,2023);</span><br><span class="line">        System.out.println(c.get(Calendar.YEAR));</span><br><span class="line">        //如果想修改月份为12月，那么修改值要填11，因为Calendar的月份是少1的</span><br><span class="line">        c.set(Calendar.MONTH,11);</span><br><span class="line">        System.out.println(c.get(Calendar.MONTH));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //定义一个方法传入外国人对星期几的数字转换成中文</span><br><span class="line">    public static String week(int week)&#123;</span><br><span class="line">        String[] wek = &#123;&quot;&quot;,&quot;星期日&quot;,&quot;星期一&quot;,&quot;星期二&quot;,&quot;星期三&quot;,&quot;星期四&quot;,&quot;星期五&quot;,&quot;星期六&quot;&#125;;</span><br><span class="line">        return wek[week];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="jdk8时间类"><a href="#jdk8时间类" class="headerlink" title="jdk8时间类"></a>jdk8时间类</h4><ul>
+<li>为什么要学jdk8新增时间相关类<ul>
+<li>代码层面<ul>
+<li>jdk：代码麻烦 </li>
+<li>jdk8：简单<ul>
+<li>判断的方法</li>
+<li>计算时间间隔的方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>安全层面<ul>
+<li>jdk：多线程环境下会导致数据安全的问题</li>
+<li>jdk8：时间日期对象都是不可变的，解决了这个问题</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220924165212609.png" alt="image-20220924165212609"></p>
+<ul>
+<li><p>时区，时间戳，带时区的时间，格式化和解析时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">package Day.Api.date;</span><br><span class="line"></span><br><span class="line">import java.time.Instant;</span><br><span class="line">import java.time.ZoneId;</span><br><span class="line">import java.time.ZonedDateTime;</span><br><span class="line">import java.time.format.DateTimeFormatter;</span><br><span class="line">import java.util.Set;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/9/24</span><br><span class="line"> * Time: 16:37</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class DateTest01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //ZoneId</span><br><span class="line">        //获取java中所有支持时区</span><br><span class="line">        Set&lt;String&gt; availableZoneIds = ZoneId.getAvailableZoneIds();</span><br><span class="line">        System.out.println(availableZoneIds);</span><br><span class="line"></span><br><span class="line">        //获取电脑时区</span><br><span class="line">        ZoneId zoneId = ZoneId.systemDefault();</span><br><span class="line">        System.out.println(zoneId); //Asia/Shanghai</span><br><span class="line">        //设置指定的时区</span><br><span class="line">        ZoneId of = ZoneId.of(&quot;Asia/Aden&quot;);</span><br><span class="line">        System.out.println(of);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;---------Instant--------------&quot;);</span><br><span class="line"></span><br><span class="line">        //获取的世界标准时间对象，如果想获取当前时间小时需要加8个小时</span><br><span class="line">        Instant now = Instant.now();</span><br><span class="line">        System.out.println(now);</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 根据（秒/毫秒/纳秒）获取Instant对象</span><br><span class="line">         */</span><br><span class="line">        //根据纳秒获取</span><br><span class="line">        Instant instant1 = Instant.ofEpochMilli(0L);</span><br><span class="line">        System.out.println(instant1);//1970-01-01T00:00:00Z</span><br><span class="line"></span><br><span class="line">        //根据秒</span><br><span class="line">        Instant instant2 = Instant.ofEpochSecond(1);</span><br><span class="line">        System.out.println(instant2);//1970-01-01T00:00:01Z 根据时间原点加一秒</span><br><span class="line"></span><br><span class="line">        //第一个参数根据秒 ，第二个参数根据纳秒</span><br><span class="line">        Instant instant3 = Instant.ofEpochSecond(1L, 1000000000L);</span><br><span class="line">        System.out.println(instant3);//1970-01-01T00:00:02Z</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //指定地区的时间点</span><br><span class="line">        ZonedDateTime zonedDateTime = now.atZone(ZoneId.of(&quot;Asia/Shanghai&quot;));</span><br><span class="line">        System.out.println(zonedDateTime);//2022-09-25T18:40:57.110030600+08:00[Asia/Shanghai]</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;----------ZonedDateTime-----------&quot;);</span><br><span class="line"></span><br><span class="line">        //获取当前时区时间的对象</span><br><span class="line">        ZonedDateTime now1 = ZonedDateTime.now();</span><br><span class="line">        System.out.println(now1);//2022-09-25T18:46:16.151643500+08:00[Asia/Shanghai]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;-----------------DateTimeFormatter---------------&quot;);</span><br><span class="line">        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(&quot;yyyy年MM月dd日 HH:mm:ss&quot;);</span><br><span class="line">        String format = dateTimeFormatter.format(now1);</span><br><span class="line">        System.out.println(format);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h4><ul>
+<li>什么是包装类<ul>
+<li>基本数据类型对应的对象</li>
+</ul>
+</li>
+<li>JDK5新增的特性<ul>
+<li>自动装箱</li>
+<li>自动拆箱</li>
+</ul>
+</li>
+<li>各个基本类型的包装类</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20220929215914294.png" alt="image-20220929215914294"></p>
+<p>​						</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">package Day.packaging;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/9/29</span><br><span class="line"> * Time: 21:56</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class TestInteger &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        //包装类，数字引用数字类型 Jdk5写法</span><br><span class="line">        //利用构造方法来创建对象</span><br><span class="line">        System.out.println(&quot;----------构造法创建对象---------------&quot;);</span><br><span class="line">        Integer a = new Integer(10);</span><br><span class="line">        Integer a1 = new Integer(&quot;10&quot;);</span><br><span class="line">        System.out.println(a);</span><br><span class="line">        System.out.println(a1);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;--------------静态方法创建对象------------------&quot;);</span><br><span class="line"></span><br><span class="line">        //利用静态方法创建对象</span><br><span class="line">        Integer in = Integer.valueOf(10);</span><br><span class="line">        Integer integer = Integer.valueOf(&quot;123&quot;);</span><br><span class="line">        Integer integer1 = Integer.valueOf(&quot;123&quot;, 8);</span><br><span class="line">        System.out.println(in);</span><br><span class="line">        System.out.println(integer);</span><br><span class="line">        System.out.println(&quot;输出8进制的数:&quot;+integer1);</span><br><span class="line"></span><br><span class="line">        Integer c=10;</span><br><span class="line">        System.out.println(c);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //两个创建的对象区别</span><br><span class="line">        //这个判断的是数字如果数字不在-128~127那么源码中会new出来的所以超过127就是判断地址值</span><br><span class="line">        Integer i5 = Integer.valueOf(127);</span><br><span class="line">        Integer i6 = Integer.valueOf(127);</span><br><span class="line">        System.out.println(i5==i6);  //true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Integer i7 = Integer.valueOf(128);</span><br><span class="line">        Integer i8 = Integer.valueOf(128);</span><br><span class="line">        System.out.println(i7==i8);  //false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //底下这种判断的是地址值所以是false</span><br><span class="line">        Integer i1 = new Integer(127);</span><br><span class="line">        Integer i2 = new Integer(127);</span><br><span class="line">        System.out.println(i1==i2);//false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Integer i3 = new Integer(128);</span><br><span class="line">        Integer i4 = new Integer(128);</span><br><span class="line">        System.out.println(i3==i4);//false</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="常见算法"><a href="#常见算法" class="headerlink" title="常见算法"></a>常见算法</h4><ul>
+<li><p>查找算法</p>
+<ul>
+<li><p>基本查找    </p>
+<ul>
+<li><p>基本查找的实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package find;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/9/30</span><br><span class="line"> * Time: 12:52</span><br><span class="line"> * 需求：查找算法</span><br><span class="line"> */</span><br><span class="line">public class BasicSearch &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        int[] arr = &#123;20,30,40,60,70,90,100,120,150&#125;;</span><br><span class="line"></span><br><span class="line">        //基本查找</span><br><span class="line">        boolean b = basicSearch(arr, 20);</span><br><span class="line">        System.out.println(b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //基本查找</span><br><span class="line">    public static boolean basicSearch(int Array[],int number)&#123;</span><br><span class="line">        for (int i = 0; i &lt; Array.length; i++) &#123;</span><br><span class="line">            if (Array[i]==number)&#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>二分查找&#x2F;折半查找</p>
+<ul>
+<li><p>二分查找前提条件是数组的数据是顺序的</p>
+</li>
+<li><p>提高查找效率</p>
+</li>
+<li><p>二分查找过程</p>
+<ul>
+<li>min和max表示当前要查找的范围</li>
+<li>中间是在min和max中间的</li>
+<li>如果要查找的元素在mid的左边，缩小范围时，min不变， max等于mid减1</li>
+<li>如果要查找的元素在mid的右边，缩小范围时，max不变，min等于mid加1</li>
+</ul>
+</li>
+<li><p>二分查找的代码实现</p>
+<ul>
+<li><p>&#96;&#96;&#96;<br>package find;</p>
 <p>&#x2F;**</p>
 <ul>
 <li><p>Created with IntelliJ IDEA.</p>
 </li>
 <li><p>creator: 蔡芳灿</p>
 </li>
-<li><p>Date: 2022&#x2F;9&#x2F;29</p>
+<li><p>Date: 2022&#x2F;9&#x2F;30</p>
 </li>
-<li><p>Time: 21:56</p>
+<li><p>Time: 12:52</p>
 </li>
-<li><p>需求：<br> *&#x2F;<br>public class TestInteger {</p>
-<p> public static void main(String[] args) {</p>
-<pre><code> //包装类，数字引用数字类型 Jdk5写法
- //利用构造方法来创建对象
- System.out.println(&quot;----------构造法创建对象---------------&quot;);
- Integer a = new Integer(10);
- Integer a1 = new Integer(&quot;10&quot;);
- System.out.println(a);
- System.out.println(a1);
-
- System.out.println(&quot;--------------静态方法创建对象------------------&quot;);
-
- //利用静态方法创建对象
- Integer in = Integer.valueOf(10);
- Integer integer = Integer.valueOf(&quot;123&quot;);
- Integer integer1 = Integer.valueOf(&quot;123&quot;, 8);
- System.out.println(in);
- System.out.println(integer);
- System.out.println(&quot;输出8进制的数:&quot;+integer1);
-
- Integer c=10;
- System.out.println(c);
+<li><p>需求：查找算法<br> *&#x2F;<br>public class BasicSearch {<br> public static void main(String[] args) {</p>
+<pre><code> int[] arr = &#123;20,30,40,60,70,90,100,120,150&#125;;
 
 
- //两个创建的对象区别
- //这个判断的是数字如果数字不在-128~127那么源码中会new出来的所以超过127就是判断地址值
- Integer i5 = Integer.valueOf(127);
- Integer i6 = Integer.valueOf(127);
- System.out.println(i5==i6);  //true
-
-
- Integer i7 = Integer.valueOf(128);
- Integer i8 = Integer.valueOf(128);
- System.out.println(i7==i8);  //false
-
-
- //底下这种判断的是地址值所以是false
- Integer i1 = new Integer(127);
- Integer i2 = new Integer(127);
- System.out.println(i1==i2);//false
-
-
- Integer i3 = new Integer(128);
- Integer i4 = new Integer(128);
- System.out.println(i3==i4);//false
+ int i = ErBasicSearch(arr, 30);
+ System.out.println(i);
 </code></pre>
+<p> }</p>
+<p> &#x2F;&#x2F;二分查找</p>
+<p> &#x2F;**</p>
+<ul>
+<li></li>
+<li>@param Array</li>
+<li>@param number</li>
+<li>@return</li>
+<li>1, min和max表示当前要查找的范围</li>
+<li>2，中间是在min和max中间的</li>
+<li>3,如果要查找的元素在mid的左边，缩小范围时，min不变， max等于mid减1</li>
+<li>4,如果要查找的元素在mid的右边，缩小范围时，max不变，min等于mid加1<br>  *&#x2F;<br> public static int ErBasicSearch(int Array[],int number){<br> int max &#x3D;   Array.length-1;<br> int min &#x3D; 0;<br> while (true){<br> int mid &#x3D; (max+min)&#x2F;2;<br> if (min&gt;max){<br>     return -1;<br> }<br> if (Array[mid]&gt;number){<br>     max&#x3D;mid-1;<br><br> }else if (Array[mid]&lt;number){<br>     min &#x3D; mid+1;<br> }else  {<br>     return mid;<br> }<br> }</li>
+</ul>
 <p> }</p>
 </li>
 </ul>
 <p>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 常见算法</span><br><span class="line"></span><br><span class="line">- 查找算法</span><br><span class="line"></span><br><span class="line">  - 基本查找    </span><br><span class="line"></span><br><span class="line">    - 基本查找的实现</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>  package find;
-  
-  /**
-   * Created with IntelliJ IDEA.
-   * creator: 蔡芳灿
-   * Date: 2022/9/30
-   * Time: 12:52
-   * 需求：查找算法
-   */
-  public class BasicSearch &#123;
-      public static void main(String[] args) &#123;
-  
-          int[] arr = &#123;20,30,40,60,70,90,100,120,150&#125;;
-  
-          //基本查找
-          boolean b = basicSearch(arr, 20);
-          System.out.println(b);
-      &#125;
-  
-  
-  
-      //基本查找
-      public static boolean basicSearch(int Array[],int number)&#123;
-          for (int i = 0; i &lt; Array.length; i++) &#123;
-              if (Array[i]==number)&#123;
-                  return true;
-              &#125;
-          &#125;
-          return false;
-      &#125;
-  
-  &#125;
-  
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">- 二分查找/折半查找</span><br><span class="line"></span><br><span class="line">  - 二分查找前提条件是数组的数据是顺序的</span><br><span class="line"></span><br><span class="line">  - 提高查找效率</span><br><span class="line"></span><br><span class="line">  - 二分查找过程</span><br><span class="line"></span><br><span class="line">    -  min和max表示当前要查找的范围</span><br><span class="line">    - 中间是在min和max中间的</span><br><span class="line">    - 如果要查找的元素在mid的左边，缩小范围时，min不变， max等于mid减1</span><br><span class="line">    - 如果要查找的元素在mid的右边，缩小范围时，max不变，min等于mid加1</span><br><span class="line"></span><br><span class="line">  - 二分查找的代码实现</span><br><span class="line"></span><br><span class="line">    - ```</span><br><span class="line">      package find;</span><br><span class="line">      </span><br><span class="line">      /**</span><br><span class="line">       * Created with IntelliJ IDEA.</span><br><span class="line">       * creator: 蔡芳灿</span><br><span class="line">       * Date: 2022/9/30</span><br><span class="line">       * Time: 12:52</span><br><span class="line">       * 需求：查找算法</span><br><span class="line">       */</span><br><span class="line">      public class BasicSearch &#123;</span><br><span class="line">          public static void main(String[] args) &#123;</span><br><span class="line">      </span><br><span class="line">              int[] arr = &#123;20,30,40,60,70,90,100,120,150&#125;;</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">              int i = ErBasicSearch(arr, 30);</span><br><span class="line">              System.out.println(i);</span><br><span class="line">          &#125;</span><br><span class="line">      </span><br><span class="line">          //二分查找</span><br><span class="line">      </span><br><span class="line">          /**</span><br><span class="line">           *</span><br><span class="line">           * @param Array</span><br><span class="line">           * @param number</span><br><span class="line">           * @return</span><br><span class="line">           * 1, min和max表示当前要查找的范围</span><br><span class="line">           * 2，中间是在min和max中间的</span><br><span class="line">           * 3,如果要查找的元素在mid的左边，缩小范围时，min不变， max等于mid减1</span><br><span class="line">           * 4,如果要查找的元素在mid的右边，缩小范围时，max不变，min等于mid加1</span><br><span class="line">           */</span><br><span class="line">          public static int ErBasicSearch(int Array[],int number)&#123;</span><br><span class="line">              int max =   Array.length-1;</span><br><span class="line">              int min = 0;</span><br><span class="line">              while (true)&#123;</span><br><span class="line">                  int mid = (max+min)/2;</span><br><span class="line">                  if (min&gt;max)&#123;</span><br><span class="line">                      return -1;</span><br><span class="line">                  &#125;</span><br><span class="line">                  if (Array[mid]&gt;number)&#123;</span><br><span class="line">                      max=mid-1;</span><br><span class="line">      </span><br><span class="line">                  &#125;else if (Array[mid]&lt;number)&#123;</span><br><span class="line">                      min = mid+1;</span><br><span class="line">                  &#125;else  &#123;</span><br><span class="line">                      return mid;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      </span><br><span class="line">      &#125;</span><br><span class="line">      </span><br></pre></td></tr></table></figure>
-</code></pre>
-<h4 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h4><ul>
-<li><p>常用方法</p>
-<ul>
-<li><p>&#96;&#96;&#96;<br>package Day.Api.Arrays;</p>
-<p>import java.util.Arrays;<br>import java.util.Collection;<br>import java.util.Comparator;</p>
-<p>&#x2F;**</p>
-<ul>
-<li><p>Created with IntelliJ IDEA.</p>
-</li>
-<li><p>creator: 蔡芳灿</p>
-</li>
-<li><p>Date: 2022&#x2F;10&#x2F;2</p>
-</li>
-<li><p>Time: 16:42</p>
-</li>
-<li><p>需求：<br> *&#x2F;<br>public class MyArrayTest01 {</p>
-<p> public static void main(String[] args) {<br> int[] arr &#x3D; {1,2,3,4,5,6,7,8,9,10};<br> System.out.println(“——–Arrays toString—————-“);<br> &#x2F;&#x2F;返回指定数组内容的字符串表示形式<br> System.out.println(Arrays.toString(arr));  &#x2F;&#x2F;[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]<br><br><br> &#x2F;&#x2F;使用二分查找查找元素<br> &#x2F;&#x2F;第一:二分查找的数组中的元素是有序的，而且是升序的<br> &#x2F;&#x2F;第二：如果查找的数据存在返回索引<br> System.out.println(“——–Arrays binarySearch—————-“);<br> System.out.println(Arrays.binarySearch(arr, 5));&#x2F;&#x2F;4<br> System.out.println(Arrays.binarySearch(arr, 10));&#x2F;&#x2F;9<br> System.out.println(Arrays.binarySearch(arr, 20));&#x2F;&#x2F;-11<br><br><br> &#x2F;&#x2F;复制新数组<br> &#x2F;&#x2F;第一个参数是旧数组的数据<br> &#x2F;&#x2F;第二个参数是，要从数组中的复制多少个数据到新数组，如果新数组的长度大于旧数组的长度，那么后面的数据用数组的初始值<br> System.out.println(“——–Arrays copyOf—————-“);<br> int[] ints &#x3D; Arrays.copyOf(arr, 20);<br> System.out.println(Arrays.toString(ints));<br><br><br> &#x2F;&#x2F;排序<br> System.out.println(“——–Arrays sort  升序—————-“);<br> Integer[] array &#x3D; {20, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48};</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### Arrays</span><br><span class="line"></span><br><span class="line">- 常用方法</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    package Day.Api.Arrays;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    import java.util.Arrays;</span><br><span class="line">    import java.util.Collection;</span><br><span class="line">    import java.util.Comparator;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * Created with IntelliJ IDEA.</span><br><span class="line">     * creator: 蔡芳灿</span><br><span class="line">     * Date: 2022/10/2</span><br><span class="line">     * Time: 16:42</span><br><span class="line">     * 需求：</span><br><span class="line">     */</span><br><span class="line">    public class MyArrayTest01 &#123;</span><br><span class="line">    </span><br><span class="line">        public static void main(String[] args) &#123;</span><br><span class="line">            int[] arr = &#123;1,2,3,4,5,6,7,8,9,10&#125;;</span><br><span class="line">            System.out.println(&quot;--------Arrays toString----------------&quot;);</span><br><span class="line">            //返回指定数组内容的字符串表示形式</span><br><span class="line">            System.out.println(Arrays.toString(arr));  //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">            //使用二分查找查找元素</span><br><span class="line">            //第一:二分查找的数组中的元素是有序的，而且是升序的</span><br><span class="line">            //第二：如果查找的数据存在返回索引</span><br><span class="line">            System.out.println(&quot;--------Arrays binarySearch----------------&quot;);</span><br><span class="line">            System.out.println(Arrays.binarySearch(arr, 5));//4</span><br><span class="line">            System.out.println(Arrays.binarySearch(arr, 10));//9</span><br><span class="line">            System.out.println(Arrays.binarySearch(arr, 20));//-11</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">            //复制新数组</span><br><span class="line">            //第一个参数是旧数组的数据</span><br><span class="line">            //第二个参数是，要从数组中的复制多少个数据到新数组，如果新数组的长度大于旧数组的长度，那么后面的数据用数组的初始值</span><br><span class="line">            System.out.println(&quot;--------Arrays copyOf----------------&quot;);</span><br><span class="line">            int[] ints = Arrays.copyOf(arr, 20);</span><br><span class="line">            System.out.println(Arrays.toString(ints));</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">            //排序</span><br><span class="line">            System.out.println(&quot;--------Arrays sort  升序----------------&quot;);</span><br><span class="line">            Integer[] array = &#123;20, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48&#125;;</span><br><span class="line">    </span><br><span class="line">    //        Arrays.sort(array);</span><br><span class="line">    //        System.out.println(Arrays.toString(array));</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">            //降序排序o2-o1</span><br><span class="line">            //升序排序o1-o2</span><br><span class="line">            Arrays.sort(array,new Comparator&lt;Integer&gt;()&#123;</span><br><span class="line">    </span><br><span class="line">                @Override</span><br><span class="line">                public int compare(Integer o1, Integer o2) &#123;</span><br><span class="line">    </span><br><span class="line">                    return o2-o1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            System.out.println(Arrays.toString(array));</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure></li>
+</ul>
 </li>
 </ul>
-<p>&#x2F;&#x2F;        Arrays.sort(array);<br>&#x2F;&#x2F;        System.out.println(Arrays.toString(array));</p>
-<pre><code>    //降序排序o2-o1
-    //升序排序o1-o2
-    Arrays.sort(array,new Comparator&lt;Integer&gt;()&#123;
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="lambda-JDK8"><a href="#lambda-JDK8" class="headerlink" title="lambda  JDK8"></a>lambda  JDK8</h4><ul>
+<li>注意事项<ul>
+<li>Lambda表达式可以用来简化匿名内部类的书写</li>
+<li>Lambda表达式只能简化函数式接口的匿名内部类的写法</li>
+<li>函数式接口：<ul>
+<li>有且仅有一个抽象方法的接口叫做函数式接口，接口上方可以加@FunctionalInterface注解</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package Day.Api.Arrays;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/2</span><br><span class="line"> * Time: 17:22</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class LambdaTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Integer[] array = &#123;20, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48&#125;;</span><br><span class="line">        //降序排序</span><br><span class="line">        // lambda表达式 -&gt;</span><br><span class="line">//        Arrays.sort(array, (Integer o1, Integer o2) -&gt; &#123;</span><br><span class="line">//                    return o2 - o1;</span><br><span class="line">//                &#125;</span><br><span class="line">//        );</span><br><span class="line">        //Integer如果数据类型相同们可以省略</span><br><span class="line">//        Arrays.sort(array, (o1,  o2) -&gt; &#123;</span><br><span class="line">//                    return o2 - o1;</span><br><span class="line">//                &#125;</span><br><span class="line">//        );</span><br><span class="line">        //也可以省略花括号和return</span><br><span class="line">        Arrays.sort(array, (o1,  o2) -&gt;o2 - o1);</span><br><span class="line">        System.out.println(Arrays.toString(array));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-        @Override
-        public int compare(Integer o1, Integer o2) &#123;
-
-            return o2-o1;
-        &#125;
-    &#125;);
-    System.out.println(Arrays.toString(array));
-&#125;
-</code></pre>
-<p>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">#### lambda  JDK8</span><br><span class="line"></span><br><span class="line">- 注意事项</span><br><span class="line">  - Lambda表达式可以用来简化匿名内部类的书写</span><br><span class="line">  - Lambda表达式只能简化函数式接口的匿名内部类的写法</span><br><span class="line">  - 函数式接口：</span><br><span class="line">    - 有且仅有一个抽象方法的接口叫做函数式接口，接口上方可以加@FunctionalInterface注解</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<p>package Day.Api.Arrays;</p>
-<p>import java.util.Arrays;</p>
-<p>&#x2F;**</p>
+<h4 id="集合体系结构"><a href="#集合体系结构" class="headerlink" title="集合体系结构"></a>集合体系结构</h4><ul>
+<li><p>Collection：是单列集合的祖宗接口，它的功能是全部单列集合都可以继承使用的</p>
 <ul>
-<li><p>Created with IntelliJ IDEA.</p>
-</li>
-<li><p>creator: 蔡芳灿</p>
-</li>
-<li><p>Date: 2022&#x2F;10&#x2F;2</p>
-</li>
-<li><p>Time: 17:22</p>
-</li>
-<li><p>需求：<br> *&#x2F;<br>public class LambdaTest {<br> public static void main(String[] args) {</p>
-<pre><code> Integer[] array = &#123;20, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48&#125;;
- //降序排序
- // lambda表达式 -&gt;
-</code></pre>
+<li>遍历方式<ul>
+<li>迭代器遍历</li>
+<li>增强for遍历</li>
+<li>Lambda表达式遍历</li>
+</ul>
 </li>
 </ul>
-<p>&#x2F;&#x2F;        Arrays.sort(array, (Integer o1, Integer o2) -&gt; {<br>&#x2F;&#x2F;                    return o2 - o1;<br>&#x2F;&#x2F;                }<br>&#x2F;&#x2F;        );<br>        &#x2F;&#x2F;Integer如果数据类型相同们可以省略<br>&#x2F;&#x2F;        Arrays.sort(array, (o1,  o2) -&gt; {<br>&#x2F;&#x2F;                    return o2 - o1;<br>&#x2F;&#x2F;                }<br>&#x2F;&#x2F;        );<br>        &#x2F;&#x2F;也可以省略花括号和return<br>        Arrays.sort(array, (o1,  o2) -&gt;o2 - o1);<br>        System.out.println(Arrays.toString(array));<br>    }</p>
-<p>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 集合体系结构</span><br><span class="line"></span><br><span class="line">- Collection：是单列集合的祖宗接口，它的功能是全部单列集合都可以继承使用的</span><br><span class="line">  - 遍历方式</span><br><span class="line">    - 迭代器遍历</span><br><span class="line">    - 增强for遍历</span><br><span class="line">    - Lambda表达式遍历</span><br><span class="line"></span><br><span class="line">- List</span><br><span class="line"></span><br><span class="line">  - 添加的元素是有序的、可重复、有索引</span><br><span class="line"></span><br><span class="line">- Set</span><br><span class="line"></span><br><span class="line">  - 添加的元素是无序、不重复、五索引</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">#### 迭代器</span><br><span class="line"></span><br><span class="line">- 迭代器遍历</span><br><span class="line">  - 迭代器在java中类是Iterator，迭代器是集合专用的遍历方式。</span><br><span class="line">- Collection集合获取迭代器</span><br><span class="line">- 注意事项</span><br><span class="line">  - 报错NoSuchElementException</span><br><span class="line">  - 迭代器遍历完毕，指针不会复位</span><br><span class="line">  - 迭代器遍历时，不能用集合的方法进行增强或者删除</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>package Day;</p>
-<p>import java.util.ArrayList;<br>import java.util.Iterator;</p>
-<p>&#x2F;**</p>
+</li>
+<li><p>List</p>
 <ul>
-<li><p>Created with IntelliJ IDEA.</p>
+<li>添加的元素是有序的、可重复、有索引</li>
+</ul>
 </li>
-<li><p>creator: 蔡芳灿</p>
-</li>
-<li><p>Date: 2022&#x2F;10&#x2F;3</p>
-</li>
-<li><p>Time: 16:56</p>
-</li>
-<li><p>需求：迭代器遍历<br> *&#x2F;<br>public class Day186 {<br> public static void main(String[] args) {</p>
-<pre><code> ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
- list.add(&quot;aaa&quot;);
- list.add(&quot;bbb&quot;);
- list.add(&quot;ccc&quot;);
-
- Iterator&lt;String&gt; it = list.iterator();
-
- //查看集合指针位置是否有元素，如果有数就是true，没有就是false
- while (it.hasNext())&#123;
-     //使用next方法获取第一个元素，并且移动指针到集合的第二个位置
-     String str = it.next();
-     System.out.println(str);
- &#125;
-</code></pre>
-<p> }</p>
+<li><p>Set</p>
+<ul>
+<li>添加的元素是无序、不重复、五索引</li>
+</ul>
 </li>
 </ul>
-<p>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![image-20221003172048287](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221003172048287.png)</span><br><span class="line"></span><br><span class="line">#### 5中集合遍历方式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>package Day;</p>
-<p>import java.util.ArrayList;<br>import java.util.Iterator;<br>import java.util.List;<br>import java.util.ListIterator;</p>
-<p>&#x2F;**</p>
-<ul>
-<li><p>Created with IntelliJ IDEA.</p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><ul>
+<li>迭代器遍历<ul>
+<li>迭代器在java中类是Iterator，迭代器是集合专用的遍历方式。</li>
+</ul>
 </li>
-<li><p>creator: 蔡芳灿</p>
-</li>
-<li><p>Date: 2022&#x2F;10&#x2F;3</p>
-</li>
-<li><p>Time: 18:49</p>
-</li>
-<li><p>需求：List 五种遍历<br> *&#x2F;<br>public class Day188 {</p>
-<p> public static void main(String[] args) {<br> List<String> list  &#x3D; new ArrayList&lt;&gt;();<br><br> list.add(“aaa”);<br> list.add(“bbb”);<br> list.add(1,”ccc”);<br> System.out.println(list);<br><br> &#x2F;&#x2F;迭代器遍历  如果想删除元素请用迭代器遍历<br> Iterator<String> it &#x3D; list.iterator();<br> while (it.hasNext()){<br>     String str &#x3D; it.next();<br>     if (“bbb”.equals(str)){<br>         it.remove();<br>     }<br>     System.out.println(str);<br> }<br> System.out.println(list);<br> &#x2F;&#x2F;列表迭代器遍历  如果想添加元素请用列表迭代器遍历<br> ListIterator<String> itList &#x3D; list.listIterator();<br> while (itList.hasNext()){<br>     String str &#x3D; itList.next();<br>     if (“aaa”.equals(str)){<br>         itList.add(“bbb”);<br>     }<br>     System.out.println(str);<br> }<br> System.out.println(list);<br><br> &#x2F;&#x2F;如果单纯遍历数据请用增强for或Lambda表达式遍历<br> for (String s : list) {<br>     System.out.print(s+” “);<br> }<br> System.out.println();<br><br> list.forEach(s -&gt; System.out.print(s+” “));<br><br> System.out.println();<br> &#x2F;&#x2F;如果想操作索引，使用普通for<br> for (int i &#x3D; 0; i &lt; list.size(); i++) {<br>     System.out.print(list.get(i)+” “);<br> }<br> }</p>
+<li>Collection集合获取迭代器</li>
+<li>注意事项<ul>
+<li>报错NoSuchElementException</li>
+<li>迭代器遍历完毕，指针不会复位</li>
+<li>迭代器遍历时，不能用集合的方法进行增强或者删除</li>
+</ul>
 </li>
 </ul>
-<p>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 数据结构</span><br><span class="line"></span><br><span class="line">- 什么是数据结构</span><br><span class="line"></span><br><span class="line">  - 计算机存储、组织数据的方式</span><br><span class="line">  - 是指数据相互之间是以什么方式排列在一起的</span><br><span class="line">  - 数据结构是为了更加方便的管理和使用数据，需要结合具体的业务场景来进行选择</span><br><span class="line">  - 一般情况下，精心选择数据结构可以带来跟高的运行或者存储效率</span><br><span class="line"></span><br><span class="line">- 常见的数据结构</span><br><span class="line"></span><br><span class="line">  - 栈</span><br><span class="line"></span><br><span class="line">    - 栈的特点：后进先出，先进后出</span><br><span class="line"></span><br><span class="line">      ![image-20221003191448309](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221003191448309.png)</span><br><span class="line"></span><br><span class="line">  - 队列</span><br><span class="line"></span><br><span class="line">    - 特点：先进先出，后进后出</span><br><span class="line"></span><br><span class="line">      ![image-20221003191404657](https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221003191404657.png)</span><br><span class="line"></span><br><span class="line">  - 数组</span><br><span class="line"></span><br><span class="line">    - 特点：内存连续区域，查询快，增删慢</span><br><span class="line"></span><br><span class="line">  - 链表</span><br><span class="line"></span><br><span class="line">    - 特点：元素是游离的，查询慢，首尾操作极快</span><br><span class="line"></span><br><span class="line">  - 二叉树</span><br><span class="line"></span><br><span class="line">    - 二叉查找树遍历方式</span><br><span class="line">    - 前序遍历：当前节点，左子节点，右子节点</span><br><span class="line">      - 中序遍历：左子节点，中子节点，右子节点</span><br><span class="line">      - 后序遍历：左子节点，右子节点，当前节点</span><br><span class="line">      - 层序遍历：一层一层的去遍历</span><br><span class="line">  </span><br><span class="line">  - 二叉查找树平衡二叉树</span><br><span class="line">  </span><br><span class="line">  - 红黑树</span><br><span class="line">  </span><br><span class="line">    - 红黑树是一种自平衡的二叉查找树，是计算机科学中用到的一种数据结构</span><br><span class="line">    - 1972年出现，当时被称为平衡二叉B树。后来，1978年被修改为如今的“红黑叔”</span><br><span class="line">    - 它是一种特殊的二叉树查找树，红黑树的每一个节点上都有存储位表示节点的颜色</span><br><span class="line">    - 每一个节点可以是红或者黑，红黑树不是高度平衡的，它的平衡是通过“红黑规则”进行实现的</span><br><span class="line">    - 红黑树规则</span><br><span class="line">      - 每一个节点或是红色的，或是黑色的</span><br><span class="line">      - 根节点必须是黑色的</span><br><span class="line">      - 如果一个节点没有子节点或者父节点，则该节点相应的指针属性值为Nil，这些Nil视为叶节点，每个叶节点（Nil）是黑色的</span><br><span class="line">      - 如果某一个节点是红色，那么它的节点必须是黑色（不能出现两个红色节点相连的情况）</span><br><span class="line">      - 对每一个节点，从节点到其所有后代叶节点的简单路劲上，均包含相同的黑色节点</span><br><span class="line"></span><br><span class="line">#### ArrayList底层原理</span><br><span class="line"></span><br><span class="line">- 利用空参创建的集合，在底层创建一个默认长度为0的数组</span><br><span class="line">- 添加一个元素时，底层会创建一个新的长度为10的数组</span><br><span class="line">- 存满时，会扩容1.5倍</span><br><span class="line">- 如果一次添加多个元素，1.5倍还放不下，则新床数组的长度以实际为准</span><br><span class="line"></span><br><span class="line">#### 泛型</span><br><span class="line"></span><br><span class="line">- 什么是泛型</span><br><span class="line">  - JDK5引入的特性，可以在编译阶段约束操作的数据类类型，并进行检查</span><br><span class="line"></span><br><span class="line">- 泛型好处</span><br><span class="line">  - 统一数据类型</span><br><span class="line">  - 把运行时期的问题提前到了编译期间，避免了强制类型转换可能出现的异常，因为在编译阶段类型就能确定下来</span><br><span class="line">- 泛型的细节</span><br><span class="line">  - 泛型中不能写基本数据类型</span><br><span class="line">  - 指定泛型的具体类型后，传递数据时，可以传入该类类型或者其子类类型</span><br><span class="line">  - 如果不写泛型，类型默认是Object</span><br><span class="line">- 哪里可以定义泛型</span><br><span class="line">  - 泛型类：在类名后定义泛型，创建该类对象的时候，确定类型</span><br><span class="line">  - 泛型方法：在修饰符后面定义泛型，调用方法的时候确定类型</span><br><span class="line">  - 泛型接口：在接口名后面定义泛型，实现类确定类型，实现类延续泛型</span><br><span class="line">- 泛型的继承和通配符</span><br><span class="line">  - 泛型不具备继承性，但是数据具备继承性</span><br><span class="line"></span><br><span class="line">#### set集合</span><br><span class="line"></span><br><span class="line">- 无序：存取顺序不一致</span><br><span class="line">- 不重复：可以去除重复</span><br><span class="line">- 无索引：没有带索引的方法，所以不能使用普通for遍历，也不能通过索引来获取元素</span><br><span class="line">- set集合实现类</span><br><span class="line">  - HashSet：无序、不重复、无索引</span><br><span class="line">  - LinkedHashSet：有序、不重复、无索引</span><br><span class="line">  - TreeSet：可排序、不重复、五索引 </span><br><span class="line">    - TreeSet自定义排序规则有几种方式</span><br><span class="line">      - 方法一：javabean类实现Comparable接口，指定比较规则</span><br><span class="line">      - 方法二：创建集合时，自定义Comparator比较对象，指定比较规则</span><br><span class="line"></span><br><span class="line">#### 双列集合</span><br><span class="line"></span><br><span class="line">- 特点</span><br><span class="line">  - 双列集合一次需要存一对数据，分别为键和值</span><br><span class="line">  - 键不能重复，值可以重复</span><br><span class="line">  - 键和值是一一对应的，每一个键只能找到自己对应的值</span><br><span class="line">    - 键+值这个整体我们称之为“键值对”或者“键值对对象”在java中叫做“Entry对象”						</span><br><span class="line"></span><br><span class="line">- HashMap</span><br><span class="line"></span><br><span class="line">  - 特点</span><br><span class="line"></span><br><span class="line">    - HashMap里面的一个实现类</span><br><span class="line">    - 没有额外需要学习的特有方法，直接使用Map里面的方法就可以了</span><br><span class="line">    - 特点都是由键决定的：无序、不重复、无索引</span><br><span class="line">    - HashMap跟HashSet底层原理一模一样的，都是哈希表结构</span><br><span class="line"></span><br><span class="line">  - HashMap基本方法</span><br><span class="line"></span><br><span class="line">    - ```</span><br><span class="line">      package Day.Api.map;</span><br><span class="line">      </span><br><span class="line">      import java.util.HashMap;</span><br><span class="line">      import java.util.Map;</span><br><span class="line">      </span><br><span class="line">      /**</span><br><span class="line">       * Created with IntelliJ IDEA.</span><br><span class="line">       * creator: 蔡芳灿</span><br><span class="line">       * Date: 2022/10/5</span><br><span class="line">       * Time: 21:17</span><br><span class="line">       * 需求：</span><br><span class="line">       */</span><br><span class="line">      public class MapTest &#123;</span><br><span class="line">          public static void main(String[] args) &#123;</span><br><span class="line">              Map&lt;String,String&gt; map= new HashMap&lt;&gt;();</span><br><span class="line">              //添加元素</span><br><span class="line">              //put方法的细节</span><br><span class="line">              //添加/覆盖</span><br><span class="line">              //在添加数据的时候，如果键不存在，那么直接把键值对对象添加到map集合当中</span><br><span class="line">              //在添加数据时候，如果键存在，那么会把原有的键值对对象覆盖，会把被覆盖的值进行返回</span><br><span class="line">              map.put(&quot;cai&quot;,&quot;ss&quot;);</span><br><span class="line">              map.put(&quot;ss&quot;,&quot;cai&quot;);</span><br><span class="line">              System.out.println(map);</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">              //删除</span><br><span class="line">              map.remove(&quot;ss&quot;);</span><br><span class="line">              System.out.println(map);</span><br><span class="line">      </span><br><span class="line">              //判断集合中的键是否存在</span><br><span class="line">              System.out.println(map.containsKey(&quot;cai&quot;));</span><br><span class="line">              System.out.println(map.containsValue(&quot;ss&quot;));</span><br><span class="line">      </span><br><span class="line">              //判断集合的长度</span><br><span class="line">              System.out.println(map.size());</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">              //清空集合</span><br><span class="line">              map.clear();</span><br><span class="line">              System.out.println(map);</span><br><span class="line">              //判读集合是否为空</span><br><span class="line">              System.out.println(map.isEmpty());</span><br><span class="line">          &#125;</span><br><span class="line">      </span><br><span class="line">      &#125;</span><br><span class="line">      </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package Day;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/3</span><br><span class="line"> * Time: 16:56</span><br><span class="line"> * 需求：迭代器遍历</span><br><span class="line"> */</span><br><span class="line">public class Day186 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">        list.add(&quot;aaa&quot;);</span><br><span class="line">        list.add(&quot;bbb&quot;);</span><br><span class="line">        list.add(&quot;ccc&quot;);</span><br><span class="line"></span><br><span class="line">        Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line"></span><br><span class="line">        //查看集合指针位置是否有元素，如果有数就是true，没有就是false</span><br><span class="line">        while (it.hasNext())&#123;</span><br><span class="line">            //使用next方法获取第一个元素，并且移动指针到集合的第二个位置</span><br><span class="line">            String str = it.next();</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221003172048287.png" alt="image-20221003172048287"></p>
+<h4 id="5中集合遍历方式"><a href="#5中集合遍历方式" class="headerlink" title="5中集合遍历方式"></a>5中集合遍历方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">package Day;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.ListIterator;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/3</span><br><span class="line"> * Time: 18:49</span><br><span class="line"> * 需求：List 五种遍历</span><br><span class="line"> */</span><br><span class="line">public class Day188 &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        List&lt;String&gt; list  = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        list.add(&quot;aaa&quot;);</span><br><span class="line">        list.add(&quot;bbb&quot;);</span><br><span class="line">        list.add(1,&quot;ccc&quot;);</span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">        //迭代器遍历  如果想删除元素请用迭代器遍历</span><br><span class="line">        Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line">        while (it.hasNext())&#123;</span><br><span class="line">            String str = it.next();</span><br><span class="line">            if (&quot;bbb&quot;.equals(str))&#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);</span><br><span class="line">        //列表迭代器遍历  如果想添加元素请用列表迭代器遍历</span><br><span class="line">        ListIterator&lt;String&gt; itList = list.listIterator();</span><br><span class="line">        while (itList.hasNext())&#123;</span><br><span class="line">            String str = itList.next();</span><br><span class="line">            if (&quot;aaa&quot;.equals(str))&#123;</span><br><span class="line">                itList.add(&quot;bbb&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">        //如果单纯遍历数据请用增强for或Lambda表达式遍历</span><br><span class="line">        for (String s : list) &#123;</span><br><span class="line">            System.out.print(s+&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line"></span><br><span class="line">        list.forEach(s -&gt; System.out.print(s+&quot; &quot;));</span><br><span class="line"></span><br><span class="line">        System.out.println();</span><br><span class="line">        //如果想操作索引，使用普通for</span><br><span class="line">        for (int i = 0; i &lt; list.size(); i++) &#123;</span><br><span class="line">            System.out.print(list.get(i)+&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><ul>
+<li><p>什么是数据结构</p>
 <ul>
+<li>计算机存储、组织数据的方式</li>
+<li>是指数据相互之间是以什么方式排列在一起的</li>
+<li>数据结构是为了更加方便的管理和使用数据，需要结合具体的业务场景来进行选择</li>
+<li>一般情况下，精心选择数据结构可以带来跟高的运行或者存储效率</li>
+</ul>
+</li>
+<li><p>常见的数据结构</p>
+<ul>
+<li><p>栈</p>
+<ul>
+<li><p>栈的特点：后进先出，先进后出</p>
+<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221003191448309.png" alt="image-20221003191448309"></p>
+</li>
+</ul>
+</li>
+<li><p>队列</p>
+<ul>
+<li><p>特点：先进先出，后进后出</p>
+<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221003191404657.png" alt="image-20221003191404657"></p>
+</li>
+</ul>
+</li>
+<li><p>数组</p>
+<ul>
+<li>特点：内存连续区域，查询快，增删慢</li>
+</ul>
+</li>
+<li><p>链表</p>
+<ul>
+<li>特点：元素是游离的，查询慢，首尾操作极快</li>
+</ul>
+</li>
+<li><p>二叉树</p>
+<ul>
+<li>二叉查找树遍历方式</li>
+<li>前序遍历：当前节点，左子节点，右子节点<ul>
+<li>中序遍历：左子节点，中子节点，右子节点</li>
+<li>后序遍历：左子节点，右子节点，当前节点</li>
+<li>层序遍历：一层一层的去遍历</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>二叉查找树平衡二叉树</p>
+</li>
+<li><p>红黑树</p>
+<ul>
+<li>红黑树是一种自平衡的二叉查找树，是计算机科学中用到的一种数据结构</li>
+<li>1972年出现，当时被称为平衡二叉B树。后来，1978年被修改为如今的“红黑叔”</li>
+<li>它是一种特殊的二叉树查找树，红黑树的每一个节点上都有存储位表示节点的颜色</li>
+<li>每一个节点可以是红或者黑，红黑树不是高度平衡的，它的平衡是通过“红黑规则”进行实现的</li>
+<li>红黑树规则<ul>
+<li>每一个节点或是红色的，或是黑色的</li>
+<li>根节点必须是黑色的</li>
+<li>如果一个节点没有子节点或者父节点，则该节点相应的指针属性值为Nil，这些Nil视为叶节点，每个叶节点（Nil）是黑色的</li>
+<li>如果某一个节点是红色，那么它的节点必须是黑色（不能出现两个红色节点相连的情况）</li>
+<li>对每一个节点，从节点到其所有后代叶节点的简单路劲上，均包含相同的黑色节点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="ArrayList底层原理"><a href="#ArrayList底层原理" class="headerlink" title="ArrayList底层原理"></a>ArrayList底层原理</h4><ul>
+<li>利用空参创建的集合，在底层创建一个默认长度为0的数组</li>
+<li>添加一个元素时，底层会创建一个新的长度为10的数组</li>
+<li>存满时，会扩容1.5倍</li>
+<li>如果一次添加多个元素，1.5倍还放不下，则新床数组的长度以实际为准</li>
+</ul>
+<h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><ul>
+<li><p>什么是泛型</p>
+<ul>
+<li>JDK5引入的特性，可以在编译阶段约束操作的数据类类型，并进行检查</li>
+</ul>
+</li>
+<li><p>泛型好处</p>
+<ul>
+<li>统一数据类型</li>
+<li>把运行时期的问题提前到了编译期间，避免了强制类型转换可能出现的异常，因为在编译阶段类型就能确定下来</li>
+</ul>
+</li>
+<li><p>泛型的细节</p>
+<ul>
+<li>泛型中不能写基本数据类型</li>
+<li>指定泛型的具体类型后，传递数据时，可以传入该类类型或者其子类类型</li>
+<li>如果不写泛型，类型默认是Object</li>
+</ul>
+</li>
+<li><p>哪里可以定义泛型</p>
+<ul>
+<li>泛型类：在类名后定义泛型，创建该类对象的时候，确定类型</li>
+<li>泛型方法：在修饰符后面定义泛型，调用方法的时候确定类型</li>
+<li>泛型接口：在接口名后面定义泛型，实现类确定类型，实现类延续泛型</li>
+</ul>
+</li>
+<li><p>泛型的继承和通配符</p>
+<ul>
+<li>泛型不具备继承性，但是数据具备继承性</li>
+</ul>
+</li>
+</ul>
+<h4 id="set集合"><a href="#set集合" class="headerlink" title="set集合"></a>set集合</h4><ul>
+<li>无序：存取顺序不一致</li>
+<li>不重复：可以去除重复</li>
+<li>无索引：没有带索引的方法，所以不能使用普通for遍历，也不能通过索引来获取元素</li>
+<li>set集合实现类<ul>
+<li>HashSet：无序、不重复、无索引</li>
+<li>LinkedHashSet：有序、不重复、无索引</li>
+<li>TreeSet：可排序、不重复、五索引 <ul>
+<li>TreeSet自定义排序规则有几种方式<ul>
+<li>方法一：javabean类实现Comparable接口，指定比较规则</li>
+<li>方法二：创建集合时，自定义Comparator比较对象，指定比较规则</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="双列集合"><a href="#双列集合" class="headerlink" title="双列集合"></a>双列集合</h4><ul>
+<li><p>特点</p>
+<ul>
+<li>双列集合一次需要存一对数据，分别为键和值</li>
+<li>键不能重复，值可以重复</li>
+<li>键和值是一一对应的，每一个键只能找到自己对应的值<ul>
+<li>键+值这个整体我们称之为“键值对”或者“键值对对象”在java中叫做“Entry对象”</li>
+</ul>
+</li>
+</ul>
+<p>						</p>
+</li>
+<li><p>HashMap</p>
+<ul>
+<li><p>特点</p>
+<ul>
+<li>HashMap里面的一个实现类</li>
+<li>没有额外需要学习的特有方法，直接使用Map里面的方法就可以了</li>
+<li>特点都是由键决定的：无序、不重复、无索引</li>
+<li>HashMap跟HashSet底层原理一模一样的，都是哈希表结构</li>
+</ul>
+</li>
+<li><p>HashMap基本方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">package Day.Api.map;</span><br><span class="line"></span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/5</span><br><span class="line"> * Time: 21:17</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class MapTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Map&lt;String,String&gt; map= new HashMap&lt;&gt;();</span><br><span class="line">        //添加元素</span><br><span class="line">        //put方法的细节</span><br><span class="line">        //添加/覆盖</span><br><span class="line">        //在添加数据的时候，如果键不存在，那么直接把键值对对象添加到map集合当中</span><br><span class="line">        //在添加数据时候，如果键存在，那么会把原有的键值对对象覆盖，会把被覆盖的值进行返回</span><br><span class="line">        map.put(&quot;cai&quot;,&quot;ss&quot;);</span><br><span class="line">        map.put(&quot;ss&quot;,&quot;cai&quot;);</span><br><span class="line">        System.out.println(map);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //删除</span><br><span class="line">        map.remove(&quot;ss&quot;);</span><br><span class="line">        System.out.println(map);</span><br><span class="line"></span><br><span class="line">        //判断集合中的键是否存在</span><br><span class="line">        System.out.println(map.containsKey(&quot;cai&quot;));</span><br><span class="line">        System.out.println(map.containsValue(&quot;ss&quot;));</span><br><span class="line"></span><br><span class="line">        //判断集合的长度</span><br><span class="line">        System.out.println(map.size());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //清空集合</span><br><span class="line">        map.clear();</span><br><span class="line">        System.out.println(map);</span><br><span class="line">        //判读集合是否为空</span><br><span class="line">        System.out.println(map.isEmpty());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>HashMap遍历方式</p>
 <ul>
 <li><pre><code>package Day.Api.map;
@@ -1306,6 +1270,8 @@ public class MapTestFor &#123;
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 
         </div>
     </div>
@@ -1369,9 +1335,9 @@ public class MapTestFor &#123;
 </body>
 
 <aside id="article-toc" role="navigation" class="fixed">
-<div id="article-toc-inner">
+<div id="article-toc-inner" style="overflow-y: auto;scrollbar-width: none;">
     <strong class="sidebar-title">目录</strong>
-    <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E7%82%B9"><span class="nav-text">重点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-text">数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-text">方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#API%E5%92%8CAPI%E6%96%87%E6%A1%A3"><span class="nav-text">API和API文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Arrays"><span class="nav-text">Arrays</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E7%82%B9"><span class="toc-text">重点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">算术运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">面向对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#API%E5%92%8CAPI%E6%96%87%E6%A1%A3"><span class="toc-text">API和API文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%86%99"><span class="toc-text">重写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#this%EF%BC%8Csuper"><span class="toc-text">this，super()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-text">多态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#final"><span class="toc-text">final</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">权限修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-text">抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-text">接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-text">内部类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Math"><span class="toc-text">Math</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#System"><span class="toc-text">System</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Runtime"><span class="toc-text">Runtime</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object"><span class="toc-text">Object</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BigInteger"><span class="toc-text">BigInteger</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BigDecima"><span class="toc-text">BigDecima</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jDK7%E5%89%8D%E6%97%B6%E9%97%B4%E7%B1%BB"><span class="toc-text">jDK7前时间类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jdk8%E6%97%B6%E9%97%B4%E7%B1%BB"><span class="toc-text">jdk8时间类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="toc-text">包装类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95"><span class="toc-text">常见算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lambda-JDK8"><span class="toc-text">lambda  JDK8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">集合体系结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E4%B8%AD%E9%9B%86%E5%90%88%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="toc-text">5中集合遍历方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ArrayList%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="toc-text">ArrayList底层原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-text">泛型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set%E9%9B%86%E5%90%88"><span class="toc-text">set集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E5%88%97%E9%9B%86%E5%90%88"><span class="toc-text">双列集合</span></a></li></ol>
 </div>
 </aside>
 
@@ -1416,9 +1382,12 @@ public class MapTestFor &#123;
     padding-top: 55px;
 }
 #article-toc-inner ol {
-    margin-left: -16px;
+    margin-left: -5px;
 }
 
+#article-toc-inner::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
 </style>
 
 

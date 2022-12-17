@@ -93,7 +93,7 @@
 </body>
 
 <aside id="article-toc" role="navigation" class="fixed">
-<div id="article-toc-inner">
+<div id="article-toc-inner" style="overflow-y: auto;scrollbar-width: none;">
     <strong class="sidebar-title">目录</strong>
     
 </div>
@@ -140,9 +140,12 @@
     padding-top: 55px;
 }
 #article-toc-inner ol {
-    margin-left: -16px;
+    margin-left: -5px;
 }
 
+#article-toc-inner::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
 </style>
 
 
