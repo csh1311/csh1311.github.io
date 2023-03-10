@@ -48,7 +48,7 @@
 
 <h2 id="推送和拉取到docker-Hub"><a href="#推送和拉取到docker-Hub" class="headerlink" title="推送和拉取到docker Hub"></a>推送和拉取到docker Hub</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//设置标签</span><br><span class="line">docker tag houses:v0.1 shanhui/houses:tagname</span><br><span class="line">//推送到docker Hub</span><br><span class="line">docker push shanhui/houses:tagname</span><br><span class="line"></span><br><span class="line">//拉取</span><br><span class="line">docker pull shanhui/houses:houses</span><br></pre></td></tr></table></figure>
 
-<h2 id="docker运行Django"><a href="#docker运行Django" class="headerlink" title="docker运行Django"></a>docker运行Django</h2><figure class="highlight docker"><figcaption><span>run -d  -p 8099:8099 3a16afa66aab[images]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="docker运行Django"><a href="#docker运行Django" class="headerlink" title="docker运行Django"></a>docker运行Django</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d  -p 8099:8099 3a16afa66aab[images]</span><br></pre></td></tr></table></figure>
 
 
 
