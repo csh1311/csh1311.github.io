@@ -3,7 +3,7 @@
 <html class="article-header-style-default">
 <head>
 	
-	<title>docker-django - Hexo</title>
+	<title>docker-django - cc</title>
 	<meta charset="utf-8">
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker-django">
 <meta property="og:url" content="http://example.com/2022/11/21/docker-django/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="cc">
 <meta property="og:description" content="配置 在根目录创建Dockerfile FROM python:3 ENV PYTHONUNBUFFERED 1 WORKDIR &#x2F;code&#x2F;djangoblog&#x2F;   #RUN  apt-get install ln -sf &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai  &#x2F;etc&#x2F;localtime \ ADD requirements.txt requirement">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221120200528932.png">
@@ -49,6 +49,13 @@
 	
 <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+	
+		
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+		
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
 	
 
@@ -806,6 +813,23 @@ ENV PYTHONUNBU...',
 </script>
 
 
+	<div id="post_comment" class="card shadow-sm">
+		<div id="gitalk-container"></div>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+		clientID: '0db052c785602fe12dd7',
+		clientSecret: '7978b574772ee601665db9d7a95d3242e4d1049b',
+		repo: 'Gitalk',
+		owner: 'ccsh',
+		admin: ['ccsh'],
+		id: location.pathname,
+		distractionFreeMode: false
+	})
+	gitalk.render('gitalk-container');
+</script>
+
+	</div>
+
 
 
 
@@ -835,6 +859,13 @@ ENV PYTHONUNBU...',
 		
 		
 		
+
+		
+			<script>
+				var argonEnableCodeHighlight = true;
+			</script>
+			
+<link rel="stylesheet" href="/assets/vendor/highlight/styles/vs2015.css">
 
 		
 

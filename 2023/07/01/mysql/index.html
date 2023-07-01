@@ -3,17 +3,17 @@
 <html class="article-header-style-default">
 <head>
 	
-	<title>mysql - Hexo</title>
+	<title>mysql - cc</title>
 	<meta charset="utf-8">
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<meta name="description" content="MySql安装使用RPM安装MySQL 存储库rpm -Uvh https:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql57-community-release-el7-11.noarch.rpm  使用yum命令安装软件包yum install mysql-server  问题​		在这里会出现系统已经安装了与MySQL 5.7存储库关联的GPG密钥，但密钥不匹配正在尝试安装的软件包  解">
+	<meta name="description" content="使用RPM安装MySQL 存储库rpm -Uvh https:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql57-community-release-el7-11.noarch.rpm  使用yum命令安装软件包yum install mysql-server  问题​		在这里会出现系统已经安装了与MySQL 5.7存储库关联的GPG密钥，但密钥不匹配正在尝试安装的软件包  解决办法：解决办">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql">
 <meta property="og:url" content="http://example.com/2023/07/01/mysql/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="MySql安装使用RPM安装MySQL 存储库rpm -Uvh https:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql57-community-release-el7-11.noarch.rpm  使用yum命令安装软件包yum install mysql-server  问题​		在这里会出现系统已经安装了与MySQL 5.7存储库关联的GPG密钥，但密钥不匹配正在尝试安装的软件包  解">
+<meta property="og:site_name" content="cc">
+<meta property="og:description" content="使用RPM安装MySQL 存储库rpm -Uvh https:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql57-community-release-el7-11.noarch.rpm  使用yum命令安装软件包yum install mysql-server  问题​		在这里会出现系统已经安装了与MySQL 5.7存储库关联的GPG密钥，但密钥不匹配正在尝试安装的软件包  解决办法：解决办">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20230701160233875.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20230701155413611.png">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20230701161032743.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20230701162733347.png">
 <meta property="article:published_time" content="2023-07-01T07:36:15.000Z">
-<meta property="article:modified_time" content="2023-07-01T08:29:46.084Z">
+<meta property="article:modified_time" content="2023-07-01T17:12:17.625Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20230701160233875.png">
@@ -54,6 +54,13 @@
 	
 <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+	
+		
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+		
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
 	
 
@@ -585,7 +592,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-7-1 15:36:15 | 编辑于 2023-7-1 16:29:46">2023-7-1 15:36
+							<time title="发布于 2023-7-1 15:36:15 | 编辑于 2023-7-2 1:12:17">2023-7-1 15:36
 							</time>
 						</div>
 					
@@ -604,7 +611,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							843 字
+							929 字
 						</div>
 					
 						
@@ -612,7 +619,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							3 分钟
+							4 分钟
 						</div>
 					
 		</div>
@@ -620,7 +627,7 @@
 	</header>
 
 	<div class="post-content" id="post_content">
-		<h1 id="MySql安装"><a href="#MySql安装" class="headerlink" title="MySql安装"></a>MySql安装</h1><h2 id="使用RPM安装MySQL-存储库"><a href="#使用RPM安装MySQL-存储库" class="headerlink" title="使用RPM安装MySQL 存储库"></a>使用RPM安装MySQL 存储库</h2><pre><code>rpm -Uvh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+		<h2 id="使用RPM安装MySQL-存储库"><a href="#使用RPM安装MySQL-存储库" class="headerlink" title="使用RPM安装MySQL 存储库"></a>使用RPM安装MySQL 存储库</h2><pre><code>rpm -Uvh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 </code></pre>
 <h2 id="使用yum命令安装软件包"><a href="#使用yum命令安装软件包" class="headerlink" title="使用yum命令安装软件包"></a>使用yum命令安装软件包</h2><pre><code>yum install mysql-server
 </code></pre>
@@ -762,6 +769,26 @@ systemctl status mysqld
 
 </li>
 </ol>
+<h2 id="修改数据库密码"><a href="#修改数据库密码" class="headerlink" title="修改数据库密码"></a>修改数据库密码</h2><ol>
+<li><p>使用以下密码修改</p>
+<pre><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;Password23_&#39;;
+</code></pre>
+</li>
+<li><p>刷新数据库趣权限</p>
+<pre><code>flush privileges;
+</code></pre>
+</li>
+</ol>
+<h2 id="设置数据库远程权限"><a href="#设置数据库远程权限" class="headerlink" title="设置数据库远程权限"></a>设置数据库远程权限</h2><ol>
+<li><p>使用以下命令开启远程访问权限</p>
+<pre><code>grant all privileges on *.* to &#39;root&#39;@&#39;%&#39;identified by &#39;Password123_&#39; with grant option;
+</code></pre>
+</li>
+<li><p>刷新数据库权限</p>
+<pre><code>flush privileges;
+</code></pre>
+</li>
+</ol>
 
 	</div>
 
@@ -827,7 +854,7 @@ systemctl status mysqld
 <script type="text/javascript">
 	socialShare("#share", {
 	    title : 'mysql',
-	    description : 'MySql安装使用RPM安装MySQL 存储库rpm -Uvh https://dev.mysql....',
+	    description : '使用RPM安装MySQL 存储库rpm -Uvh https://dev.mysql.com/get...',
 	    wechatQrcodeTitle : "分享到微信",
 	    wechatQrcodeHelper : '微信扫描二维码',
 	    source : 'http://example.com/2023/07/01/mysql/'
@@ -876,6 +903,23 @@ systemctl status mysqld
 </script>
 
 
+	<div id="post_comment" class="card shadow-sm">
+		<div id="gitalk-container"></div>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+		clientID: '0db052c785602fe12dd7',
+		clientSecret: '7978b574772ee601665db9d7a95d3242e4d1049b',
+		repo: 'Gitalk',
+		owner: 'ccsh',
+		admin: ['ccsh'],
+		id: location.pathname,
+		distractionFreeMode: false
+	})
+	gitalk.render('gitalk-container');
+</script>
+
+	</div>
+
 
 
 
@@ -905,6 +949,13 @@ systemctl status mysqld
 		
 		
 		
+
+		
+			<script>
+				var argonEnableCodeHighlight = true;
+			</script>
+			
+<link rel="stylesheet" href="/assets/vendor/highlight/styles/vs2015.css">
 
 		
 

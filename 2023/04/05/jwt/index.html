@@ -3,7 +3,7 @@
 <html class="article-header-style-default">
 <head>
 	
-	<title>jwt - Hexo</title>
+	<title>jwt - cc</title>
 	<meta charset="utf-8">
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="jwt">
 <meta property="og:url" content="http://example.com/2023/04/05/jwt/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="cc">
 <meta property="og:description" content="什么是jwtJwt是JSON Web Tokens的简称，从单词可以看出它也是一种token，其实可以理解为一种生成token的框架或规范。既然也是token那我们可以换一种问法，token是什么？为什么要使用token？ token是什么Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个T">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-05T09:00:33.000Z">
@@ -47,6 +47,13 @@
 	
 <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+	
+		
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+		
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
 	
 
@@ -865,6 +872,23 @@ public class JwtUtil &#123;
 </script>
 
 
+	<div id="post_comment" class="card shadow-sm">
+		<div id="gitalk-container"></div>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+		clientID: '0db052c785602fe12dd7',
+		clientSecret: '7978b574772ee601665db9d7a95d3242e4d1049b',
+		repo: 'Gitalk',
+		owner: 'ccsh',
+		admin: ['ccsh'],
+		id: location.pathname,
+		distractionFreeMode: false
+	})
+	gitalk.render('gitalk-container');
+</script>
+
+	</div>
+
 
 
 
@@ -894,6 +918,13 @@ public class JwtUtil &#123;
 		
 		
 		
+
+		
+			<script>
+				var argonEnableCodeHighlight = true;
+			</script>
+			
+<link rel="stylesheet" href="/assets/vendor/highlight/styles/vs2015.css">
 
 		
 
