@@ -1,59 +1,720 @@
 <!DOCTYPE html>
-<html lang="zh">
+
+<html class="article-header-style-default">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>
-        Hexo
-    </title>
-    
-<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+	
+	<title>spring - Hexo</title>
+	<meta charset="utf-8">
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
+	<meta name="description" content="spring1.spring简介1.1spring是什么 ​	spring是分层的java SE&#x2F;EE应用full-stack轻量级开源框架，以Ioc（Inerse Of Control：反转控制）和AOP（Aspect Oriented Programming:面向切面编程）为内核  			 2.spring快速入门2.1开发步骤 导入spring 开发的基本包坐标 &#x2F;&#x2F;在pom文件导">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring">
+<meta property="og:url" content="http://example.com/2022/12/23/spring/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="spring1.spring简介1.1spring是什么 ​	spring是分层的java SE&#x2F;EE应用full-stack轻量级开源框架，以Ioc（Inerse Of Control：反转控制）和AOP（Aspect Oriented Programming:面向切面编程）为内核  			 2.spring快速入门2.1开发步骤 导入spring 开发的基本包坐标 &#x2F;&#x2F;在pom文件导">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221030230947237.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221030231228880.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221030231643599.png">
+<meta property="article:published_time" content="2022-12-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-23T08:36:01.754Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221030230947237.png">
 
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+	<meta name="theme-color" content="#5e72e4">
+	<meta name="theme-color-rgb" content="94,114,228">
+	<meta name="theme-color-origin" content="#5e72e4">
+	<meta name="argon-enable-custom-theme-color" content="true">
+	<meta name="theme-card-radius" content="4">
+	<meta name="theme-version" content="1.0.2">
+	<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
 
-    
-<link rel="stylesheet" href="/css/style.css">
+	
+<link rel="stylesheet" href="/assets/argon_css_merged.css">
 
+	
+<link rel="stylesheet" href="/style.css">
+
+	
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Open+Sans:300,400,600,700|Noto+Serif+SC:300,600&display=swap.css">
+
+	
+<script src="/assets/argon_js_merged.js"></script>
+
+	
+<script src="/assets/js/argon.min.js"></script>
+
+	
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+	
+
+	<script>
+		var argonConfig = {
+			language: "zh_CN",
+			
+				zoomify: {
+					duration: 200,
+					easing: "cubic-bezier(0.4,0,0,1)",
+					scale: 0.9
+				},
+			
+			pangu: "false",
+			
+				lazyload: {
+					threshold: 800,
+					effect: "fadeIn"
+				},
+			
+			disable_pjax: false,
+			headroom: false
+		}
+	</script>
+	<script>
+		var darkmodeAutoSwitch = "false";
+		function setDarkmode(enable){
+			if (enable == true){
+				$("html").addClass("darkmode");
+			}else{
+				$("html").removeClass("darkmode");
+			}
+			$(window).trigger("scroll");
+		}
+		function toggleDarkmode(){
+			if ($("html").hasClass("darkmode")){
+				setDarkmode(false);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "false");
+			}else{
+				setDarkmode(true);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "true");
+			}
+		}
+		if (sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true"){
+			setDarkmode(true);
+		}
+		function toggleDarkmodeByPrefersColorScheme(media){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			if (media.matches){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		function toggleDarkmodeByTime(){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			let hour = new Date().getHours();
+			if (hour < 7 || hour >= 22){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		if (darkmodeAutoSwitch == 'system'){
+			var darkmodeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+			darkmodeMediaQuery.addListener(toggleDarkmodeByPrefersColorScheme);
+			toggleDarkmodeByPrefersColorScheme(darkmodeMediaQuery);
+		}
+		if (darkmodeAutoSwitch == 'time'){
+			toggleDarkmodeByTime();
+		}
+		if (darkmodeAutoSwitch == 'alwayson'){
+			setDarkmode(true);
+		}
+
+		function toggleAmoledDarkMode(){
+			$("html").toggleClass("amoled-dark");
+			if ($("html").hasClass("amoled-dark")){
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "true");
+			}else{
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "false");
+			}
+		}
+		if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "true"){
+			$("html").addClass("amoled-dark");
+		}else if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "false"){
+			$("html").removeClass("amoled-dark");
+		}
+	</script>
+	<script>
+		if (navigator.userAgent.indexOf("Safari") !== -1 && navigator.userAgent.indexOf("Chrome") === -1){
+			$("html").addClass("using-safari");
+		}
+	</script>
+
+	
+		
+<script src="/assets/vendor/smoothscroll/smoothscroll1.js"></script>
+
+	
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-<body id="bodyx">
-    <div class="hd posts">
-    <a href="/index.html"><i class="fa fa-reply replay-btn" aria-hidden="true"></i></a>
-    <div class="post-title">
-        <p>
-            spring
-        </p>
-        <hr>
-    </div>
-    <div >
-        <div class="post-content"  >
-            <h1 id="spring"><a href="#spring" class="headerlink" title="spring"></a>spring</h1><h2 id="1-spring简介"><a href="#1-spring简介" class="headerlink" title="1.spring简介"></a>1.spring简介</h2><h3 id="1-1spring是什么"><a href="#1-1spring是什么" class="headerlink" title="1.1spring是什么"></a>1.1spring是什么</h3><ul>
+
+
+<style id="themecolor_css">
+	
+	:root{
+		--themecolor: #5e72e4;
+		--themecolor-dark0: #5368E2;
+		--themecolor-dark: #485FE0;
+		--themecolor-dark2: #324CDD;
+		--themecolor-dark3: #233DD2;
+		--themecolor-light: #8A98EB;
+		--themecolor-rgbstr: 94,114,228;
+		--themecolor-gradient: linear-gradient(150deg,var(--themecolor-light) 15%, var(--themecolor) 70%, var(--themecolor-dark0) 94%);
+
+	}
+</style>
+<style id="theme_cardradius_css">
+	:root{
+		--card-radius: 4px;
+	}
+</style>
+
+<body>
+<div id="toolbar">
+	<header class="header-global">
+		<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light bg-primary headroom--not-bottom headroom--not-top headroom--pinned">
+			<div class="container">
+				
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand" href="/">ccsh</a>
+				<div class="navbar-collapse collapse" id="navbar_global">
+					<div class="navbar-collapse-header">
+						<div class="row">
+							<div class="col-6 collapse-brand"></div>
+							<div class="col-6 collapse-close">
+								<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+									<span></span>
+									<span></span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<ul id="navbar_search_btn_mobile" class="navbar-nav align-items-lg-center ml-lg-auto">
+						<li class="nav-item" data-toggle="modal" data-target="#argon_search_modal" style="padding-left: 5px;">
+							<a class="nav-link nav-link-icon">
+								<i class="fa fa-search"></i>
+								<span class="nav-link-inner--text d-lg-none">搜索</span>
+							</a>
+						</li>
+					</ul>
+					
+							<ul class='navbar-nav navbar-nav-hover align-items-lg-center'>
+								
+										<li class='nav-item'>
+											<a href='/' class='nav-link' >
+												<i class='ni ni-book-bookmark d-lg-none'></i>
+												<span class='nav-link-inner--text'>首页</span>
+											</a>
+											
+										</li>
+									
+							</ul>
+						
+					<ul class="navbar-nav align-items-lg-center ml-lg-auto">
+						<li class="nav-item" data-toggle="modal" data-target="#argon_search_modal" id="navbar_search_btn_pc">
+							<a class="nav-link nav-link-icon">
+								<i class="fa fa-search"></i>
+								<span class="nav-link-inner--text d-lg-none">搜索</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				
+				<div id="navbar_menu_mask" data-toggle="collapse" data-target="#navbar_global"></div>
+			</div>
+		</nav>
+	</header>
+</div>
+<div class="modal fade" id="argon_search_modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">搜索</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<!-- TODO -->
+<div class="form-group mb-3">
+	<div class="input-group input-group-alternative">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fa fa-search"></i></span>
+		</div>
+		<input id="local-search-input" class="form-control" placeholder="搜索什么..." type="text"  autocomplete="off" data-search.path="search.xml" data-config.root="/">
+	</div>
+	<div id="local-search-result"></div>
+</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--Banner-->
+<section id="banner" class="banner section section-lg section-shaped">
+	<div class="shape shape-style-1 shape-primary">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+	
+	<div id="banner_container" class="banner-container container text-center">
+		
+			<div class="banner-title text-white"><span class="banner-title-inner">ccsh</span>
+		
+		</div>
+	</div>
+	
+		<style>
+			section.banner{
+				background-image: url(/assets/img/banner.jpg) !important;
+			}
+		</style>
+	
+</section>
+
+
+	<style>
+		#content:before {
+			content: '';
+			display: block;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: -2;
+			background: url(/assets/img/banner.jpg);
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 1;
+			transition: opacity .5s ease;
+		}
+		html.darkmode #content:before{
+			filter: brightness(0.65);
+		}
+		
+			#content:after {
+				content: '';
+				display: block;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				z-index: -2;
+				background: url(/assets/img/banner.jpg);
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+				opacity: 0;
+				transition: opacity .5s ease;
+			}
+			html.darkmode #content:after {
+				opacity: 1;
+			}
+			html.darkmode #content:before {
+				opacity: 0;
+			}
+		
+		
+			#banner, #banner .shape {
+				background: transparent !important;
+			}
+		
+	</style>
+
+
+
+
+<div id="float_action_buttons" class="float-action-buttons fabtns-unloaded">
+	<button id="fabtn_toggle_sides" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip-move-to-left="移至左侧" tooltip-move-to-right="移至右侧">
+		<span class="btn-inner--icon fabtn-show-on-right"><i class="fa fa-caret-left"></i></span>
+		<span class="btn-inner--icon fabtn-show-on-left"><i class="fa fa-caret-right"></i></span>
+	</button>
+	<button id="fabtn_back_to_top" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Back To Top" tooltip="回到顶部">
+		<span class="btn-inner--icon"><i class="fa fa-angle-up"></i></span>
+	</button>
+	<button id="fabtn_go_to_comment" class="btn btn-icon btn-neutral fabtn shadow-sm d-none" type="button" <-% theme.fab_show_gotocomment_button ? "" : "style='display: none;'"  aria-label="Comment" tooltip="评论">
+		<span class="btn-inner--icon"><i class="fa fa-comment-o"></i></span>
+	</button>
+	<button id="fabtn_toggle_darkmode" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" <-% theme.fab_show_darkmode_button ? "" : "style='display: none;'"  aria-label="Toggle Darkmode" tooltip-darkmode="夜间模式" tooltip-blackmode="暗黑模式" tooltip-lightmode="日间模式">
+		<span class="btn-inner--icon"><i class="fa fa-moon-o"></i><i class='fa fa-lightbulb-o'></i></span>
+	</button>
+	<button id="fabtn_toggle_blog_settings_popup" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" <-% theme.fab_show_settings_button ? "" : "style='display: none;'"  aria-label="Open Blog Settings Menu" tooltip="设置">
+		<span class="btn-inner--icon"><i class="fa fa-cog"></i></span>
+	</button>
+	<div id="fabtn_blog_settings_popup" class="card shadow-sm" style="opacity: 0;" aria-hidden="true">
+		<div id="close_blog_settings"><i class="fa fa-close"></i></div>
+		<div class="blog-setting-item mt-3">
+			<div style="transform: translateY(-4px);"><div id="blog_setting_toggle_darkmode_and_amoledarkmode" tooltip-switch-to-darkmode="切换到夜间模式" tooltip-switch-to-blackmode="切换到暗黑模式"><span>夜间模式</span><span>暗黑模式</span></div></div>
+			<div style="flex: 1;"></div>
+			<label id="blog_setting_darkmode_switch" class="custom-toggle">
+				<span class="custom-toggle-slider rounded-circle"></span>
+			</label>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">字体</div>
+			<div>
+				<button id="blog_setting_font_sans_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-left">Sans Serif</button><button id="blog_setting_font_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-right">Serif</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">阴影</div>
+			<div>
+				<button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button><button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3 mb-3">
+			<div style="flex: 1;">滤镜</div>
+			<div id="blog_setting_filters" class="ml-3">
+				<button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0" filter-name="off">关闭</button>
+				<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
+				<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
+				<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mb-3">
+			<div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
+			<div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
+				<div id="blog_setting_card_radius"></div>
+			</div>
+		</div>
+		
+			<div class="blog-setting-item mt-1 mb-3">
+				<div style="flex: 1;">主题色</div>
+				<div id="theme-color-picker" class="ml-3"></div>
+			</div>
+		
+	</div>
+	<button id="fabtn_open_sidebar" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Open Sidebar Menu" tooltip="菜单">
+		<span class="btn-inner--icon"><i class="fa fa-bars"></i></span>
+	</button>
+	<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip="阅读进度">
+		<div id="fabtn_reading_progress_bar" style="width: 0%;"></div>
+		<span id="fabtn_reading_progress_details">0%</span>
+	</button>
+</div>
+
+<div id="content" class="site-content">
+
+
+
+
+
+
+
+
+
+<div class="page-information-card-container">
+	
+</div>
+
+<div id="sidebar_mask"></div>
+<aside id="leftbar" class="leftbar widget-area" role="complementary">
+		
+		<div id="leftbar_part1" class="widget widget_search card bg-white shadow-sm border-0">
+			<div class="leftbar-banner card-body">
+				<span class="leftbar-banner-title text-white">ccsh</span>
+				
+				
+			</div>
+			
+			
+				<ul id='leftbar_part1_menu' class='leftbar-menu'>
+					<li class='leftbar-menu-item'><a href='/'>首页</a></li><li class='leftbar-menu-item'><a href='/archives'>归档</a></li>
+				</ul>
+			
+			<div class="card-body text-center leftbar-search-button">
+				<button id="leftbar_search" class="btn btn-secondary btn-lg active btn-sm btn-block border-0" role="button" data-toggle="modal" data-target="#argon_search_modal" >
+					<i class="menu-item-icon fa fa-search mr-0"></i> 搜索
+				</button>
+			</div>
+		</div>
+		<div id="leftbar_part2" class="widget widget_search card bg-white shadow-sm border-0">
+			<div id="leftbar_part2_inner" class="card-body">
+				
+				<div class="nav-wrapper" style="padding-top: 5px;">
+	                <ul class="nav nav-pills nav-fill" role="tablist">
+						
+							<li class="nav-item sidebar-tab-switcher">
+								<a class="active show" id="leftbar_tab_catalog_btn" data-toggle="tab" href="#leftbar_tab_catalog" role="tab" aria-controls="leftbar_tab_catalog" no-pjax>文章目录</a>
+							</li>
+						
+						<li class="nav-item sidebar-tab-switcher">
+							<a class="" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax>站点概览</a>
+						</li>
+	                </ul>
+				</div>
+				<div>
+					<div class="tab-content" style="padding: 10px 10px 0 10px;">
+						
+							<div class="tab-pane fade active show" id="leftbar_tab_catalog" role="tabpanel" aria-labelledby="leftbar_tab_catalog_btn">
+								<div id="leftbar_catalog"></div>
+								<script type="text/javascript">
+									$(function () {
+										$(document).headIndex({
+											articleWrapSelector: '#post_content',
+											indexBoxSelector: '#leftbar_catalog',
+											subItemBoxClass: "index-subItem-box",
+											itemClass: "index-item",
+											linkClass: "index-link",
+											offset: 80,
+										});
+									})
+								</script>
+								
+							</div>
+						
+						<div class="tab-pane fade text-center" id="leftbar_tab_overview" role="tabpanel" aria-labelledby="leftbar_tab_overview_btn">
+							<img id="leftbar_overview_author_image" src="https://raw.githubusercontent.com/csh1311/blogImage/main/head.jpg" class="img-fluid rounded-circle shadow-sm" style="width: 100px;" alt="avatar">
+							<h6 id="leftbar_overview_author_name">cc</h6>
+							<nav class="site-state">
+								<div class="site-state-item site-state-posts">
+									<a href="/archives">
+										<span class="site-state-item-count">8</span>
+										<span class="site-state-item-name">文章</span>
+									</a>
+								</div>
+								<div class="site-state-item site-state-categories">
+									<a data-toggle="modal" data-target="#blog_categories">
+										<span class="site-state-item-count">0</span>
+										<span class="site-state-item-name">分类</span>
+									</a>
+								</div>      
+								<div class="site-state-item site-state-tags">
+									<a data-toggle="modal" data-target="#blog_tags">
+										<span class="site-state-item-count">0</span>
+										<span class="site-state-item-name">标签</span>
+									</a>
+								</div>
+							</nav>
+							
+									<div class="site-author-links">
+										
+											<div class='site-author-links-item'>
+												<a href="https://github.com/csh1311" rel='noopener' target='_blank'>GitHub</a>
+											</div>
+										
+											<div class='site-author-links-item'>
+												<a href="/" rel='noopener' target='_blank'>Telegram</a>
+											</div>
+										
+									</div>
+								
+							
+									<div class='site-friend-links'>
+										<div class='site-friend-links-title'><i class='fa fa-fw fa-link'></i> Links</div>
+										<ul class='site-friend-links-ul'>
+											
+										</ul>
+									</div>
+								
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</aside>
+<div class="modal fade" id="blog_categories" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">分类</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="blog_tags" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">标签</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+		
+		
+			
+	<article class="post post-full card bg-white shadow-sm border-0 ">
+	<header class="post-header text-center">
+		
+		<a class="post-title" href="/2022/12/23/spring/">spring</a>
+		<div class="post-meta">
+			
+						
+						<div class="post-meta-detail post-meta-detail-time">
+							<i class="fa fa-clock-o" aria-hidden="true"></i>
+							<time title="发布于 2022-12-23 0:00:00 | 编辑于 2022-12-23 16:36:01">2022-12-23 0:00
+							</time>
+						</div>
+					
+						
+							<div class="post-meta-devide">|</div>
+						
+						<div class="post-meta-detail post-meta-detail-words">
+							<i class="fa fa fa-book" aria-hidden="true"></i>
+							<span id="busuanzi_container_page_pv">
+								阅读<span id="busuanzi_value_page_pv"></span>次
+							</span>
+						</div>
+					
+						
+							<div class="post-meta-devide">|</div>
+						
+						<div class="post-meta-detail post-meta-detail-words">
+							<i class="fa fa-file-word-o" aria-hidden="true"></i>
+							3.4k 字
+						</div>
+					
+						
+							<div class="post-meta-devide">|</div>
+						
+						<div class="post-meta-detail post-meta-detail-readingtime">
+							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+							17 分钟
+						</div>
+					
+		</div>
+		
+	</header>
+
+	<div class="post-content" id="post_content">
+		<h1 id="spring"><a href="#spring" class="headerlink" title="spring"></a>spring</h1><h2 id="1-spring简介"><a href="#1-spring简介" class="headerlink" title="1.spring简介"></a>1.spring简介</h2><h3 id="1-1spring是什么"><a href="#1-1spring是什么" class="headerlink" title="1.1spring是什么"></a>1.1spring是什么</h3><ul>
 <li>​	spring是分层的java SE&#x2F;EE应用full-stack轻量级开源框架，以Ioc（Inerse Of Control：反转控制）和AOP（Aspect Oriented Programming:面向切面编程）为内核</li>
 </ul>
 <p>			</p>
 <h2 id="2-spring快速入门"><a href="#2-spring快速入门" class="headerlink" title="2.spring快速入门"></a>2.spring快速入门</h2><h3 id="2-1开发步骤"><a href="#2-1开发步骤" class="headerlink" title="2.1开发步骤"></a>2.1开发步骤</h3><ol>
 <li><p>导入spring 开发的基本包坐标</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//在pom文件导入</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-context&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;5.3.22&lt;/version&gt;</span><br><span class="line"> &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>//在pom文件导入
+&lt;dependency&gt;
+     &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+      &lt;version&gt;5.3.22&lt;/version&gt;
+ &lt;/dependency&gt;
+</code></pre>
 </li>
 <li><p>编写Dao接口和实现类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.dao;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/15</span><br><span class="line"> * Time: 16:48</span><br><span class="line"> * 需求：接口</span><br><span class="line"> */</span><br><span class="line">public interface UserDao &#123;</span><br><span class="line">    public void  save();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="spring">package com.cfc.it.spring_ioc.dao;
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.dao.impl;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.dao.UserDao;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/15</span><br><span class="line"> * Time: 16:49</span><br><span class="line"> * 需求：实现类</span><br><span class="line"> */</span><br><span class="line">public class UserDaoImpl implements UserDao &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void save() &#123;</span><br><span class="line">        System.out.println(&quot;save running...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/15
+ * Time: 16:48
+ * 需求：接口
+ */
+public interface UserDao &#123;
+    public void  save();
+&#125;
+</code></pre>
+<pre><code>package com.cfc.it.spring_ioc.dao.impl;
 
+import com.cfc.it.spring_ioc.dao.UserDao;
 
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/15
+ * Time: 16:49
+ * 需求：实现类
+ */
+public class UserDaoImpl implements UserDao &#123;
+
+    @Override
+    public void save() &#123;
+        System.out.println(&quot;save running...&quot;);
+    &#125;
+&#125;
+</code></pre>
 </li>
 <li><p>创建spring核心配置文件</p>
 <p>在resource下创建spring配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+
+&lt;/beans&gt;
+</code></pre>
 </li>
 <li><p>在spring配置文件中配置UserDaoImpl</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--    配置spring xml id的名字随便起 class指向UserDao实现类--&gt;</span><br><span class="line">    &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot;&gt;&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+&lt;!--    配置spring xml id的名字随便起 class指向UserDao实现类--&gt;
+    &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot;&gt;&lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
 </li>
 <li><p>使用spring 的API获得Bean实例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.demo;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.dao.UserDao;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/15</span><br><span class="line"> * Time: 16:56</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class UserDaoDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        //使用spring 中ApplicationContext对象创建getBean</span><br><span class="line">        ApplicationContext app = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">        //参数是spring xml配置的id名称</span><br><span class="line">        UserDao userDao = (UserDao) app.getBean(&quot;userDao&quot;);</span><br><span class="line">        userDao.save();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre><code>package com.cfc.it.spring_ioc.demo;
+
+import com.cfc.it.spring_ioc.dao.UserDao;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/15
+ * Time: 16:56
+ * 需求：
+ */
+public class UserDaoDemo &#123;
+    public static void main(String[] args) &#123;
+
+        //使用spring 中ApplicationContext对象创建getBean
+        ApplicationContext app = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+        //参数是spring xml配置的id名称
+        UserDao userDao = (UserDao) app.getBean(&quot;userDao&quot;);
+        userDao.save();
+    &#125;
+
+&#125;
+</code></pre>
+</li>
 </ol>
 <h3 id="2-2-spring配置文件"><a href="#2-2-spring配置文件" class="headerlink" title="2.2 spring配置文件"></a>2.2 spring配置文件</h3><h4 id="2-2-1-Bean标签基本配置"><a href="#2-2-1-Bean标签基本配置" class="headerlink" title="2.2.1 Bean标签基本配置"></a>2.2.1 Bean标签基本配置</h4><p>用于配置对象交由spring来创建</p>
 <p>默认情况下它调用的是类中的无参构造函数，如果没有无参构造函数则不能创建成功</p>
@@ -93,8 +754,60 @@
 <td>web项目中，应用在Portlet环境，如果没有Portlet环境那么global session相当于session</td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">//导入测试包</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;3.8.2&lt;/version&gt;</span><br><span class="line">     &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line">  </span><br><span class="line">  2.配置spring xml文件scope 参数singleton或者 prototype</span><br><span class="line">     &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot; scope=&quot;singleton&quot;&gt;&lt;/bean&gt;</span><br><span class="line">    </span><br><span class="line">  3.测试</span><br><span class="line">  package com.cfc.it.spring_ioc;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.dao.UserDao;</span><br><span class="line">import org.junit.Test;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/15</span><br><span class="line"> * Time: 17:27</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class SpringTest &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    //测试scope属性</span><br><span class="line">    public void text1() &#123;</span><br><span class="line"></span><br><span class="line">        //使用spring 中ApplicationContext对象创建getBean</span><br><span class="line">        ApplicationContext app = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">        //参数是spring xml配置的id名称</span><br><span class="line">        UserDao userDao = (UserDao) app.getBean(&quot;userDao&quot;);</span><br><span class="line">        UserDao userDao1 = (UserDao) app.getBean(&quot;userDao&quot;);</span><br><span class="line">        //如果spring xml文件中bena参数scope 参数是singleton 两个地址值一样就是单例的</span><br><span class="line">        System.out.println(userDao);  //com.cfc.it.spring_ioc.dao.impl.UserDaoImpl@72d818d1</span><br><span class="line">        System.out.println(userDao1);  //com.cfc.it.spring_ioc.dao.impl.UserDaoImpl@72d818d1</span><br><span class="line"></span><br><span class="line">        //如果spring xml文件中bena参数scope 参数是prototype  两个地址值不一样就是多例的</span><br><span class="line">        System.out.println(userDao);  //com.cfc.it.spring_ioc.dao.impl.UserDaoImpl@5bcab519</span><br><span class="line">        System.out.println(userDao1); //com.cfc.it.spring_ioc.dao.impl.UserDaoImpl@e45f292</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+<pre><code>//导入测试包
+  &lt;dependency&gt;
+     &lt;groupId&gt;junit&lt;/groupId&gt;
+     &lt;artifactId&gt;junit&lt;/artifactId&gt;
+     &lt;version&gt;3.8.2&lt;/version&gt;
+     &lt;scope&gt;test&lt;/scope&gt;
+  &lt;/dependency&gt;
+  
+  2.配置spring xml文件scope 参数singleton或者 prototype
+     &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot; scope=&quot;singleton&quot;&gt;&lt;/bean&gt;
+    
+  3.测试
+  package com.cfc.it.spring_ioc;
 
+import com.cfc.it.spring_ioc.dao.UserDao;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/15
+ * Time: 17:27
+ * 需求：
+ */
+public class SpringTest &#123;
+
+
+    @Test
+    //测试scope属性
+    public void text1() &#123;
+
+        //使用spring 中ApplicationContext对象创建getBean
+        ApplicationContext app = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+        //参数是spring xml配置的id名称
+        UserDao userDao = (UserDao) app.getBean(&quot;userDao&quot;);
+        UserDao userDao1 = (UserDao) app.getBean(&quot;userDao&quot;);
+        //如果spring xml文件中bena参数scope 参数是singleton 两个地址值一样就是单例的
+        System.out.println(userDao);  //com.cfc.it.spring_ioc.dao.impl.UserDaoImpl@72d818d1
+        System.out.println(userDao1);  //com.cfc.it.spring_ioc.dao.impl.UserDaoImpl@72d818d1
+
+        //如果spring xml文件中bena参数scope 参数是prototype  两个地址值不一样就是多例的
+        System.out.println(userDao);  //com.cfc.it.spring_ioc.dao.impl.UserDaoImpl@5bcab519
+        System.out.println(userDao1); //com.cfc.it.spring_ioc.dao.impl.UserDaoImpl@e45f292
+    &#125;
+
+&#125;
+
+  
+  
+</code></pre>
 <p>总结</p>
 <ol>
 <li>当scope的取值为singleton时<ul>
@@ -127,16 +840,62 @@
 </ul>
 </li>
 <li><p>工厂静态方法实例化</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.factoy;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.dao.UserDao;</span><br><span class="line">import com.cfc.it.spring_ioc.dao.impl.UserDaoImpl;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/30</span><br><span class="line"> * Time: 0:35</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public class StaticFactory &#123;</span><br><span class="line"></span><br><span class="line">    //工厂静态方法实例化</span><br><span class="line">    private static UserDao getUserDao()&#123;</span><br><span class="line">        return new UserDaoImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<pre><code>package com.cfc.it.spring_ioc.factoy;
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#spring配置文件</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.factoy.StaticFactory&quot; factory-method=&quot;getUserDao&quot; &gt;&lt;/bean</span><br></pre></td></tr></table></figure>
+import com.cfc.it.spring_ioc.dao.UserDao;
+import com.cfc.it.spring_ioc.dao.impl.UserDaoImpl;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/30
+ * Time: 0:35
+ * 需求：
+ */
+
+public class StaticFactory &#123;
+
+    //工厂静态方法实例化
+    private static UserDao getUserDao()&#123;
+        return new UserDaoImpl();
+    &#125;
+&#125;
 
 
+ 
+</code></pre>
+<pre><code> #spring配置文件
+ 
+ &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.factoy.StaticFactory&quot; factory-method=&quot;getUserDao&quot; &gt;&lt;/bean
+</code></pre>
 </li>
 <li><p>工厂实例方法实例化</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.factoy;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.dao.UserDao;</span><br><span class="line">import com.cfc.it.spring_ioc.dao.impl.UserDaoImpl;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/30</span><br><span class="line"> * Time: 0:47</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class DynamicFactory &#123;</span><br><span class="line"></span><br><span class="line">    //工厂实例方法实例化</span><br><span class="line">    public UserDao getUserDao()&#123;</span><br><span class="line">        return new UserDaoImpl();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>package com.cfc.it.spring_ioc.factoy;
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--    工厂实例方法实例化配置--&gt;</span><br><span class="line">    &lt;bean id=&quot;factory&quot; class=&quot;com.cfc.it.spring_ioc.factoy.DynamicFactory&quot;&gt;&lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;userDao&quot; factory-bean=&quot;factory&quot; factory-method=&quot;getUserDao&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure></li>
+import com.cfc.it.spring_ioc.dao.UserDao;
+import com.cfc.it.spring_ioc.dao.impl.UserDaoImpl;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/30
+ * Time: 0:47
+ * 需求：
+ */
+public class DynamicFactory &#123;
+
+    //工厂实例方法实例化
+    public UserDao getUserDao()&#123;
+        return new UserDaoImpl();
+    &#125;
+
+&#125;
+</code></pre>
+<pre><code>&lt;!--    工厂实例方法实例化配置--&gt;
+    &lt;bean id=&quot;factory&quot; class=&quot;com.cfc.it.spring_ioc.factoy.DynamicFactory&quot;&gt;&lt;/bean&gt;
+    &lt;bean id=&quot;userDao&quot; factory-bean=&quot;factory&quot; factory-method=&quot;getUserDao&quot;&gt;&lt;/bean&gt;
+</code></pre>
+</li>
 </ul>
 <h3 id="2-3spring-Bean依赖注入"><a href="#2-3spring-Bean依赖注入" class="headerlink" title="2.3spring Bean依赖注入"></a>2.3spring Bean依赖注入</h3><ul>
 <li><p>​	依赖注入（dependency Injection）：它是spring框架核心IOC的具体实现</p>
@@ -150,51 +909,238 @@
 </ul>
 <h4 id="2-3-1Bean依赖注入方式"><a href="#2-3-1Bean依赖注入方式" class="headerlink" title="2.3.1Bean依赖注入方式"></a>2.3.1Bean依赖注入方式</h4><p>怎么将UserDao怎么样注入到UserService内部呢？</p>
 <p>dao层</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.dao.impl;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.dao.UserDao;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/15</span><br><span class="line"> * Time: 16:49</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class UserDaoImpl implements UserDao &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void save() &#123;</span><br><span class="line">        System.out.println(&quot;save running...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>package com.cfc.it.spring_ioc.dao.impl;
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.dao;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/15</span><br><span class="line"> * Time: 16:48</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public interface UserDao &#123;</span><br><span class="line">    public void  save();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+import com.cfc.it.spring_ioc.dao.UserDao;
 
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/15
+ * Time: 16:49
+ * 需求：
+ */
+public class UserDaoImpl implements UserDao &#123;
 
+    @Override
+    public void save() &#123;
+        System.out.println(&quot;save running...&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>package com.cfc.it.spring_ioc.dao;
 
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/15
+ * Time: 16:48
+ * 需求：
+ */
+public interface UserDao &#123;
+    public void  save();
+&#125;
+</code></pre>
 <ul>
 <li><p>构造方法</p>
 <ul>
 <li><p>service层</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.service.impl;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.dao.UserDao;</span><br><span class="line">import com.cfc.it.spring_ioc.service.UserService;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/30</span><br><span class="line"> * Time: 1:05</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class UserServiceImpl implements UserService &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //这时候通过构造方法依赖注入，这里配置了但是spring不知道</span><br><span class="line">    //需要在spring 配置文件配置</span><br><span class="line">    private UserDao userDao;</span><br><span class="line"></span><br><span class="line">    public UserServiceImpl(UserDao userDao) &#123;</span><br><span class="line">        this.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public UserServiceImpl() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void service() &#123;</span><br><span class="line">        userDao.save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>package com.cfc.it.spring_ioc.service.impl;
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.service;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/30</span><br><span class="line"> * Time: 1:04</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public interface UserService &#123;</span><br><span class="line">    </span><br><span class="line">    public void service();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+import com.cfc.it.spring_ioc.dao.UserDao;
+import com.cfc.it.spring_ioc.service.UserService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/30
+ * Time: 1:05
+ * 需求：
+ */
+public class UserServiceImpl implements UserService &#123;
+
+
+    //这时候通过构造方法依赖注入，这里配置了但是spring不知道
+    //需要在spring 配置文件配置
+    private UserDao userDao;
+
+    public UserServiceImpl(UserDao userDao) &#123;
+        this.userDao = userDao;
+    &#125;
+
+    public UserServiceImpl() &#123;
+    &#125;
+
+    @Override
+    public void service() &#123;
+        userDao.save();
+    &#125;
+&#125;
+</code></pre>
+<pre><code>package com.cfc.it.spring_ioc.service;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/30
+ * Time: 1:04
+ * 需求：
+ */
+public interface UserService &#123;
+    
+    public void service();
+
+&#125;
+</code></pre>
 </li>
 <li><p>controller</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.controller;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.service.UserService;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: </span><br><span class="line"> * Date: 2022/10/30</span><br><span class="line"> * Time: 1:08</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">        UserService userService = (UserService) applicationContext.getBean(&quot;userService&quot;);</span><br><span class="line">        userService.service();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>package com.cfc.it.spring_ioc.controller;
+
+import com.cfc.it.spring_ioc.service.UserService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 
+ * Date: 2022/10/30
+ * Time: 1:08
+ * 需求：
+ */
+public class UserController &#123;
+
+    public static void main(String[] args) &#123;
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+        UserService userService = (UserService) applicationContext.getBean(&quot;userService&quot;);
+        userService.service();
+    &#125;
+&#125;
+</code></pre>
 </li>
 <li><p>xml配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--    配置spring xml id的名字随便起 class指向UserDao实现类--&gt;</span><br><span class="line">    &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot;&gt;&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;bean id=&quot;userService&quot; class=&quot;com.cfc.it.spring_ioc.service.impl.UserServiceImpl&quot;&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;userDao&quot; ref=&quot;userDao&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure></li>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+&lt;!--    配置spring xml id的名字随便起 class指向UserDao实现类--&gt;
+    &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot;&gt;&lt;/bean&gt;
+
+
+    &lt;bean id=&quot;userService&quot; class=&quot;com.cfc.it.spring_ioc.service.impl.UserServiceImpl&quot;&gt;
+        &lt;constructor-arg name=&quot;userDao&quot; ref=&quot;userDao&quot;&gt;&lt;/constructor-arg&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+</li>
 </ul>
 </li>
 <li><p>set方法</p>
 <ul>
 <li><p>service层</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.service.impl;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.dao.UserDao;</span><br><span class="line">import com.cfc.it.spring_ioc.service.UserService;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/30</span><br><span class="line"> * Time: 1:05</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class UserServiceImpl implements UserService &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //这时候通过set方法依赖注入，这里配置了但是spring不知道</span><br><span class="line">    //需要在spring 配置文件配置property</span><br><span class="line">    private UserDao userDao;</span><br><span class="line"></span><br><span class="line">    public void setUserDao(UserDao userDao) &#123;</span><br><span class="line">        this.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void service() &#123;</span><br><span class="line">        userDao.save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>package com.cfc.it.spring_ioc.service.impl;
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.service;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/30</span><br><span class="line"> * Time: 1:04</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public interface UserService &#123;</span><br><span class="line">    </span><br><span class="line">    public void service();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+import com.cfc.it.spring_ioc.dao.UserDao;
+import com.cfc.it.spring_ioc.service.UserService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/30
+ * Time: 1:05
+ * 需求：
+ */
+public class UserServiceImpl implements UserService &#123;
 
 
+    //这时候通过set方法依赖注入，这里配置了但是spring不知道
+    //需要在spring 配置文件配置property
+    private UserDao userDao;
+
+    public void setUserDao(UserDao userDao) &#123;
+        this.userDao = userDao;
+    &#125;
+
+    @Override
+    public void service() &#123;
+        userDao.save();
+    &#125;
+&#125;
+</code></pre>
+<pre><code>package com.cfc.it.spring_ioc.service;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/30
+ * Time: 1:04
+ * 需求：
+ */
+public interface UserService &#123;
+    
+    public void service();
+
+&#125;
+</code></pre>
 </li>
 <li><p>controller</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.controller;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.service.UserService;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: </span><br><span class="line"> * Date: 2022/10/30</span><br><span class="line"> * Time: 1:08</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">        UserService userService = (UserService) applicationContext.getBean(&quot;userService&quot;);</span><br><span class="line">        userService.service();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>package com.cfc.it.spring_ioc.controller;
+
+import com.cfc.it.spring_ioc.service.UserService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 
+ * Date: 2022/10/30
+ * Time: 1:08
+ * 需求：
+ */
+public class UserController &#123;
+
+    public static void main(String[] args) &#123;
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+        UserService userService = (UserService) applicationContext.getBean(&quot;userService&quot;);
+        userService.service();
+    &#125;
+&#125;
+</code></pre>
 </li>
 <li><p>xml配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--    配置spring xml id的名字随便起 class指向UserDao实现类--&gt;</span><br><span class="line">    &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot;&gt;&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;bean id=&quot;userService&quot; class=&quot;com.cfc.it.spring_ioc.service.impl.UserServiceImpl&quot;&gt;</span><br><span class="line">		    </span><br><span class="line">        &lt;property name=&quot;userDao&quot; ref=&quot;userDao&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
 
+&lt;!--    配置spring xml id的名字随便起 class指向UserDao实现类--&gt;
+    &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot;&gt;&lt;/bean&gt;
+
+
+
+    &lt;bean id=&quot;userService&quot; class=&quot;com.cfc.it.spring_ioc.service.impl.UserServiceImpl&quot;&gt;
+            
+        &lt;property name=&quot;userDao&quot; ref=&quot;userDao&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
 <ul>
 <li><p>set方法注入xml配置P命名空间注入</p>
 <ul>
 <li><p>P命名空间注入本质也是set方法注入，但比起上述的set方法注入更加方便，主要体现在配置文件中：如下</p>
 <p>首先，需要引入P命名空间</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlns:p=&quot;http://www.springframework.org/schema/p</span><br></pre></td></tr></table></figure>
-
+<pre><code>xmlns:p=&quot;http://www.springframework.org/schema/p
+</code></pre>
 <p>其次，需要修改注入方式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;userService&quot; class=&quot;com.cfc.it.spring_ioc.service.impl.UserServiceImpl&quot; p:userDao-ref=&quot;userDao&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure></li>
+<pre><code>&lt;bean id=&quot;userService&quot; class=&quot;com.cfc.it.spring_ioc.service.impl.UserServiceImpl&quot; p:userDao-ref=&quot;userDao&quot;&gt;&lt;/bean&gt;
+</code></pre>
+</li>
 </ul>
 </li>
 </ul>
@@ -207,11 +1153,53 @@
 <ul>
 <li><p>普通数据类型</p>
 <p>dao</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.dao.impl;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.dao.UserDao;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/15</span><br><span class="line"> * Time: 16:49</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class UserDaoImpl implements UserDao &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private String username;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getUsername() &#123;</span><br><span class="line">        return username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUsername(String username) &#123;</span><br><span class="line">        this.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void save() &#123;</span><br><span class="line">        System.out.println(username+&quot;====&quot;+age);</span><br><span class="line">        System.out.println(&quot;save running...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>package com.cfc.it.spring_ioc.dao.impl;
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--    配置spring xml id的名字随便起 class指向UserDao实现类--&gt;</span><br><span class="line">    &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;username&quot; value=&quot;zhangsan&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;age&quot; value=&quot;18&quot;&gt;&lt;/property&gt;</span><br><span class="line">     &lt;/bean&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+import com.cfc.it.spring_ioc.dao.UserDao;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/15
+ * Time: 16:49
+ * 需求：
+ */
+public class UserDaoImpl implements UserDao &#123;
 
 
+
+    private String username;
+    private int age;
+
+    public String getUsername() &#123;
+        return username;
+    &#125;
+
+    public void setUsername(String username) &#123;
+        this.username = username;
+    &#125;
+
+    public int getAge() &#123;
+        return age;
+    &#125;
+
+    public void setAge(int age) &#123;
+        this.age = age;
+    &#125;
+
+    @Override
+    public void save() &#123;
+        System.out.println(username+&quot;====&quot;+age);
+        System.out.println(&quot;save running...&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>&lt;!--    配置spring xml id的名字随便起 class指向UserDao实现类--&gt;
+    &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot;&gt;
+        &lt;property name=&quot;username&quot; value=&quot;zhangsan&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;age&quot; value=&quot;18&quot;&gt;&lt;/property&gt;
+     &lt;/bean&gt;
+</code></pre>
 </li>
 <li><p>引用数据类型</p>
 <ul>
@@ -219,27 +1207,128 @@
 </ul>
 </li>
 <li><p>集合数据类型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">package com.cfc.it.spring_ioc.dao.impl;</span><br><span class="line"></span><br><span class="line">import com.cfc.it.spring_ioc.dao.UserDao;</span><br><span class="line">import com.cfc.it.spring_ioc.model.User;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.Properties;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created with IntelliJ IDEA.</span><br><span class="line"> * creator: 蔡芳灿</span><br><span class="line"> * Date: 2022/10/15</span><br><span class="line"> * Time: 16:49</span><br><span class="line"> * 需求：</span><br><span class="line"> */</span><br><span class="line">public class UserDaoImpl implements UserDao &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private List&lt;String&gt; list;</span><br><span class="line">    private Map&lt;String, User&gt; userMap;</span><br><span class="line">    private Properties properties;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public List&lt;String&gt; getList() &#123;</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setList(List&lt;String&gt; list) &#123;</span><br><span class="line">        this.list = list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Map&lt;String, User&gt; getUserMap() &#123;</span><br><span class="line">        return userMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUserMap(Map&lt;String, User&gt; userMap) &#123;</span><br><span class="line">        this.userMap = userMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Properties getProperties() &#123;</span><br><span class="line">        return properties;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setProperties(Properties properties) &#123;</span><br><span class="line">        this.properties = properties;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void save() &#123;</span><br><span class="line">        System.out.println(list);</span><br><span class="line">        System.out.println(userMap);</span><br><span class="line">        System.out.println(properties);</span><br><span class="line">        System.out.println(&quot;save running...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>package com.cfc.it.spring_ioc.dao.impl;
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--    配置spring xml id的名字随便起 class指向UserDao实现类--&gt;</span><br><span class="line">    &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot;&gt;</span><br><span class="line">&lt;!--        集合list注入--&gt;</span><br><span class="line">        &lt;property name=&quot;list&quot;&gt;</span><br><span class="line">            &lt;list&gt;</span><br><span class="line">                &lt;value&gt;aaa&lt;/value&gt;</span><br><span class="line">                &lt;value&gt;ccc&lt;/value&gt;</span><br><span class="line">                &lt;value&gt;ddd&lt;/value&gt;</span><br><span class="line">                &lt;value&gt;bbb&lt;/value&gt;</span><br><span class="line">            &lt;/list&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--        集合map注入--&gt;</span><br><span class="line">        &lt;property name=&quot;userMap&quot;&gt;</span><br><span class="line">            &lt;map&gt;</span><br><span class="line">                &lt;entry key=&quot;u1&quot; value-ref=&quot;user&quot;&gt;&lt;/entry&gt;</span><br><span class="line">                &lt;entry key=&quot;u2&quot; value-ref=&quot;user2&quot;&gt;&lt;/entry&gt;</span><br><span class="line">            &lt;/map&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">    &lt;property name=&quot;properties&quot; &gt;</span><br><span class="line">        &lt;props&gt;</span><br><span class="line">            &lt;prop key=&quot;dddd&quot;&gt;1&lt;/prop&gt;</span><br><span class="line">            &lt;prop key=&quot;dda&quot;&gt;2&lt;/prop&gt;</span><br><span class="line">        &lt;/props&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">     &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;bean id=&quot;user&quot; class=&quot;com.cfc.it.spring_ioc.model.User&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;username&quot; value=&quot;zhangsan&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;age&quot; value=&quot;18&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;user2&quot; class=&quot;com.cfc.it.spring_ioc.model.User&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;username&quot; value=&quot;lisi&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;age&quot; value=&quot;20&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+import com.cfc.it.spring_ioc.dao.UserDao;
+import com.cfc.it.spring_ioc.model.User;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+/**
+ * Created with IntelliJ IDEA.
+ * creator: 蔡芳灿
+ * Date: 2022/10/15
+ * Time: 16:49
+ * 需求：
+ */
+public class UserDaoImpl implements UserDao &#123;
+
+
+    private List&lt;String&gt; list;
+    private Map&lt;String, User&gt; userMap;
+    private Properties properties;
+
+
+    public List&lt;String&gt; getList() &#123;
+        return list;
+    &#125;
+
+    public void setList(List&lt;String&gt; list) &#123;
+        this.list = list;
+    &#125;
+
+    public Map&lt;String, User&gt; getUserMap() &#123;
+        return userMap;
+    &#125;
+
+    public void setUserMap(Map&lt;String, User&gt; userMap) &#123;
+        this.userMap = userMap;
+    &#125;
+
+    public Properties getProperties() &#123;
+        return properties;
+    &#125;
+
+    public void setProperties(Properties properties) &#123;
+        this.properties = properties;
+    &#125;
+
+    @Override
+    public void save() &#123;
+        System.out.println(list);
+        System.out.println(userMap);
+        System.out.println(properties);
+        System.out.println(&quot;save running...&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>
+&lt;!--    配置spring xml id的名字随便起 class指向UserDao实现类--&gt;
+    &lt;bean id=&quot;userDao&quot; class=&quot;com.cfc.it.spring_ioc.dao.impl.UserDaoImpl&quot;&gt;
+&lt;!--        集合list注入--&gt;
+        &lt;property name=&quot;list&quot;&gt;
+            &lt;list&gt;
+                &lt;value&gt;aaa&lt;/value&gt;
+                &lt;value&gt;ccc&lt;/value&gt;
+                &lt;value&gt;ddd&lt;/value&gt;
+                &lt;value&gt;bbb&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+
+&lt;!--        集合map注入--&gt;
+        &lt;property name=&quot;userMap&quot;&gt;
+            &lt;map&gt;
+                &lt;entry key=&quot;u1&quot; value-ref=&quot;user&quot;&gt;&lt;/entry&gt;
+                &lt;entry key=&quot;u2&quot; value-ref=&quot;user2&quot;&gt;&lt;/entry&gt;
+            &lt;/map&gt;
+        &lt;/property&gt;
+
+    &lt;property name=&quot;properties&quot; &gt;
+        &lt;props&gt;
+            &lt;prop key=&quot;dddd&quot;&gt;1&lt;/prop&gt;
+            &lt;prop key=&quot;dda&quot;&gt;2&lt;/prop&gt;
+        &lt;/props&gt;
+    &lt;/property&gt;
+
+     &lt;/bean&gt;
+
+
+    &lt;bean id=&quot;user&quot; class=&quot;com.cfc.it.spring_ioc.model.User&quot;&gt;
+        &lt;property name=&quot;username&quot; value=&quot;zhangsan&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;age&quot; value=&quot;18&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;user2&quot; class=&quot;com.cfc.it.spring_ioc.model.User&quot;&gt;
+        &lt;property name=&quot;username&quot; value=&quot;lisi&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;age&quot; value=&quot;20&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+</code></pre>
+</li>
 </ul>
 </li>
 </ul>
 <h4 id="2-3-4标签：导入其他的spring分件"><a href="#2-3-4标签：导入其他的spring分件" class="headerlink" title="2.3.4标签：导入其他的spring分件"></a>2.3.4<import>标签：导入其他的spring分件</h4><ul>
 <li>在实际开发中有很多配置但是只有一个主文件，那么我们份文件配置可以使用以下import引入</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;import resource=&quot;applicationContext_user.xml&quot;&gt;&lt;/import&gt;</span><br></pre></td></tr></table></figure>
+<pre><code> &lt;import resource=&quot;applicationContext_user.xml&quot;&gt;&lt;/import&gt;
+</code></pre>
+<p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221030230947237.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="image-20221030230947237"></p>
 
-<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221030230947237.png" alt="image-20221030230947237"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221030231228880.png" alt="image-20221030231228880"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221030231228880.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="image-20221030231228880"></p>
+
 <h2 id="3-spring相关API"><a href="#3-spring相关API" class="headerlink" title="3.spring相关API"></a>3.spring相关API</h2><ul>
 <li><p>ClassPathXmlApplicationContext</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br></pre></td></tr></table></figure>
+<pre><code> ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+</code></pre>
 </li>
 <li><p>FileSystemXmlApplicationContext</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext applicationContext = new FileSystemXmlApplicationContext(&quot;D:\\课上\\JAVA\\spring\\spring_ioc\\src\\main\\resources\\applicationContext.xml&quot;);</span><br></pre></td></tr></table></figure></li>
+<pre><code>ApplicationContext applicationContext = new FileSystemXmlApplicationContext(&quot;D:\\课上\\JAVA\\spring\\spring_ioc\\src\\main\\resources\\applicationContext.xml&quot;);
+</code></pre>
+</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221030231643599.png" alt="image-20221030231643599"></p>
+<p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="https://raw.githubusercontent.com/csh1311/blogImage/main/image-20221030231643599.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="image-20221030231643599"></p>
+
 <h2 id="4-spring配置数据源"><a href="#4-spring配置数据源" class="headerlink" title="4.spring配置数据源"></a>4.spring配置数据源</h2><h3 id="4-1数据源（连接池）的作用"><a href="#4-1数据源（连接池）的作用" class="headerlink" title="4.1数据源（连接池）的作用"></a>4.1数据源（连接池）的作用</h3><ul>
 <li>数据源（连接池）是提高程序性能如出现的</li>
 <li>事先实例化数据源，初始化部分连接资源</li>
@@ -254,125 +1343,163 @@
 <li>使用数据源获取连接资源和归还连接资源</li>
 </ul>
 
-        </div>
-    </div>
-   
-    
-    
-    
+	</div>
 
+	
+
+	
+
+	
+</article>
+
+	<div id="share_container">
+	<div id="share" data-initialized="true">
+		<a class="no-pjax icon-wechat" tooltip="分享到微信">
+			<button class="btn btn-icon btn-success">
+				<span class="btn-inner--icon"><i class="fa fa-weixin"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-douban" tooltip="分享到豆瓣">
+			<button class="btn btn-icon btn-primary" style="background: #209261;border: none;">
+				豆
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-qq" tooltip="分享到 QQ">
+			<button class="btn btn-icon btn-primary" style="background: #2196f3;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-qq"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-qzone" tooltip="分享到 QQ 空间">
+			<button class="btn btn-icon btn-primary" style="background: #ffc107;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-star"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-weibo" tooltip="分享到微博">
+			<button class="btn btn-icon btn-warning">
+				<span class="btn-inner--icon"><i class="fa fa-weibo"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-facebook" tooltip="分享到 Facebook">
+			<button class="btn btn-icon btn-primary" style="background: #283593;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-facebook"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-twitter" tooltip="分享到 Twitter">
+			<button class="btn btn-icon btn-primary" style="background: #03a9f4;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2022/12/23/spring/&text=spring" tooltip="分享到 Telegram">
+			<button class="btn btn-icon btn-primary" style="background: #42a5f5;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-telegram"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-copy-link" id="share_copy_link" tooltip="复制链接">
+			<button class="btn btn-icon btn-default">
+				<span class="btn-inner--icon"><i class="fa fa-link"></i></span>
+			</button>
+		</a>
+	</div>
+	<button id="share_show" class="btn btn-icon btn-primary" tooltip="分享">
+		<span class="btn-inner--icon"><i class="fa fa-share"></i></span>
+	</button>
 </div>
+<script type="text/javascript">
+	socialShare("#share", {
+	    title : 'spring',
+	    description : 'spring1.spring简介1.1spring是什么
+​	spring是分层的java SE&amp;#...',
+	    wechatQrcodeTitle : "分享到微信",
+	    wechatQrcodeHelper : '微信扫描二维码',
+	    source : 'http://example.com/2022/12/23/spring/'
+	});
+	$("#share_show")[0].onclick = function(){
+		$("#share_container").addClass("opened");
+	};
+	$("#share_copy_link")[0].onclick = function(){
+		let input = document.createElement('input');
+		document.body.appendChild(input);
+		input.setAttribute("value", window.location.href);
+		input.setAttribute("readonly", "readonly");
+		input.setAttribute("style", "opacity: 0;mouse-events:none;");
+		input.select();
+		if (document.execCommand('copy')){
+			iziToast.show({
+				title: '链接已复制',
+				message: "链接已复制到剪贴板",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#2dce89',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-check',
+				timeout: 5000
+			});
+		}else{
+			iziToast.show({
+				title: '复制失败',
+				message: "请手动复制链接",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#f5365c',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-close',
+				timeout: 5000
+			});
+		}
+		document.body.removeChild(input);
+	};
+</script>
 
-    <div class="footer" id="footer">
-    <p>Copyright © 2020 <a class="flink" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>-<a class="flink" target="_blank" rel="noopener" href="https://github.com/sanjinhub/hexo-theme-geek">Geek</a>.
-        <label class="el-switch el-switch-green el-switch-sm" style="vertical-align: sub;">
-            <input type="checkbox" name="switch" id="update_style">
-            <span class="el-switch-style"></span>
-        </label>
-<!--         <script type="text/javascript">
-        var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
-        document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-        </script> -->
-    </p>
+
+
+
+
+<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"><span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/2023/03/11/go/" rel="prev"> </a></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2022/12/18/demo/" rel="next"> leetcode</a></div></div>
+
+
+
+
+		
+		
+		
+		
+
+					<footer id="footer" class="site-footer card shadow-sm border-0">
+						
+						<div>Theme <a target="_blank" rel="noopener" href="https://github.com/solstice23/hexo-theme-argon"><strong>Argon</strong></a> | Powered by Hexo</div>
+						<span id="busuanzi_container_site_uv">
+							本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+						</span>
+					</footer>
+				</main>
+			</div>
+		</div>
+		
+<script src="/argontheme.js"></script>
+
+		
+		
+		
+
+		
+
+	</div>
 </div>
-<input type="hidden" id="web_style" value="black">
-<input type="hidden" id="valine_appid" value="CmCti21ooOOIzFOhEyFkFvR0-gzGzoHsz">
-<input type="hidden" id="valine_appKey" value="FqiyUqbg7McKN2eG0MCewupf">
-
-<script src="/libs/jquery.min.js"></script>
-
-
-<script src="/libs/highlight/highlight.pack.js"></script>
-
-<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
-
-<script src="/js/js.js"></script>
-
-<style type="text/css">
-.v * {
-    color: #698fca;
-}
-
-.v .vlist .vcard .vhead .vsys {
-    color: #3a3e4a;
-}
-
-.v .vlist .vcard .vh .vmeta .vat {
-    color: #638fd5;
-}
-
-.v .vlist .vcard .vhead .vnick {
-    color: #6ba1ff;
-}
-
-.v a {
-    color: #8696b1;
-}
-
-.v .vlist .vcard .vhead .vnick:hover {
-    color: #669bfc;
-}
-</style>
+<noscript>
+	<style>
+		article img.lazyload[src^="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPg"]{display: none;}
+		.comment-item-text .comment-sticker.lazyload{display: none;}
+	</style>
+</noscript>
 </body>
 
-<aside id="article-toc" role="navigation" class="fixed">
-<div id="article-toc-inner" style="overflow-y: auto;scrollbar-width: none;">
-    <strong class="sidebar-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#spring"><span class="toc-text">spring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-spring%E7%AE%80%E4%BB%8B"><span class="toc-text">1.spring简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1spring%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">1.1spring是什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-spring%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">2.spring快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4"><span class="toc-text">2.1开发步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-spring%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">2.2 spring配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-Bean%E6%A0%87%E7%AD%BE%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-text">2.2.1 Bean标签基本配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2Bean%E6%A0%87%E7%AD%BE%E8%8C%83%E5%9B%B4%E9%85%8D%E7%BD%AE"><span class="toc-text">2.2.2Bean标签范围配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3Bean%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">2.2.3Bean实例化三种方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3spring-Bean%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="toc-text">2.3spring Bean依赖注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1Bean%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-text">2.3.1Bean依赖注入方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2Bean%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.3.2Bean的依赖注入的数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-4%E6%A0%87%E7%AD%BE%EF%BC%9A%E5%AF%BC%E5%85%A5%E5%85%B6%E4%BB%96%E7%9A%84spring%E5%88%86%E4%BB%B6"><span class="toc-text">2.3.4标签：导入其他的spring分件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-spring%E7%9B%B8%E5%85%B3API"><span class="toc-text">3.spring相关API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-spring%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-text">4.spring配置数据源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E6%95%B0%E6%8D%AE%E6%BA%90%EF%BC%88%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%89%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">4.1数据源（连接池）的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4"><span class="toc-text">4.2数据源的开发步骤</span></a></li></ol></li></ol></li></ol>
-</div>
-</aside>
-
-<style>
-    #article-toc-inner:after,#article-toc-inner:before,.inner:before{
-        content: "";
-        display: table;
-    }
-    #article-toc-inner:after,.inner:after{
-        clear: both;
-    }
-    @media screen{
-        #article-toc-innerm,.inner{
-            padding: 0 20px;
-        }
-    }
-#article-toc{
-    display: none;
-    float: right;
-    width: 25%;
-    margin-right: -220px;
-    opacity: .8;
-}
-@media screen and (min-width:769px) {
-    #article-toc{
-        display: block;
-    }
-}
-#article-toc.fixed{
-    position: absolute;
-    top:0;
-    bottom:0;
-    right: 220px;
-    padding-top: 55px;
-
-}
-.fixed #article-toc-inner{
-    position: fixed;
-    width: 260px;
-    top: 0;
-    bottom: 0;
-    padding-top: 55px;
-}
-#article-toc-inner ol {
-    margin-left: -5px;
-}
-
-#article-toc-inner::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
-}
-li{
-    list-style-type: none;
-}
-</style>
 
 
 </html>
+
