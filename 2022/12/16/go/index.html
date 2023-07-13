@@ -8,17 +8,20 @@
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<meta name="description" content="GO重要原则 不要通过共享内存来通信，通过通信来共享内存 解释： ​	在传统的并发编程中，常常通过多个线程共享同一个内存空间的方式来实现数据的共享和通信。这种方式虽然在某些情况下能够提高程序的效率，但是也容易出现各种并发问题，例如竞态条件、死锁、数据竞争等。这些问题不仅难以调试，而且会极大地降低程序的可靠性和性能。 ​	Go语言采用了一种全新的并发编程模型，即CSP（Communicating S">
+	<meta name="description" content="GO环境需要下载安装Go https:&#x2F;&#x2F;go.dev&#x2F;doc&#x2F;install 编程工具  VSCode（免费 GoLand（付费） Vim（免费）  运行环境  Go 可以在 Linux 和 Mac 上的任何终端以及 Windows 中的 PowerShell 或 cmd 上正常运行  重要原则 不要通过共享内存来通信，通过通信来共享内存 解释： ​	在传统的并发编程中，常常通过多个线程共享同一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="go基础">
 <meta property="og:url" content="http://example.com/2022/12/16/go/index.html">
 <meta property="og:site_name" content="cc">
-<meta property="og:description" content="GO重要原则 不要通过共享内存来通信，通过通信来共享内存 解释： ​	在传统的并发编程中，常常通过多个线程共享同一个内存空间的方式来实现数据的共享和通信。这种方式虽然在某些情况下能够提高程序的效率，但是也容易出现各种并发问题，例如竞态条件、死锁、数据竞争等。这些问题不仅难以调试，而且会极大地降低程序的可靠性和性能。 ​	Go语言采用了一种全新的并发编程模型，即CSP（Communicating S">
+<meta property="og:description" content="GO环境需要下载安装Go https:&#x2F;&#x2F;go.dev&#x2F;doc&#x2F;install 编程工具  VSCode（免费 GoLand（付费） Vim（免费）  运行环境  Go 可以在 Linux 和 Mac 上的任何终端以及 Windows 中的 PowerShell 或 cmd 上正常运行  重要原则 不要通过共享内存来通信，通过通信来共享内存 解释： ​	在传统的并发编程中，常常通过多个线程共享同一">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="d:\project\blogImage\image-20230712162829109.png">
+<meta property="og:image" content="d:\project\blogImage\image-20230712165347361.png">
 <meta property="article:published_time" content="2022-12-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-07-02T15:43:06.279Z">
+<meta property="article:modified_time" content="2023-07-12T16:01:14.367Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:\project\blogImage\image-20230712162829109.png">
 
 	<meta name="theme-color" content="#5e72e4">
 	<meta name="theme-color-rgb" content="94,114,228">
@@ -580,7 +583,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2022-12-16 0:00:00 | 编辑于 2023-7-2 23:43:06">2022-12-16 0:00
+							<time title="发布于 2022-12-16 0:00:00 | 编辑于 2023-7-13 0:01:14">2022-12-16 0:00
 							</time>
 						</div>
 					
@@ -599,7 +602,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							496 字
+							1.8k 字
 						</div>
 					
 						
@@ -607,7 +610,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							1 分钟
+							7 分钟
 						</div>
 					
 		</div>
@@ -615,7 +618,19 @@
 	</header>
 
 	<div class="post-content" id="post_content">
-		<h1 id="GO"><a href="#GO" class="headerlink" title="GO"></a>GO</h1><h2 id="重要原则"><a href="#重要原则" class="headerlink" title="重要原则"></a>重要原则</h2><ul>
+		<h1 id="GO"><a href="#GO" class="headerlink" title="GO"></a>GO</h1><h2 id="环境需要"><a href="#环境需要" class="headerlink" title="环境需要"></a>环境需要</h2><p>下载安装Go</p>
+<p><a target="_blank" rel="noopener" href="https://go.dev/doc/install">https://go.dev/doc/install</a></p>
+<p>编程工具</p>
+<ol>
+<li><code>VSCode</code>（免费</li>
+<li><code>GoLand</code>（付费）</li>
+<li>Vim（免费）</li>
+</ol>
+<p>运行环境</p>
+<ol>
+<li>Go 可以在 Linux 和 Mac 上的任何终端以及 Windows 中的 PowerShell 或 cmd 上正常运行</li>
+</ol>
+<h2 id="重要原则"><a href="#重要原则" class="headerlink" title="重要原则"></a>重要原则</h2><ul>
 <li><p>不要通过共享内存来通信，通过通信来共享内存</p>
 <p>解释：</p>
 <p>​	在传统的并发编程中，常常通过多个线程共享同一个内存空间的方式来实现数据的共享和通信。这种方式虽然在某些情况下能够提高程序的效率，但是也容易出现各种并发问题，例如竞态条件、死锁、数据竞争等。这些问题不仅难以调试，而且会极大地降低程序的可靠性和性能。</p>
@@ -634,7 +649,180 @@ example/hello imports
 #修改代理服务器
 go env -w GOPROXY=https://goproxy.cn,direct
 </code></pre>
+<h2 id="输出打印"><a href="#输出打印" class="headerlink" title="输出打印"></a>输出打印</h2><p>在go中使用打印语句，需导入fmt，该包是您安装 Go 时获得的标准库包之一</p>
+<pre><code>// 导入Go的标准库
+import &quot;fmt&quot;
+// 定义一个main函数，main运行包时默认会执行一个函数main
+func main()  &#123;
+    // 打印输出在控制台
+    //换行打印
+    fmt.Println(&quot;您好，我是初学者&quot;)
+    //不换行打印
+    fmt.Print(&quot;您好，我是初学者&quot;)
+    fmt.Println(&quot;不换行&quot;)
+&#125;
+</code></pre>
+<p>运行结果</p>
+<pre><code>您好，我是初学者
+您好，我是初学者不换行
+</code></pre>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组类型定义指定长度和元素类型，列如你可以这样定义数组，但这样定义数组，数组的长度已经固定了</p>
+<pre><code>var a [4]int 
+// 给数组定义值
+a[0] = 1
+// 将数组中的第一个元素赋值给i变量
+i := a[0]
+// 此时i的值为
+i==1
+</code></pre>
+<p>数组不需要初始化数据，如果是整形的数组，那么默认的值是0</p>
+<pre><code>// a[2] == 0, 没有向a数组的第三个元素赋值所以会显示默认值的0
+</code></pre>
+<h2 id="模块调用"><a href="#模块调用" class="headerlink" title="模块调用"></a>模块调用</h2><ol>
+<li><p>创建一个文件夹 greetings</p>
+</li>
+<li><p>进入文件夹</p>
+</li>
+<li><p>初始化模块</p>
+<pre><code>go mod init ccsh.com/greetings
+</code></pre>
+<ol>
+<li><code>go</code>：这是Go编程语言的命令行接口。</li>
+<li><code>mod</code>：它是”module”的缩写，用于与Go模块进行交互。</li>
+<li><code>init</code>：这是<code>go mod</code>的一个子命令，用于初始化一个新模块。</li>
+<li><code>ccsh.com/greetings</code>：这是模块的路径，也可以说是模块的名称。它通常遵循反向域名表示法，但可以是任何有效的Go导入路径。</li>
+</ol>
+</li>
+<li><p>创建一个名为<code>greetings.go</code>的文件</p>
+</li>
+<li><p>在文件中写入一下内容</p>
+<pre><code>// 包名
+package greetings
+// 导入标准库
+import &quot;fmt&quot;
 
+// 创建一个函数名为hello,函数需要接收一个字符串(string)类型的名称（name）
+//这个函数有返回值类型，返回值类型市字符串（string)
+func Hello(name string) string &#123;
+    // 声明一个message变量来保存您的问候语
+    // := 相当于var message string 
+    message := fmt.Sprintf(&quot;Hi, %v. Welcome!&quot;, name)
+    return message
+&#125;
+</code></pre>
+</li>
+<li><p>在更目录下创建一个名为hello的的文件夹</p>
+<p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="D:\project\blogImage\image-20230712162829109.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="image-20230712162829109"></p>
+
+</li>
+<li><p>进入文件夹初始化模块，跟上一步的内容一样</p>
+<pre><code>go mod init ccsh.com/hello
+</code></pre>
+</li>
+<li><p>创建一个名为<code>hello.go</code>文件</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    // 导入greetings
+    &quot;ccsh.com/greetings&quot;
+)
+
+func main() &#123;
+    // 在这里调用了greetings模块中的Hello函数并传入了一个名为ccsh
+    message := greetings.Hello(&quot;ccsh&quot;)
+    // 打印输出
+    fmt.Println(message)
+&#125;
+</code></pre>
+<p>在命令行中使用，该命令的作用是将 <code>ccsh.com/greetings</code> 这个模块的导入路径替换为相对路径 <code>../greetings</code>，也就是将远程的模块替换为本地的模块。</p>
+<pre><code> go mod edit -replace ccsh.com/greetings=../greetings
+</code></pre>
+<p>在命令行中使用,当你通过运行 <code>go mod tidy</code> 命令时，Go 命令行工具会分析你的代码中导入的包，并与 <code>go.mod</code> 文件中的依赖项进行比较。如果发现依赖项有变化，它会自动更新 <code>go.mod</code> 文件中的依赖项版本要求</p>
+<pre><code>go mod tidy
+</code></pre>
+<p>最终<code>go.mod </code>中</p>
+<pre><code>module ccsh.com/hello
+
+go 1.20
+
+replace ccsh.com/greetings =&gt; ../greetings
+
+require ccsh.com/greetings v0.0.0-00010101000000-000000000000
+</code></pre>
+<p>运行结果</p>
+<p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="D:\project\blogImage\image-20230712165347361.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="image-20230712165347361"></p>
+
+</li>
+</ol>
+<h2 id="返回并处理错误"><a href="#返回并处理错误" class="headerlink" title="返回并处理错误"></a>返回并处理错误</h2><p>greetings模块中的Hello函数传入的是姓名，打印的是问候语，如果你传入的字符串中是空的，那么打印的问候语就没有意义了，所以在这里需要做一个异常处理</p>
+<ol>
+<li>greetings模块中导入errors库</li>
+</ol>
+<pre><code>package greetings
+
+import (
+    &quot;errors&quot;
+    &quot;fmt&quot;
+)
+
+// 这里返回值两个一个是strin类型一个是error类型
+func Hello(name string) (string, error) &#123;
+    //如果name的值为空直接提示
+    if name == &quot;&quot; &#123;
+        return &quot;&quot;, errors.New(&quot;空的 name&quot;)
+    &#125;
+
+    //如果name值不为空，那么直接嵌入在Sprintf并返回生成的字符串。
+    message := fmt.Sprintf(&quot;Hi, %v. Welcome!&quot;, name)
+    return message, nil
+&#125;
+</code></pre>
+<ol start="2">
+<li><p>在hello模块中</p>
+<ul>
+<li><code>SetFlags</code>这个函数中传入的参数可以是,你可以通过按位或（<code>|</code>）操作将这些标志位选项组合起来。例如，要同时显示日期和时<ul>
+<li><code>log.Ldate</code>：显示日期（2009&#x2F;01&#x2F;23）。</li>
+<li><code>log.Ltime</code>：显示时间（<code>01:23:45</code>）。</li>
+<li><code>log.Lmicroseconds</code>：显示微秒级时间（<code>01:23:45.678</code>）。</li>
+<li><code>log.Llongfile</code>：显示完整文件路径和行号。</li>
+<li><code>log.Lshortfile</code>：显示文件名和行号。</li>
+<li><code>log.LUTC</code>：使用<code>UTC</code>时间。</li>
+</ul>
+</li>
+</ul>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;log&quot;
+    &quot;ccsh.com/greetings&quot;
+)
+
+func main() &#123;
+    // 这行代码设置了日志记录前缀  比如：greetings: 
+    log.SetPrefix(&quot;greetings: &quot;)
+    // 用于设置日志记录的标志位选项  SetFlags(0)为禁用
+    log.SetFlags(log.Ldate | log.Ltime)
+    //message 和 err 是使用多重赋值的方式声明的变量
+    message , err := greetings.Hello(&quot;&quot;)
+    // fmt.Println(err)
+    if err != nil &#123;
+        //使用日志包的 Fatal 函数打印错误并停止程序
+        log.Fatal(err)
+    &#125;
+    fmt.Println(message)
+&#125;
+</code></pre>
+</li>
+<li><p>运行结果</p>
+<pre><code>D:\project\go\hello&gt;go run .
+greetings: 2023/07/12 23:18:36 空的 name
+exit status 1
+</code></pre>
+</li>
+</ol>
+<h2 id="随机数random"><a href="#随机数random" class="headerlink" title="随机数random"></a>随机数random</h2>
 	</div>
 
 	
@@ -699,10 +887,11 @@ go env -w GOPROXY=https://goproxy.cn,direct
 <script type="text/javascript">
 	socialShare("#share", {
 	    title : 'go基础',
-	    description : 'GO重要原则
-不要通过共享内存来通信，通过通信来共享内存
-解释：
-​	在传统的并发编程中，常常通过多...',
+	    description : 'GO环境需要下载安装Go
+https://go.dev/doc/install
+编程工具
+
+VSCo...',
 	    wechatQrcodeTitle : "分享到微信",
 	    wechatQrcodeHelper : '微信扫描二维码',
 	    source : 'http://example.com/2022/12/16/go/'
