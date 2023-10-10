@@ -3,22 +3,24 @@
 <html class="article-header-style-default">
 <head>
 	
-	<title>jwt - cc</title>
+	<title>Elasticsearch - cc</title>
 	<meta charset="utf-8">
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<meta name="description" content="什么是jwtJwt是JSON Web Tokens的简称，从单词可以看出它也是一种token，其实可以理解为一种生成token的框架或规范。既然也是token那我们可以换一种问法，token是什么？为什么要使用token？ token是什么Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个T">
+	<meta name="description" content="Elasticsearch什么是Elasticsearch​		Elasticsearch是一个开源的分布式RESTful搜索和分析引擎，它专注于处理和存储大量数据，以便快速、准确地进行搜索、分析和可视化, ​		Elasticsearch 是一个近乎实时的搜索平台。这意味着从对文档建立索引到可搜索之间存在轻微的延迟（通常为一秒）。 特点三大特点 具备很好的横向扩展能力，天然带着数据库的分片技术，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jwt">
-<meta property="og:url" content="http://example.com/2023/04/05/jwt/index.html">
+<meta property="og:title" content="Elasticsearch">
+<meta property="og:url" content="http://example.com/2023/09/18/Elasticsearch/index.html">
 <meta property="og:site_name" content="cc">
-<meta property="og:description" content="什么是jwtJwt是JSON Web Tokens的简称，从单词可以看出它也是一种token，其实可以理解为一种生成token的框架或规范。既然也是token那我们可以换一种问法，token是什么？为什么要使用token？ token是什么Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个T">
+<meta property="og:description" content="Elasticsearch什么是Elasticsearch​		Elasticsearch是一个开源的分布式RESTful搜索和分析引擎，它专注于处理和存储大量数据，以便快速、准确地进行搜索、分析和可视化, ​		Elasticsearch 是一个近乎实时的搜索平台。这意味着从对文档建立索引到可搜索之间存在轻微的延迟（通常为一秒）。 特点三大特点 具备很好的横向扩展能力，天然带着数据库的分片技术，">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-04-05T09:00:33.000Z">
-<meta property="article:modified_time" content="2023-07-03T16:02:33.728Z">
+<meta property="og:image" content="d:\project\blogImage\image-20230921093636058.png">
+<meta property="article:published_time" content="2023-09-18T04:53:28.000Z">
+<meta property="article:modified_time" content="2023-09-23T03:58:15.830Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:\project\blogImage\image-20230921093636058.png">
 
 	<meta name="theme-color" content="#5e72e4">
 	<meta name="theme-color-rgb" content="94,114,228">
@@ -574,13 +576,13 @@
 	<article class="post post-full card bg-white shadow-sm border-0 ">
 	<header class="post-header text-center">
 		
-		<a class="post-title" href="/2023/04/05/jwt/">jwt</a>
+		<a class="post-title" href="/2023/09/18/Elasticsearch/">Elasticsearch</a>
 		<div class="post-meta">
 			
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-4-5 17:00:33 | 编辑于 2023-7-4 0:02:33">2023-4-5 17:00
+							<time title="发布于 2023-9-18 12:53:28 | 编辑于 2023-9-23 11:58:15">2023-9-18 12:53
 							</time>
 						</div>
 					
@@ -599,7 +601,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							1.3k 字
+							931 字
 						</div>
 					
 						
@@ -607,7 +609,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							5 分钟
+							3 分钟
 						</div>
 					
 		</div>
@@ -615,150 +617,151 @@
 	</header>
 
 	<div class="post-content" id="post_content">
-		<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="什么是jwt"><a href="#什么是jwt" class="headerlink" title="什么是jwt"></a>什么是jwt</h3><p>Jwt是JSON Web Tokens的简称，从单词可以看出它也是一种token，其实可以理解为一种生成token的框架或规范。既然也是token那我们可以换一种问法，token是什么？为什么要使用token？</p>
-<h3 id="token是什么"><a href="#token是什么" class="headerlink" title="token是什么"></a>token是什么</h3><p>Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码</p>
-<h3 id="为什么使用token"><a href="#为什么使用token" class="headerlink" title="为什么使用token"></a>为什么使用token</h3><p>Token是在客户端维护的一种机制，用于身份认证和授权。它是一个字符串，可以包含有关用户身份和权限的信息。在Web应用程序中，当用户成功登录后，服务器将颁发一个Token，然后将其发送给客户端。以后，客户端将在每个请求的HTTP头中包含该Token。服务器可以使用Token验证请求的来源和请求者的身份和权限。</p>
-<h3 id="session和token有什么区别"><a href="#session和token有什么区别" class="headerlink" title="session和token有什么区别"></a>session和token有什么区别</h3><ol>
-<li>Session和Token的存储位置不同。Session存储在服务器上，可以在服务器端直接修改和更新。Token存储在客户端上，通常使用localStorage或sessionStorage存储在浏览器中。</li>
-<li>Session的存储容量通常比Token大，因为它可以存储更多的用户信息。Token通常只包含有关用户身份和授权的少量信息。</li>
-<li>Session可以在一定时间内保持持久状态，而Token通常在一段时间后过期。</li>
-<li>在Web应用程序中，通常会同时使用Session和Token，以提供更加安全和可靠的身份认证和授权机制。Session通常用于维护用户状态和敏感信息，而Token用于身份验证和授权</li>
+		<h1 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a><code>Elasticsearch</code></h1><h2 id="什么是Elasticsearch"><a href="#什么是Elasticsearch" class="headerlink" title="什么是Elasticsearch"></a>什么是<code>Elasticsearch</code></h2><p>​		<code>Elasticsearch</code>是一个开源的分布式<code>RESTful</code>搜索和分析引擎，它专注于处理和存储大量数据，以便快速、准确地进行搜索、分析和可视化,</p>
+<p>​		<code>Elasticsearch</code> 是一个近乎实时的搜索平台。这意味着从对文档建立索引到可搜索之间存在轻微的延迟（通常为一秒）。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><h3 id="三大特点"><a href="#三大特点" class="headerlink" title="三大特点"></a>三大特点</h3><ol>
+<li><p>具备很好的横向扩展能力，天然带着数据库的分片技术，如果你使用数据库还要分库分表，在<code>Elasticsearch</code>中不需，自带分片技术</p>
+</li>
+<li><p>极限的性能，能够在毫秒级来返回你所搜索的结果，<code>Elasticsearch</code>技术特点相关，因为<code>Elasticsearch</code>基于倒排索引，通过索引来提升查询的效率</p>
+</li>
+<li><p>相关性：</p>
+</li>
+<li><p>全文搜索： <code>Elasticsearch</code>以全文搜索为核心功能，允许你轻松地在大规模文本数据中查找关键字、短语和复杂查询</p>
+</li>
+<li><p>分布式架构： 它被设计为分布式系统，能够轻松处理大规模数据，自动分布到多个节点，以提高性能和可伸缩性。</p>
+</li>
+<li><p>实时数据：<code>Elasticsearch</code>支持实时索引，允许不断的将数据添加到索引中，以便立即进行搜索和分析。</p>
+</li>
+<li><p>多数据类型：除了文本数据，它还可以用于结构化和半结构化数据，包括日志、时间序列数据、地理空间数据等。</p>
+</li>
+<li><p>强大的语言查询： <code>Elasticsearch</code>使用<code>JSON</code>格式的查询语言，允许你创建高度定制化的查询，包括范围查询、模糊搜索、过滤、聚合等。</p>
+</li>
+<li><p>实时分析和可视化：*通过与工具如Kibana集成，你可以实时分析数据并创建仪表板、可视化数据趋势。</p>
+</li>
+<li><p>用途广：<code> Elasticsearch</code>被广泛应用于各种领域，包括搜索引擎、日志和事件数据分析、安全信息与事件管理、电子商务产品搜索等。</p>
+</li>
 </ol>
-<h3 id="session和Cookie-有什么区别"><a href="#session和Cookie-有什么区别" class="headerlink" title="session和Cookie 有什么区别"></a>session和Cookie 有什么区别</h3><ol>
-<li>存储位置：Session 对象存储在服务器端，而 Cookie 存储在客户端（浏览器）</li>
-<li>数据存储：Session 对象可以存储较大量的数据，通常以键值对的形式保存在服务器的内存或持久化存储中；而 Cookie 的存储容量有限，通常只能存储少量文本数据（4KB左右）。</li>
-<li>安全性：由于 Session 对象存储在服务器端，相对于 Cookie 更安全，因为客户端无法直接修改 Session 数据。Cookie 存储在客户端，容易受到篡改和伪造的风险。</li>
-<li>生命周期：Session 对象的生命周期由服务器管理，可以设置过期时间或依赖用户会话；而 Cookie 可以设置过期时间，也可以设置为会话 Cookie，在关闭浏览器后自动删除。</li>
-</ol>
-<h3 id="如何实现token"><a href="#如何实现token" class="headerlink" title="如何实现token"></a>如何实现token</h3><h4 id="导入依赖"><a href="#导入依赖" class="headerlink" title="导入依赖"></a>导入依赖</h4><pre><code>   &lt;!--        jwt 依赖 --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
-            &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
-            &lt;version&gt;0.9.1&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.auth0&lt;/groupId&gt;
-            &lt;artifactId&gt;java-jwt&lt;/artifactId&gt;
-            &lt;version&gt;3.4.0&lt;/version&gt;
-        &lt;/dependency&gt;
+<h2 id="学习步骤"><a href="#学习步骤" class="headerlink" title="学习步骤"></a>学习步骤</h2><h3 id="安装Elasticsearch和kibanna"><a href="#安装Elasticsearch和kibanna" class="headerlink" title="安装Elasticsearch和kibanna"></a>安装<code>Elasticsearch</code>和<code>kibanna</code></h3><ol>
+<li><p>如果使用Docker Desktop，请确保分配至少4<code>GB</code>的内存。您可以在Docker Desktop的设置&gt;资源中调整内存使用情况。</p>
+</li>
+<li><p>使用docker-compose</p>
+<pre><code>version: &quot;3.0&quot;
+services:
+  es-elasticsearch:
+    container_name: es-elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.0.1
+    environment:
+      - cluster.name＝docker-cluster
+      - xpack.security.enabled=false
+      - &quot;discovery.type=single-node&quot;
+    networks:
+      - es-net
+    ports:
+      - 9200:9200
+  kb-kibana:
+    container_name: kb-kibana
+    image: docker.elastic.co/kibana/kibana:7.0.1
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es-elasticsearch:9200
+      - I18N_LOCALE＝zh-CN
+    networks:
+      - es-net
+    depends_on:
+      - es-elasticsearch
+    ports:
+      - 5601:5601
+networks:
+  es-net:
+    driver: bridge
 </code></pre>
-<h3 id="创建jwt工具类"><a href="#创建jwt工具类" class="headerlink" title="创建jwt工具类"></a>创建jwt工具类</h3><pre><code>package com.shanhui.util;
+</li>
+<li><p>安装完成在浏览器输入网址<a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601/</a></p>
+<p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="D:\project\blogImage\image-20230921093636058.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="image-20230921093636058"></p>
 
-
-
-
-
-
-
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTCreator;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.Claim;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-
-import java.time.*;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-public class JwtUtil &#123;
-
-
-    // token签名加密密钥
-    private static final String  secret = &quot;#cai*cai%Vc&quot;;
-
-    /**
-     * 创建token
-     * @param map
-     * @return
-     */
-    public static String createAccessToken(Map&lt;String,String&gt; map)&#123;
-        JWTCreator.Builder builder = JWT.create();
-        // 给签名添加参数
-        map.forEach((k,v)-&gt;&#123;
-            builder.withClaim(k,v);
-        &#125;);
-        //设置token过期时间
-        builder.withExpiresAt(new Date(System.currentTimeMillis()+40*60*1000));
-        //设置token创建时间
-        builder.withIssuedAt(new Date(System.currentTimeMillis()));
-        return  builder.sign(Algorithm.HMAC256(secret));
-    &#125;
-
-
-    /**
-     * 判断是否可以刷新token
-     * @param token
-     * @return
-     */
-    public static Boolean canToken(String token)&#123;
-
-        DecodedJWT decode = JWT.decode(token);
-        // 获取token的结束时间
-        Date expiresAt = decode.getExpiresAt();
-
-        // 时间转换成LocalDateTime
-        Instant instant = expiresAt.toInstant();
-        ZoneId zoneId = ZoneId.systemDefault();
-        LocalDateTime localDateTime = instant.atZone(zoneId).toLocalDateTime();
-        System.out.println(LocalDateTime.now());
-        // 计算当前时间离结束时间还有多少分钟
-        Duration between = Duration.between(LocalDateTime.now(),localDateTime);
-        // token过期时间是40分钟，如果过期时间大于30分钟，不用刷新token，小于30分钟刷新token
-        if ((between.getSeconds()/60)&gt;30&amp;&amp;(between.getSeconds()/60)&lt;=0)&#123;
-            return false;
-        &#125;
-       return  true;
-    &#125;
-
-
-    /**
-     * 刷新token
-     * @param token
-     * @return
-     */
-    public static String refreshToken(String token)&#123;
-        DecodedJWT decode = JWT.decode(token);
-        String account = decode.getClaim(&quot;account&quot;).asString();
-        String userId = decode.getClaim(&quot;userId&quot;).asString();
-        Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
-        map.put(&quot;account&quot;,account);
-        map.put(&quot;userId&quot;,userId);
-        return createAccessToken(map);
-    &#125;
-
-    /**
-     * 获取token的参数
-     * @param token
-     * @return
-     */
-    public static Map&lt;String,String&gt;  getClaim(String token)&#123;
-        DecodedJWT decode = JWT.decode(token);
-        Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
-        String account = decode.getClaim(&quot;account&quot;).asString();
-        String userId = decode.getClaim(&quot;userId&quot;).asString();
-        map.put(&quot;account&quot;,account);
-        map.put(&quot;userId&quot;,userId);
-        return  map;
-    &#125;
-
-    public static void main(String[] args) &#123;
-        Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
-        map.put(&quot;account&quot;,&quot;admin&quot;);
-        map.put(&quot;userId&quot;,&quot;1&quot;);
-        String accessToken = createAccessToken(map);
-        System.out.println(&quot;token 创建成功&quot;+accessToken);
-        System.out.println(canToken(accessToken));
-        Map&lt;String, String&gt; claim = getClaim(accessToken);
-        System.out.println(claim.get(&quot;account&quot;));
-    &#125;
-
+</li>
+<li><p>设置中文，打开<code>/usr/share/kibana/config/kibana.yml</code>在里面添加以下代码</p>
+<pre><code>i18n.locale: &quot;zh-CN
+</code></pre>
+</li>
+</ol>
+<h2 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h2><ol>
+<li><p>查询数据</p>
+<ul>
+<li><p>获取版本信息</p>
+<pre><code>GET /
+</code></pre>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>添加数据</p>
+<p>数据是以文档的形式存储，但是文档的内容是以<code>json</code>对象的，这些文档可以存储在索引中</p>
+<ul>
+<li>ccsh：索引名称</li>
+<li>_doc:什么类型</li>
+<li>1:唯一标识</li>
+</ul>
+<pre><code>POST ccsh/_doc/1
+&#123;
+  &quot;user&quot;:&quot;GB&quot;,
+  &quot;uid&quot;:1,
+  &quot;city&quot;:&quot;Beijing&quot;,
+  &quot;province&quot;:&quot;Beijing&quot;,
+  &quot;country&quot;:&quot;china&quot;
 &#125;
 </code></pre>
+</li>
+<li><p>修改数据</p>
+<ul>
+<li><p>根据内容全部替换</p>
+<pre><code>
+PUT ccsh/_doc/1
+&#123;
+  &quot;user&quot;:&quot;GB&quot;,
+  &quot;uid&quot;:1,
+  &quot;city&quot;:&quot;北京&quot;,
+  &quot;province&quot;:&quot;北京&quot;,
+  &quot;country&quot;:&quot;中国&quot;
+&#125;
+</code></pre>
+</li>
+<li><p>更具字段修改该数据_update_by_query</p>
+<pre><code>POST ccsh/_update_by_query
+&#123;
+  &quot;script&quot;: &#123;
+    &quot;source&quot;: &quot;ctx._source.city = params.city; ctx._source.province = params.province; ctx._source.country = params.country;&quot;,
+    &quot;lang&quot;: &quot;painless&quot;,
+    &quot;params&quot;: &#123;
+      &quot;city&quot;: &quot;上海&quot;,
+      &quot;province&quot;: &quot;上海&quot;,
+      &quot;country&quot;: &quot;中国&quot;
+    &#125;
+  &#125;,
+  &quot;query&quot;: &#123;
+    &quot;match&quot;: &#123;
+      &quot;user&quot;: &quot;GB&quot;
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>删除数据</p>
+<ul>
+<li><p>删除整个索引</p>
+<pre><code>DELETE ccsh
+</code></pre>
+</li>
+<li><p>删除索引中的某个文档</p>
+<pre><code>DELETE aa/_doc/2
+</code></pre>
+</li>
+<li></li>
+</ul>
+</li>
+</ol>
 
 	</div>
 
@@ -806,7 +809,7 @@ public class JwtUtil &#123;
 				<span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
 			</button>
 		</a>
-		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2023/04/05/jwt/&text=jwt" tooltip="分享到 Telegram">
+		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2023/09/18/Elasticsearch/&text=Elasticsearch" tooltip="分享到 Telegram">
 			<button class="btn btn-icon btn-primary" style="background: #42a5f5;border: none;">
 				<span class="btn-inner--icon"><i class="fa fa-telegram"></i></span>
 			</button>
@@ -823,11 +826,11 @@ public class JwtUtil &#123;
 </div>
 <script type="text/javascript">
 	socialShare("#share", {
-	    title : 'jwt',
-	    description : '什么是jwtJwt是JSON Web Tokens的简称，从单词可以看出它也是一种token，其实可...',
+	    title : 'Elasticsearch',
+	    description : 'Elasticsearch什么是Elasticsearch​		Elasticsearch是一个开源...',
 	    wechatQrcodeTitle : "分享到微信",
 	    wechatQrcodeHelper : '微信扫描二维码',
-	    source : 'http://example.com/2023/04/05/jwt/'
+	    source : 'http://example.com/2023/09/18/Elasticsearch/'
 	});
 	$("#share_show")[0].onclick = function(){
 		$("#share_container").addClass("opened");
@@ -886,7 +889,7 @@ public class JwtUtil &#123;
 	</div>
 
 
-<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"><span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/2023/04/09/warp/" rel="prev"> warp</a></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2022/12/23/spring/" rel="next"> spring</a></div></div>
+<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"><span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/2023/09/19/docker/" rel="prev"> docker容器代理</a></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2023/07/01/mysql/" rel="next"> mysql</a></div></div>
 
 
 

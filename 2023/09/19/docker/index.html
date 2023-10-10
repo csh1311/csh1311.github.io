@@ -3,20 +3,20 @@
 <html class="article-header-style-default">
 <head>
 	
-	<title>jwt - cc</title>
+	<title>docker容器代理 - cc</title>
 	<meta charset="utf-8">
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<meta name="description" content="什么是jwtJwt是JSON Web Tokens的简称，从单词可以看出它也是一种token，其实可以理解为一种生成token的框架或规范。既然也是token那我们可以换一种问法，token是什么？为什么要使用token？ token是什么Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个T">
+	<meta name="description" content="dockerdocker设置代理 进入docker容器 docker exec -it &lt;容器名称或容器ID&gt; &#x2F;bin&#x2F;bash   设置代理 export ALL_PROXY&#x3D;&#39;http:&#x2F;&#x2F;10.235.0.19:10809&#39; export http_proxy&#x3D;&#39;http:&#x2F;&#x2F;10.235.0.19:10809&#39; export https_pro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jwt">
-<meta property="og:url" content="http://example.com/2023/04/05/jwt/index.html">
+<meta property="og:title" content="docker容器代理">
+<meta property="og:url" content="http://example.com/2023/09/19/docker/index.html">
 <meta property="og:site_name" content="cc">
-<meta property="og:description" content="什么是jwtJwt是JSON Web Tokens的简称，从单词可以看出它也是一种token，其实可以理解为一种生成token的框架或规范。既然也是token那我们可以换一种问法，token是什么？为什么要使用token？ token是什么Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个T">
+<meta property="og:description" content="dockerdocker设置代理 进入docker容器 docker exec -it &lt;容器名称或容器ID&gt; &#x2F;bin&#x2F;bash   设置代理 export ALL_PROXY&#x3D;&#39;http:&#x2F;&#x2F;10.235.0.19:10809&#39; export http_proxy&#x3D;&#39;http:&#x2F;&#x2F;10.235.0.19:10809&#39; export https_pro">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-04-05T09:00:33.000Z">
-<meta property="article:modified_time" content="2023-07-03T16:02:33.728Z">
+<meta property="article:published_time" content="2023-09-19T02:10:52.000Z">
+<meta property="article:modified_time" content="2023-10-10T07:30:27.040Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -574,13 +574,13 @@
 	<article class="post post-full card bg-white shadow-sm border-0 ">
 	<header class="post-header text-center">
 		
-		<a class="post-title" href="/2023/04/05/jwt/">jwt</a>
+		<a class="post-title" href="/2023/09/19/docker/">docker容器代理</a>
 		<div class="post-meta">
 			
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-4-5 17:00:33 | 编辑于 2023-7-4 0:02:33">2023-4-5 17:00
+							<time title="发布于 2023-9-19 10:10:52 | 编辑于 2023-10-10 15:30:27">2023-9-19 10:10
 							</time>
 						</div>
 					
@@ -599,7 +599,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							1.3k 字
+							59 字
 						</div>
 					
 						
@@ -607,7 +607,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							5 分钟
+							1 分钟
 						</div>
 					
 		</div>
@@ -615,150 +615,18 @@
 	</header>
 
 	<div class="post-content" id="post_content">
-		<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="什么是jwt"><a href="#什么是jwt" class="headerlink" title="什么是jwt"></a>什么是jwt</h3><p>Jwt是JSON Web Tokens的简称，从单词可以看出它也是一种token，其实可以理解为一种生成token的框架或规范。既然也是token那我们可以换一种问法，token是什么？为什么要使用token？</p>
-<h3 id="token是什么"><a href="#token是什么" class="headerlink" title="token是什么"></a>token是什么</h3><p>Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码</p>
-<h3 id="为什么使用token"><a href="#为什么使用token" class="headerlink" title="为什么使用token"></a>为什么使用token</h3><p>Token是在客户端维护的一种机制，用于身份认证和授权。它是一个字符串，可以包含有关用户身份和权限的信息。在Web应用程序中，当用户成功登录后，服务器将颁发一个Token，然后将其发送给客户端。以后，客户端将在每个请求的HTTP头中包含该Token。服务器可以使用Token验证请求的来源和请求者的身份和权限。</p>
-<h3 id="session和token有什么区别"><a href="#session和token有什么区别" class="headerlink" title="session和token有什么区别"></a>session和token有什么区别</h3><ol>
-<li>Session和Token的存储位置不同。Session存储在服务器上，可以在服务器端直接修改和更新。Token存储在客户端上，通常使用localStorage或sessionStorage存储在浏览器中。</li>
-<li>Session的存储容量通常比Token大，因为它可以存储更多的用户信息。Token通常只包含有关用户身份和授权的少量信息。</li>
-<li>Session可以在一定时间内保持持久状态，而Token通常在一段时间后过期。</li>
-<li>在Web应用程序中，通常会同时使用Session和Token，以提供更加安全和可靠的身份认证和授权机制。Session通常用于维护用户状态和敏感信息，而Token用于身份验证和授权</li>
-</ol>
-<h3 id="session和Cookie-有什么区别"><a href="#session和Cookie-有什么区别" class="headerlink" title="session和Cookie 有什么区别"></a>session和Cookie 有什么区别</h3><ol>
-<li>存储位置：Session 对象存储在服务器端，而 Cookie 存储在客户端（浏览器）</li>
-<li>数据存储：Session 对象可以存储较大量的数据，通常以键值对的形式保存在服务器的内存或持久化存储中；而 Cookie 的存储容量有限，通常只能存储少量文本数据（4KB左右）。</li>
-<li>安全性：由于 Session 对象存储在服务器端，相对于 Cookie 更安全，因为客户端无法直接修改 Session 数据。Cookie 存储在客户端，容易受到篡改和伪造的风险。</li>
-<li>生命周期：Session 对象的生命周期由服务器管理，可以设置过期时间或依赖用户会话；而 Cookie 可以设置过期时间，也可以设置为会话 Cookie，在关闭浏览器后自动删除。</li>
-</ol>
-<h3 id="如何实现token"><a href="#如何实现token" class="headerlink" title="如何实现token"></a>如何实现token</h3><h4 id="导入依赖"><a href="#导入依赖" class="headerlink" title="导入依赖"></a>导入依赖</h4><pre><code>   &lt;!--        jwt 依赖 --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
-            &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
-            &lt;version&gt;0.9.1&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.auth0&lt;/groupId&gt;
-            &lt;artifactId&gt;java-jwt&lt;/artifactId&gt;
-            &lt;version&gt;3.4.0&lt;/version&gt;
-        &lt;/dependency&gt;
+		<h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><h2 id="docker设置代理"><a href="#docker设置代理" class="headerlink" title="docker设置代理"></a>docker设置代理</h2><ol>
+<li><p>进入docker容器</p>
+<pre><code>docker exec -it &lt;容器名称或容器ID&gt; /bin/bash
 </code></pre>
-<h3 id="创建jwt工具类"><a href="#创建jwt工具类" class="headerlink" title="创建jwt工具类"></a>创建jwt工具类</h3><pre><code>package com.shanhui.util;
-
-
-
-
-
-
-
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTCreator;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.Claim;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-
-import java.time.*;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-public class JwtUtil &#123;
-
-
-    // token签名加密密钥
-    private static final String  secret = &quot;#cai*cai%Vc&quot;;
-
-    /**
-     * 创建token
-     * @param map
-     * @return
-     */
-    public static String createAccessToken(Map&lt;String,String&gt; map)&#123;
-        JWTCreator.Builder builder = JWT.create();
-        // 给签名添加参数
-        map.forEach((k,v)-&gt;&#123;
-            builder.withClaim(k,v);
-        &#125;);
-        //设置token过期时间
-        builder.withExpiresAt(new Date(System.currentTimeMillis()+40*60*1000));
-        //设置token创建时间
-        builder.withIssuedAt(new Date(System.currentTimeMillis()));
-        return  builder.sign(Algorithm.HMAC256(secret));
-    &#125;
-
-
-    /**
-     * 判断是否可以刷新token
-     * @param token
-     * @return
-     */
-    public static Boolean canToken(String token)&#123;
-
-        DecodedJWT decode = JWT.decode(token);
-        // 获取token的结束时间
-        Date expiresAt = decode.getExpiresAt();
-
-        // 时间转换成LocalDateTime
-        Instant instant = expiresAt.toInstant();
-        ZoneId zoneId = ZoneId.systemDefault();
-        LocalDateTime localDateTime = instant.atZone(zoneId).toLocalDateTime();
-        System.out.println(LocalDateTime.now());
-        // 计算当前时间离结束时间还有多少分钟
-        Duration between = Duration.between(LocalDateTime.now(),localDateTime);
-        // token过期时间是40分钟，如果过期时间大于30分钟，不用刷新token，小于30分钟刷新token
-        if ((between.getSeconds()/60)&gt;30&amp;&amp;(between.getSeconds()/60)&lt;=0)&#123;
-            return false;
-        &#125;
-       return  true;
-    &#125;
-
-
-    /**
-     * 刷新token
-     * @param token
-     * @return
-     */
-    public static String refreshToken(String token)&#123;
-        DecodedJWT decode = JWT.decode(token);
-        String account = decode.getClaim(&quot;account&quot;).asString();
-        String userId = decode.getClaim(&quot;userId&quot;).asString();
-        Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
-        map.put(&quot;account&quot;,account);
-        map.put(&quot;userId&quot;,userId);
-        return createAccessToken(map);
-    &#125;
-
-    /**
-     * 获取token的参数
-     * @param token
-     * @return
-     */
-    public static Map&lt;String,String&gt;  getClaim(String token)&#123;
-        DecodedJWT decode = JWT.decode(token);
-        Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
-        String account = decode.getClaim(&quot;account&quot;).asString();
-        String userId = decode.getClaim(&quot;userId&quot;).asString();
-        map.put(&quot;account&quot;,account);
-        map.put(&quot;userId&quot;,userId);
-        return  map;
-    &#125;
-
-    public static void main(String[] args) &#123;
-        Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
-        map.put(&quot;account&quot;,&quot;admin&quot;);
-        map.put(&quot;userId&quot;,&quot;1&quot;);
-        String accessToken = createAccessToken(map);
-        System.out.println(&quot;token 创建成功&quot;+accessToken);
-        System.out.println(canToken(accessToken));
-        Map&lt;String, String&gt; claim = getClaim(accessToken);
-        System.out.println(claim.get(&quot;account&quot;));
-    &#125;
-
-&#125;
+</li>
+<li><p>设置代理</p>
+<pre><code>export ALL_PROXY=&#39;http://10.235.0.19:10809&#39;
+export http_proxy=&#39;http://10.235.0.19:10809&#39;
+export https_proxy=&#39;https://10.235.0.19:10809&#39;
 </code></pre>
+</li>
+</ol>
 
 	</div>
 
@@ -806,7 +674,7 @@ public class JwtUtil &#123;
 				<span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
 			</button>
 		</a>
-		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2023/04/05/jwt/&text=jwt" tooltip="分享到 Telegram">
+		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2023/09/19/docker/&text=docker容器代理" tooltip="分享到 Telegram">
 			<button class="btn btn-icon btn-primary" style="background: #42a5f5;border: none;">
 				<span class="btn-inner--icon"><i class="fa fa-telegram"></i></span>
 			</button>
@@ -823,11 +691,13 @@ public class JwtUtil &#123;
 </div>
 <script type="text/javascript">
 	socialShare("#share", {
-	    title : 'jwt',
-	    description : '什么是jwtJwt是JSON Web Tokens的简称，从单词可以看出它也是一种token，其实可...',
+	    title : 'docker容器代理',
+	    description : 'dockerdocker设置代理
+进入docker容器
+docker exec -it &amp;lt;容器...',
 	    wechatQrcodeTitle : "分享到微信",
 	    wechatQrcodeHelper : '微信扫描二维码',
-	    source : 'http://example.com/2023/04/05/jwt/'
+	    source : 'http://example.com/2023/09/19/docker/'
 	});
 	$("#share_show")[0].onclick = function(){
 		$("#share_container").addClass("opened");
@@ -886,7 +756,7 @@ public class JwtUtil &#123;
 	</div>
 
 
-<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"><span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/2023/04/09/warp/" rel="prev"> warp</a></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2022/12/23/spring/" rel="next"> spring</a></div></div>
+<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"><span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/2023/10/10/phoenix-hbase/" rel="prev"> phoenix-hbase</a></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2023/09/18/Elasticsearch/" rel="next"> Elasticsearch</a></div></div>
 
 
 

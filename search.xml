@@ -4,6 +4,45 @@
   
     
     <entry>
+      <title>phoenix-hbase</title>
+      <link href="/2023/10/10/phoenix-hbase/"/>
+      <url>/2023/10/10/phoenix-hbase/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker容器代理</title>
+      <link href="/2023/09/19/docker/"/>
+      <url>/2023/09/19/docker/</url>
+      
+        <content type="html"><![CDATA[<h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><h2 id="docker设置代理"><a href="#docker设置代理" class="headerlink" title="docker设置代理"></a>docker设置代理</h2><ol><li><p>进入docker容器</p><pre><code>docker exec -it &lt;容器名称或容器ID&gt; /bin/bash</code></pre></li><li><p>设置代理</p><pre><code>export ALL_PROXY=&#39;http://10.235.0.19:10809&#39;export http_proxy=&#39;http://10.235.0.19:10809&#39;export https_proxy=&#39;https://10.235.0.19:10809&#39;</code></pre></li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Elasticsearch</title>
+      <link href="/2023/09/18/Elasticsearch/"/>
+      <url>/2023/09/18/Elasticsearch/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a><code>Elasticsearch</code></h1><h2 id="什么是Elasticsearch"><a href="#什么是Elasticsearch" class="headerlink" title="什么是Elasticsearch"></a>什么是<code>Elasticsearch</code></h2><p>​<code>Elasticsearch</code>是一个开源的分布式<code>RESTful</code>搜索和分析引擎，它专注于处理和存储大量数据，以便快速、准确地进行搜索、分析和可视化,</p><p>​<code>Elasticsearch</code> 是一个近乎实时的搜索平台。这意味着从对文档建立索引到可搜索之间存在轻微的延迟（通常为一秒）。</p><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><h3 id="三大特点"><a href="#三大特点" class="headerlink" title="三大特点"></a>三大特点</h3><ol><li><p>具备很好的横向扩展能力，天然带着数据库的分片技术，如果你使用数据库还要分库分表，在<code>Elasticsearch</code>中不需，自带分片技术</p></li><li><p>极限的性能，能够在毫秒级来返回你所搜索的结果，<code>Elasticsearch</code>技术特点相关，因为<code>Elasticsearch</code>基于倒排索引，通过索引来提升查询的效率</p></li><li><p>相关性：</p></li><li><p>全文搜索： <code>Elasticsearch</code>以全文搜索为核心功能，允许你轻松地在大规模文本数据中查找关键字、短语和复杂查询</p></li><li><p>分布式架构： 它被设计为分布式系统，能够轻松处理大规模数据，自动分布到多个节点，以提高性能和可伸缩性。</p></li><li><p>实时数据：<code>Elasticsearch</code>支持实时索引，允许不断的将数据添加到索引中，以便立即进行搜索和分析。</p></li><li><p>多数据类型：除了文本数据，它还可以用于结构化和半结构化数据，包括日志、时间序列数据、地理空间数据等。</p></li><li><p>强大的语言查询： <code>Elasticsearch</code>使用<code>JSON</code>格式的查询语言，允许你创建高度定制化的查询，包括范围查询、模糊搜索、过滤、聚合等。</p></li><li><p>实时分析和可视化：*通过与工具如Kibana集成，你可以实时分析数据并创建仪表板、可视化数据趋势。</p></li><li><p>用途广：<code> Elasticsearch</code>被广泛应用于各种领域，包括搜索引擎、日志和事件数据分析、安全信息与事件管理、电子商务产品搜索等。</p></li></ol><h2 id="学习步骤"><a href="#学习步骤" class="headerlink" title="学习步骤"></a>学习步骤</h2><h3 id="安装Elasticsearch和kibanna"><a href="#安装Elasticsearch和kibanna" class="headerlink" title="安装Elasticsearch和kibanna"></a>安装<code>Elasticsearch</code>和<code>kibanna</code></h3><ol><li><p>如果使用Docker Desktop，请确保分配至少4<code>GB</code>的内存。您可以在Docker Desktop的设置&gt;资源中调整内存使用情况。</p></li><li><p>使用docker-compose</p><pre><code>version: &quot;3.0&quot;services:  es-elasticsearch:    container_name: es-elasticsearch    image: docker.elastic.co/elasticsearch/elasticsearch:7.0.1    environment:      - cluster.name＝docker-cluster      - xpack.security.enabled=false      - &quot;discovery.type=single-node&quot;    networks:      - es-net    ports:      - 9200:9200  kb-kibana:    container_name: kb-kibana    image: docker.elastic.co/kibana/kibana:7.0.1    environment:      - ELASTICSEARCH_HOSTS=http://es-elasticsearch:9200      - I18N_LOCALE＝zh-CN    networks:      - es-net    depends_on:      - es-elasticsearch    ports:      - 5601:5601networks:  es-net:    driver: bridge</code></pre></li><li><p>安装完成在浏览器输入网址<a href="http://localhost:5601/">http://localhost:5601/</a></p><p><img src="D:\project\blogImage\image-20230921093636058.png" alt="image-20230921093636058"></p></li><li><p>设置中文，打开<code>/usr/share/kibana/config/kibana.yml</code>在里面添加以下代码</p><pre><code>i18n.locale: &quot;zh-CN</code></pre></li></ol><h2 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h2><ol><li><p>查询数据</p><ul><li><p>获取版本信息</p><pre><code>GET /</code></pre></li><li></li></ul></li><li><p>添加数据</p><p>数据是以文档的形式存储，但是文档的内容是以<code>json</code>对象的，这些文档可以存储在索引中</p><ul><li>ccsh：索引名称</li><li>_doc:什么类型</li><li>1:唯一标识</li></ul><pre><code>POST ccsh/_doc/1&#123;  &quot;user&quot;:&quot;GB&quot;,  &quot;uid&quot;:1,  &quot;city&quot;:&quot;Beijing&quot;,  &quot;province&quot;:&quot;Beijing&quot;,  &quot;country&quot;:&quot;china&quot;&#125;</code></pre></li><li><p>修改数据</p><ul><li><p>根据内容全部替换</p><pre><code>PUT ccsh/_doc/1&#123;  &quot;user&quot;:&quot;GB&quot;,  &quot;uid&quot;:1,  &quot;city&quot;:&quot;北京&quot;,  &quot;province&quot;:&quot;北京&quot;,  &quot;country&quot;:&quot;中国&quot;&#125;</code></pre></li><li><p>更具字段修改该数据_update_by_query</p><pre><code>POST ccsh/_update_by_query&#123;  &quot;script&quot;: &#123;    &quot;source&quot;: &quot;ctx._source.city = params.city; ctx._source.province = params.province; ctx._source.country = params.country;&quot;,    &quot;lang&quot;: &quot;painless&quot;,    &quot;params&quot;: &#123;      &quot;city&quot;: &quot;上海&quot;,      &quot;province&quot;: &quot;上海&quot;,      &quot;country&quot;: &quot;中国&quot;    &#125;  &#125;,  &quot;query&quot;: &#123;    &quot;match&quot;: &#123;      &quot;user&quot;: &quot;GB&quot;    &#125;  &#125;&#125;</code></pre></li><li></li></ul></li><li><p>删除数据</p><ul><li><p>删除整个索引</p><pre><code>DELETE ccsh</code></pre></li><li><p>删除索引中的某个文档</p><pre><code>DELETE aa/_doc/2</code></pre></li><li></li></ul></li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mysql</title>
       <link href="/2023/07/01/mysql/"/>
       <url>/2023/07/01/mysql/</url>
@@ -22,19 +61,6 @@
       <url>/2023/04/09/warp/</url>
       
         <content type="html"><![CDATA[<h3 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h3><pre><code>https://github.com/fscarmen/warp//使用以下运行脚本warp-go 运行脚本</code></pre><pre><code>wget -N https://raw.githubusercontent.com/fscarmen/warp/main/warp-go.sh &amp;&amp; bash warp-go.sh</code></pre><ul><li><p>选择  非全局</p><p><img src="https://gcore.jsdelivr.net/gh/csh1311/blogImage@main/image-20230409140012513.png" alt="image-20230409140012513"></p></li><li><p>免费 3</p></li></ul><p><img src="https://gcore.jsdelivr.net/gh/csh1311/blogImage@main/image-20230409140043324.png" alt="image-20230409140043324"></p><p>执行完毕如果没有warp-go这个命令使用以下命令</p><pre><code>systemctl daemon-reloadreboot</code></pre><p>配置出站规则</p><ul><li>进入路径</li></ul><pre><code>/etc/v2ray-agent/xray/conf</code></pre><ul><li>编辑这两个文件</li></ul><p><img src="https://gcore.jsdelivr.net/gh/csh1311/blogImage@main/image-20230409153108748.png" alt="image-20230409153108748"></p><ul><li>文件内容</li></ul><pre><code>nano 09_routing.json</code></pre><p><img src="https://gcore.jsdelivr.net/gh/csh1311/blogImage@main/image-20230409153332716.png" alt="image-20230409153332716"></p><pre><code>nano 10_ipv4_outbounds.json </code></pre><p><img src="https://gcore.jsdelivr.net/gh/csh1311/blogImage@main/image-20230409153432041.png" alt="image-20230409153432041"></p><ul><li>如果你只有一个配置文件使用以下配置</li></ul><pre><code>&#123;    &quot;outbounds&quot;:[        &#123;            &quot;tag&quot;:&quot;INTERNET_OUT&quot;,            &quot;protocol&quot;:&quot;freedom&quot;,            &quot;settings&quot;:&#123;                &quot;domainStrategy&quot;:&quot;UseIP&quot;            &#125;        &#125;,        &#123;            &quot;tag&quot;:&quot;WARP-GO_INTERFACE&quot;,            &quot;protocol&quot;:&quot;freedom&quot;,            &quot;settings&quot;:&#123;                &quot;domainStrategy&quot;:&quot;UseIPv4&quot;            &#125;,            &quot;sendThrough&quot;:&quot;172.16.0.2&quot;        &#125;    ],    &quot;routing&quot;:&#123;        &quot;rules&quot;:[            &#123;                &quot;type&quot;:&quot;field&quot;,                &quot;outboundTag&quot;:&quot;WARP-GO_INTERFACE&quot;,                &quot;domain&quot;:[                    &quot;geosite:google&quot;,                    &quot;geosite:netflix&quot;,                    &quot;domain:ip.sb&quot;,                    &quot;domain:openai.com&quot;,                    &quot;domain:ai.com&quot;                ]            &#125;,            &#123;                &quot;type&quot;:&quot;field&quot;,                &quot;outboundTag&quot;:&quot;INTERNET_OUT&quot;,                &quot;network&quot;:&quot;udp,tcp&quot;            &#125;        ]    &#125;,    &quot;dns&quot;:&#123;        &quot;servers&quot;:[            &quot;1.1.1.1&quot;,            &quot;1.0.0.1&quot;        ]    &#125;&#125;</code></pre><p>重启脚本</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>security</title>
-      <link href="/2023/04/08/security/"/>
-      <url>/2023/04/08/security/</url>
-      
-        <content type="html"><![CDATA[]]></content>
       
       
       
