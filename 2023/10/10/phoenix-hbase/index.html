@@ -3,18 +3,20 @@
 <html class="article-header-style-default">
 <head>
 	
-	<title>phoenix-hbase - cc</title>
+	<title>phoenix-Hbase - cc</title>
 	<meta charset="utf-8">
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<meta property="og:type" content="article">
-<meta property="og:title" content="phoenix-hbase">
+	<meta name="description" content="Phoeix-Hbase是什么​	Phoenix-Hbase是一个开源的工具，它将Apache Hbase（一个分布式NoSQL数据库）与Apache Phoenix（一个基于SQL的查询引擎）集成在一起，以便在Hbase上执行SQL查询。这个工具使用户能够使用熟悉的SQL语言来查询和操作存储在Hbase中的数据，而无需编写复杂的Hbase客户端代码。 ​	Phoenix-Hbase提供了类似于传">
+<meta property="og:type" content="article">
+<meta property="og:title" content="phoenix-Hbase">
 <meta property="og:url" content="http://example.com/2023/10/10/phoenix-hbase/index.html">
 <meta property="og:site_name" content="cc">
+<meta property="og:description" content="Phoeix-Hbase是什么​	Phoenix-Hbase是一个开源的工具，它将Apache Hbase（一个分布式NoSQL数据库）与Apache Phoenix（一个基于SQL的查询引擎）集成在一起，以便在Hbase上执行SQL查询。这个工具使用户能够使用熟悉的SQL语言来查询和操作存储在Hbase中的数据，而无需编写复杂的Hbase客户端代码。 ​	Phoenix-Hbase提供了类似于传">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-10T07:33:08.000Z">
-<meta property="article:modified_time" content="2023-10-10T07:33:08.856Z">
+<meta property="article:modified_time" content="2023-10-12T03:18:40.485Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -572,13 +574,13 @@
 	<article class="post post-full card bg-white shadow-sm border-0 ">
 	<header class="post-header text-center">
 		
-		<a class="post-title" href="/2023/10/10/phoenix-hbase/">phoenix-hbase</a>
+		<a class="post-title" href="/2023/10/10/phoenix-hbase/">phoenix-Hbase</a>
 		<div class="post-meta">
 			
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-10-10 15:33:08 | 编辑于 2023-10-10 15:33:08">2023-10-10 15:33
+							<time title="发布于 2023-10-10 15:33:08 | 编辑于 2023-10-12 11:18:40">2023-10-10 15:33
 							</time>
 						</div>
 					
@@ -597,7 +599,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							0 字
+							1.8k 字
 						</div>
 					
 						
@@ -605,7 +607,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							1 分钟
+							8 分钟
 						</div>
 					
 		</div>
@@ -613,7 +615,163 @@
 	</header>
 
 	<div class="post-content" id="post_content">
-		
+		<h1 id="Phoeix-Hbase是什么"><a href="#Phoeix-Hbase是什么" class="headerlink" title="Phoeix-Hbase是什么"></a>Phoeix-Hbase是什么</h1><p>​	Phoenix-Hbase是一个开源的工具，它将Apache Hbase（一个分布式NoSQL数据库）与Apache Phoenix（一个基于SQL的查询引擎）集成在一起，以便在Hbase上执行SQL查询。这个工具使用户能够使用熟悉的SQL语言来查询和操作存储在Hbase中的数据，而无需编写复杂的Hbase客户端代码。</p>
+<p>​	Phoenix-Hbase提供了类似于传统关系型数据库的查询功能，包括筛选、排序、聚合和连接等操作，但可以在Hbase这种分布式和高可扩展性的存储系统上执行这些操作。这对于需要在大规模数据上执行实时查询的应用程序非常有用，例如大数据分析和实时报告生成。</p>
+<h1 id="为什么要使用Phoenix-Hbase"><a href="#为什么要使用Phoenix-Hbase" class="headerlink" title="为什么要使用Phoenix-Hbase"></a>为什么要使用Phoenix-Hbase</h1><p>Phoenix-Hbase允许您使用SQL语言来查询和操作存储在Hbase中的数据，Phoenix-Hbase简化了与Hbase交互的方式，减少了开发人员的工作量。您可以像与传统关系型数据库一样执行查询，而不必处理Hbase的底层复杂性</p>
+<h1 id="如何使用Phoenix-Hbase"><a href="#如何使用Phoenix-Hbase" class="headerlink" title="如何使用Phoenix-Hbase"></a>如何使用Phoenix-Hbase</h1><h3 id="Quick-start"><a href="#Quick-start" class="headerlink" title="Quick start"></a>Quick start</h3><ul>
+<li>安装部署完成，在命令行输入</li>
+</ul>
+<pre><code>//sqlline是Phoenix的启动脚步，192.168.60.40是zookeeper的地址
+sqlline.py 192.168.60.40:2181
+</code></pre>
+<ul>
+<li>创建一个表</li>
+</ul>
+<pre><code>create table &quot;test&quot; (mykey integer not null primary key, mycolumn varchar);
+upsert into &quot;test&quot; values (1,&#39;Hello&#39;);
+upsert into &quot;test&quot; values (2,&#39;World!&#39;);
+</code></pre>
+<pre><code>select * from &quot;test&quot;;
+</code></pre>
+<ul>
+<li>查询的结构</li>
+</ul>
+<pre><code>+-------+------------+
+| MYKEY |  MYCOLUMN  |
++-------+------------+
+| 1     | Hello      |
+| 2     | World!     |
++-------+------------+
+</code></pre>
+<h3 id="如何将Phoenix的表映射对应已有的Hbase的表"><a href="#如何将Phoenix的表映射对应已有的Hbase的表" class="headerlink" title="如何将Phoenix的表映射对应已有的Hbase的表"></a>如何将Phoenix的表映射对应已有的Hbase的表</h3><ul>
+<li><p>Hbase创建一个表</p>
+<p>‘con’：表名</p>
+<p>‘log’ :列族</p>
+<pre><code>create &#39;con&#39;,&#123;NAME =&gt; &#39;log&#39;, VERSIONS =&gt; 2&#125;
+</code></pre>
+</li>
+<li><p>创建列族的列</p>
+<pre><code>alter &#39;con&#39;, &#123;NAME =&gt; &#39;log&#39;, VERSIONS =&gt; 1&#125;, &#123;NAME =&gt; &#39;userid&#39;&#125;, &#123;NAME =&gt; &#39;productid&#39;&#125;, &#123;NAME =&gt; &#39;action&#39;&#125;, &#123;NAME =&gt; &#39;time&#39;&#125;
+</code></pre>
+</li>
+<li><p>添加数据到’con’</p>
+<pre><code>put &#39;con&#39;, &#39;1_122_1563799412&#39;, &#39;log:userid&#39;, &#39;1&#39;
+put &#39;con&#39;, &#39;1_122_1563799412&#39;, &#39;log:productid&#39;, &#39;122&#39;
+put &#39;con&#39;, &#39;1_122_1563799412&#39;, &#39;log:time&#39;, &#39;1563799412&#39;
+put &#39;con&#39;, &#39;1_122_1563799412&#39;, &#39;log:action&#39;, &#39;1&#39;
+
+put &#39;con&#39;, &#39;1_123_1563799391&#39;, &#39;log:userid&#39;, &#39;1&#39;
+put &#39;con&#39;, &#39;1_123_1563799391&#39;, &#39;log:productid&#39;, &#39;123&#39;
+put &#39;con&#39;, &#39;1_123_1563799391&#39;, &#39;log:time&#39;, &#39;1563799391&#39;
+put &#39;con&#39;, &#39;1_123_1563799391&#39;, &#39;log:action&#39;, &#39;2&#39;
+
+put &#39;con&#39;, &#39;1_123_1563799393&#39;, &#39;log:userid&#39;, &#39;1&#39;
+put &#39;con&#39;, &#39;1_123_1563799393&#39;, &#39;log:productid&#39;, &#39;123&#39;
+put &#39;con&#39;, &#39;1_123_1563799393&#39;, &#39;log:time&#39;, &#39;1563799393&#39;
+put &#39;con&#39;, &#39;1_123_1563799393&#39;, &#39;log:action&#39;, &#39;2&#39;
+
+put &#39;con&#39;, &#39;1_124_1563799394&#39;, &#39;log:userid&#39;, &#39;1&#39;
+put &#39;con&#39;, &#39;1_124_1563799394&#39;, &#39;log:productid&#39;, &#39;124&#39;
+put &#39;con&#39;, &#39;1_124_1563799394&#39;, &#39;log:time&#39;, &#39;1563799394&#39;
+put &#39;con&#39;, &#39;1_124_1563799394&#39;, &#39;log:action&#39;, &#39;2&#39;
+</code></pre>
+</li>
+<li><p>使用scan扫描Hbase中con表的全部数据</p>
+<pre><code>ROW                                       COLUMN+CELL                                                                                                                                                                    
+ 1_122_1563799412                  column=log:_0, timestamp=2023-10-10T14:57:22.038, value=                                                                                                                       
+ 1_122_1563799412                  column=log:action, timestamp=2023-10-10T14:57:22.038, value=1                                                                                                                  
+ 1_122_1563799412                  column=log:productid, timestamp=2023-10-10T14:57:22.020, value=122                                                                                                             
+ 1_122_1563799412                  column=log:time, timestamp=2023-10-10T14:57:22.028, value=1563799412                                                                                                           
+ 1_122_1563799412                  column=log:userid, timestamp=2023-10-10T14:57:22.007, value=1                                                                                                                  
+ 1_123_1563799391                  column=log:_0, timestamp=2023-10-10T14:56:09.584, value=                                                                                                                       
+ 1_123_1563799391                  column=log:action, timestamp=2023-10-10T14:56:09.584, value=2                                                                                                                  
+ 1_123_1563799391                  column=log:productid, timestamp=2023-10-10T14:56:09.571, value=123                                                                                                             
+ 1_123_1563799391                  column=log:time, timestamp=2023-10-10T14:56:09.577, value=1563799391                                                                                                           
+ 1_123_1563799391                  column=log:userid, timestamp=2023-10-10T14:56:09.461, value=1                                                                                                                  
+ 1_123_1563799393                  column=log:_0, timestamp=2023-10-10T14:57:08.231, value=                                                                                                                       
+ 1_123_1563799393                  column=log:action, timestamp=2023-10-10T14:57:08.231, value=2                                                                                                                  
+ 1_123_1563799393                  column=log:productid, timestamp=2023-10-10T14:57:08.221, value=123                                                                                                             
+ 1_123_1563799393                  column=log:time, timestamp=2023-10-10T14:57:08.225, value=1563799393                                                                                                           
+ 1_123_1563799393                  column=log:userid, timestamp=2023-10-10T14:57:08.213, value=1                                                                                                                  
+ 1_124_1563799394                  column=log:_0, timestamp=2023-10-10T14:57:14.731, value=                                                                                                                       
+ 1_124_1563799394                  column=log:action, timestamp=2023-10-10T14:57:14.731, value=2                                                                                                                  
+ 1_124_1563799394                  column=log:productid, timestamp=2023-10-10T14:57:14.705, value=124                                                                                                             
+ 1_124_1563799394                  column=log:time, timestamp=2023-10-10T14:57:14.718, value=1563799394                                                                                                           
+ 1_124_1563799394                  column=log:userid, timestamp=2023-10-10T14:57:14.692, value=1   
+</code></pre>
+</li>
+<li><p>Phoenix创建映射Hbase的表</p>
+<p>如果创建表是表映射错了，要删除表，这样也会把habse的表也删除，删除表是需要保存好数据</p>
+<p>userid，productid，time，action是Hbase中的列，但这里用的是varchar,否则没有数据</p>
+<p>column_encoded_bytes：要加column_encoded_bytes&#x3D;0,不然Phoenix用自己的编码,列的值就无法查看。</p>
+<pre><code>CREATE TABLE &quot;con&quot; (
+      &quot;rowKey&quot; VARCHAR NOT NULL PRIMARY KEY,
+      &quot;log&quot;.&quot;userid&quot;  VARCHAR,
+      &quot;log&quot;.&quot;productid&quot;  VARCHAR,
+      &quot;log&quot;.&quot;time&quot;  VARCHAR,
+      &quot;log&quot;.&quot;action&quot;  VARCHAR
+) column_encoded_bytes=0;
+</code></pre>
+</li>
+<li><p>查询数据</p>
+<pre><code>select * from &quot;con&quot;;
+</code></pre>
+</li>
+<li><p>返回的数据</p>
+<pre><code>+------------------+--------+-----------+------------+--------+
+|      rowKey      | userid | productid |    time    | action |
++------------------+--------+-----------+------------+--------+
+| 1_122_1563799412 | 1      | 122       | 1563799412 | 1      |
+| 1_123_1563799391 | 1      | 123       | 1563799391 | 2      |
+| 1_123_1563799393 | 1      | 123       | 1563799393 | 2      |
+| 1_124_1563799394 | 1      | 124       | 1563799394 | 2      |
++------------------+--------+-----------+------------+--------+
+</code></pre>
+</li>
+</ul>
+<h3 id="如何创建二级索引"><a href="#如何创建二级索引" class="headerlink" title="如何创建二级索引"></a>如何创建二级索引</h3><h4 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h4><ul>
+<li><p>索引通常是数据库中的一种数据结构，用于快速检索和访问存储在数据库表中的数据，可以减少i&#x2F;o操作</p>
+<ul>
+<li><p>不加索引会这么样</p>
+<p>假设你有一个表，表的数据有10万条数据，你要查询第10000条的数据，那么你就需要从第一条数据一条条的检索判断是否对应的数据，这样会使查询效率变慢</p>
+</li>
+</ul>
+</li>
+<li><p>从 Phoenix 2.1 版开始，Phoenix 支持对可变和不可变数据进行索引。请注意，Phoenix 2.0.x 仅支持不可变数据上的索引。不可变表的索引写入性能索引比可变表稍快，但不可变表中的数据无法更新。</p>
+<ul>
+<li><p>可变表</p>
+<p>可以进行插入数据，更新数据，删除数据，数据是可以更改的</p>
+<pre><code>create table test (id integer primary key, name varchar, email varchar);
+</code></pre>
+<p>插入数据</p>
+<pre><code>upsert into test values(1,&#39;cc&#39;,&#39;163@163.com&#39;);
+upsert into test values(2,&#39;ccsdas&#39;,&#39;admsd@163.com&#39;);
+upsert into test values(3,&#39;ccsds&#39;,&#39;admsasdsad@163.com&#39;);
+</code></pre>
+</li>
+<li><p>不可变表</p>
+<p>数据一旦插入数据之后，就不能再进行更新或删除操作，这种表一般适合存储数据，</p>
+<pre><code>create table test1 (id integer primary key, name varchar, email varchar) IMMUTABLE_ROWS=true;
+</code></pre>
+<p>插入数据</p>
+<pre><code>upsert into test1 values(1,&#39;cc&#39;,&#39;163@163.com&#39;);
+upsert into test1 values(2,&#39;ccsdas&#39;,&#39;admsd@163.com&#39;);
+upsert into test1 values(3,&#39;ccsds&#39;,&#39;admsasdsad@163.com&#39;);
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="二级索引"><a href="#二级索引" class="headerlink" title="二级索引"></a>二级索引</h4><p>全局索引和本地索引</p>
+<h5 id="Global-Indexes"><a href="#Global-Indexes" class="headerlink" title="Global Indexes"></a>Global Indexes</h5><p>全局索引适用于大量的读取数量，不适用于修改删除数据，都会引起索引表的更新，而索引表是分布在不同的数据节点上的，跨节点的数据传输带来了较大的性能消耗。</p>
+<pre><code>create index idx on test (email);
+</code></pre>
+<h5 id="Local-Indexes"><a href="#Local-Indexes" class="headerlink" title="Local Indexes"></a>Local Indexes</h5><p>本地索引目标<em>写入量大</em>，<em>空间有限</em>用例。就像全局索引一样，Phoenix 将在查询时自动选择是否使用本地索引。跟全局索引不一样索引表是分布在同一台数据节点上，防止写入期间产生任何网络开销。</p>
+<h5 id="immutable-index"><a href="#immutable-index" class="headerlink" title="immutable index"></a>immutable index</h5><p>对于数据只写入一次并且从不就地更新的表，可以进行某些优化以减少增量维护的写入时间开销，IMMUTABLE_ROWS&#x3D;true&#96;属性添加到 DDL 语句来将表声明为不可变表</p>
+<p>如果想要从不可变索引切换到可变索引，请使用<code>ALTER TABLE</code>命令，如下所示：</p>
+<pre><code>ALTER TABLE test1 SET IMMUTABLE_ROWS=false
+</code></pre>
+<h5 id="mutable-index"><a href="#mutable-index" class="headerlink" title="mutable index"></a>mutable index</h5>
 	</div>
 
 	
@@ -660,7 +818,7 @@
 				<span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
 			</button>
 		</a>
-		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2023/10/10/phoenix-hbase/&text=phoenix-hbase" tooltip="分享到 Telegram">
+		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2023/10/10/phoenix-hbase/&text=phoenix-Hbase" tooltip="分享到 Telegram">
 			<button class="btn btn-icon btn-primary" style="background: #42a5f5;border: none;">
 				<span class="btn-inner--icon"><i class="fa fa-telegram"></i></span>
 			</button>
@@ -677,8 +835,8 @@
 </div>
 <script type="text/javascript">
 	socialShare("#share", {
-	    title : 'phoenix-hbase',
-	    description : '',
+	    title : 'phoenix-Hbase',
+	    description : 'Phoeix-Hbase是什么​	Phoenix-Hbase是一个开源的工具，它将Apache Hb...',
 	    wechatQrcodeTitle : "分享到微信",
 	    wechatQrcodeHelper : '微信扫描二维码',
 	    source : 'http://example.com/2023/10/10/phoenix-hbase/'
